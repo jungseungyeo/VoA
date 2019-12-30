@@ -7,13 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2117012FE16BA4186C1E6F52 /* libPods-VoATests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E83D79190609278ECD42E1E /* libPods-VoATests.a */; };
 		98E1F1EC23B86481004CCCC2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E1F1EB23B86481004CCCC2 /* AppDelegate.swift */; };
 		98E1F1EE23B86481004CCCC2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E1F1ED23B86481004CCCC2 /* SceneDelegate.swift */; };
 		98E1F1F023B86481004CCCC2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E1F1EF23B86481004CCCC2 /* ViewController.swift */; };
-		98E1F1F323B86481004CCCC2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 98E1F1F123B86481004CCCC2 /* Main.storyboard */; };
 		98E1F1F523B86481004CCCC2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 98E1F1F423B86481004CCCC2 /* Assets.xcassets */; };
 		98E1F1F823B86481004CCCC2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 98E1F1F623B86481004CCCC2 /* LaunchScreen.storyboard */; };
 		98E1F20323B86482004CCCC2 /* VoATests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E1F20223B86482004CCCC2 /* VoATests.swift */; };
+		C9AF191910E2E9C4B71FA096 /* libPods-VoA.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B87755B9BA1C2D203FE705B6 /* libPods-VoA.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,17 +28,22 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		723624FB63B13B4B5172E34B /* Pods-VoATests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VoATests.debug.xcconfig"; path = "Target Support Files/Pods-VoATests/Pods-VoATests.debug.xcconfig"; sourceTree = "<group>"; };
+		7E83D79190609278ECD42E1E /* libPods-VoATests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-VoATests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		88B57DAF3E63C432DF4FF793 /* Pods-VoATests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VoATests.release.xcconfig"; path = "Target Support Files/Pods-VoATests/Pods-VoATests.release.xcconfig"; sourceTree = "<group>"; };
+		8DA0F2E31454C0A3E503EB5F /* Pods-VoA.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VoA.debug.xcconfig"; path = "Target Support Files/Pods-VoA/Pods-VoA.debug.xcconfig"; sourceTree = "<group>"; };
 		98E1F1E823B86481004CCCC2 /* VoA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VoA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		98E1F1EB23B86481004CCCC2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		98E1F1ED23B86481004CCCC2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		98E1F1EF23B86481004CCCC2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		98E1F1F223B86481004CCCC2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		98E1F1F423B86481004CCCC2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		98E1F1F723B86481004CCCC2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		98E1F1F923B86481004CCCC2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		98E1F1FE23B86482004CCCC2 /* VoATests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VoATests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		98E1F20223B86482004CCCC2 /* VoATests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoATests.swift; sourceTree = "<group>"; };
 		98E1F20423B86482004CCCC2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B87755B9BA1C2D203FE705B6 /* libPods-VoA.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-VoA.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B8F26E96F0B4B90B3BC64202 /* Pods-VoA.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VoA.release.xcconfig"; path = "Target Support Files/Pods-VoA/Pods-VoA.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +51,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C9AF191910E2E9C4B71FA096 /* libPods-VoA.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -52,6 +59,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2117012FE16BA4186C1E6F52 /* libPods-VoATests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -64,6 +72,8 @@
 				98E1F1EA23B86481004CCCC2 /* VoA */,
 				98E1F20123B86482004CCCC2 /* VoATests */,
 				98E1F1E923B86481004CCCC2 /* Products */,
+				BF74DC03AD58844803C085E1 /* Pods */,
+				E6512DC757372B631C159F18 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -82,7 +92,6 @@
 				98E1F1EB23B86481004CCCC2 /* AppDelegate.swift */,
 				98E1F1ED23B86481004CCCC2 /* SceneDelegate.swift */,
 				98E1F1EF23B86481004CCCC2 /* ViewController.swift */,
-				98E1F1F123B86481004CCCC2 /* Main.storyboard */,
 				98E1F1F423B86481004CCCC2 /* Assets.xcassets */,
 				98E1F1F623B86481004CCCC2 /* LaunchScreen.storyboard */,
 				98E1F1F923B86481004CCCC2 /* Info.plist */,
@@ -99,6 +108,26 @@
 			path = VoATests;
 			sourceTree = "<group>";
 		};
+		BF74DC03AD58844803C085E1 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8DA0F2E31454C0A3E503EB5F /* Pods-VoA.debug.xcconfig */,
+				B8F26E96F0B4B90B3BC64202 /* Pods-VoA.release.xcconfig */,
+				723624FB63B13B4B5172E34B /* Pods-VoATests.debug.xcconfig */,
+				88B57DAF3E63C432DF4FF793 /* Pods-VoATests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		E6512DC757372B631C159F18 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B87755B9BA1C2D203FE705B6 /* libPods-VoA.a */,
+				7E83D79190609278ECD42E1E /* libPods-VoATests.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -106,6 +135,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 98E1F20723B86482004CCCC2 /* Build configuration list for PBXNativeTarget "VoA" */;
 			buildPhases = (
+				3BF6142DB769D5798FA35A33 /* [CP] Check Pods Manifest.lock */,
 				98E1F1E423B86481004CCCC2 /* Sources */,
 				98E1F1E523B86481004CCCC2 /* Frameworks */,
 				98E1F1E623B86481004CCCC2 /* Resources */,
@@ -123,6 +153,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 98E1F20A23B86482004CCCC2 /* Build configuration list for PBXNativeTarget "VoATests" */;
 			buildPhases = (
+				4606360657FE11FE001BAEB0 /* [CP] Check Pods Manifest.lock */,
 				98E1F1FA23B86482004CCCC2 /* Sources */,
 				98E1F1FB23B86482004CCCC2 /* Frameworks */,
 				98E1F1FC23B86482004CCCC2 /* Resources */,
@@ -182,7 +213,6 @@
 			files = (
 				98E1F1F823B86481004CCCC2 /* LaunchScreen.storyboard in Resources */,
 				98E1F1F523B86481004CCCC2 /* Assets.xcassets in Resources */,
-				98E1F1F323B86481004CCCC2 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -194,6 +224,53 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		3BF6142DB769D5798FA35A33 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-VoA-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4606360657FE11FE001BAEB0 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-VoATests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		98E1F1E423B86481004CCCC2 /* Sources */ = {
@@ -225,14 +302,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		98E1F1F123B86481004CCCC2 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				98E1F1F223B86481004CCCC2 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		98E1F1F623B86481004CCCC2 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -360,6 +429,7 @@
 		};
 		98E1F20823B86482004CCCC2 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8DA0F2E31454C0A3E503EB5F /* Pods-VoA.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -372,12 +442,13 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.linsaeng.VoA;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		98E1F20923B86482004CCCC2 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B8F26E96F0B4B90B3BC64202 /* Pods-VoA.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -390,12 +461,13 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.linsaeng.VoA;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
 		98E1F20B23B86482004CCCC2 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 723624FB63B13B4B5172E34B /* Pods-VoATests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -418,6 +490,7 @@
 		};
 		98E1F20C23B86482004CCCC2 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 88B57DAF3E63C432DF4FF793 /* Pods-VoATests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
