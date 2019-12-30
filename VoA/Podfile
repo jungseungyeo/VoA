@@ -1,0 +1,19 @@
+# Uncomment the next line to define a global platform for your project
+# platform :ios, '9.0'
+
+target 'VoA' do
+
+  pod 'RxSwift', '~> 5'
+  pod 'RxCocoa', '~> 5'
+  pod 'SnapKit', '~> 5.0.0'
+  pod 'Moya', '~> 13.0'
+  pod 'SwiftlyIndicator'
+  pod 'CancelBag'
+
+  target 'VoATests' do
+    inherit! :search_paths
+    pod 'RxBlocking', '~> 5'
+    pod 'RxTest', '~> 5'
+  end
+
+end
