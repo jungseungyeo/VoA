@@ -7,21 +7,15 @@
 //
 
 import UIKit
-import SwiftlyIndicator
-import Combine
-import CancelBag
+import RxSwift
+import RxCocoa
 
 class IntroViewController: BaseViewController {
     
     private lazy var introView = IntroView(frame: view.bounds)
-    private lazy var indicator: SwiftlyIndicator = {
-        let indicator = SwiftlyIndicator(self.introView)
-        indicator.updateType(type: .normal)
-        return indicator
-    }()
     
     private let viewModel = IntroViewModel()
-    private let cancelbag = CancelBag()
+    private let bag = DisposeBag()
     
     static func instance() -> IntroViewController {
         return IntroViewController(nibName: nil, bundle: nil)
@@ -35,10 +29,8 @@ class IntroViewController: BaseViewController {
     override func bind() {
         super.bind()
         
-        viewModel.output.viewState
-            .sink(receiveCompletion: { (error) in
-                
-            }, receiveValue: { [weak self] state in
+        viewModel.output.state
+            .subscribe(onNext: { [weak self] (state) in
                 guard let self = self else { return }
                 switch state {
                 case .showTitle(let currentIndex):
@@ -46,13 +38,13 @@ class IntroViewController: BaseViewController {
                 case .complete:
                     self.moveHome()
                 }
-            }).cancel(with: cancelbag)
+            }).disposed(by: bag)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        viewModel.input.request.send(())
+        viewModel.input.request.accept(())
     }
 }
 
@@ -79,7 +71,7 @@ private extension IntroViewController {
             }, completion: { [weak self] finish in
                 guard let self = self else { return }
                 if finish {
-                    self.viewModel.input.request.send(())
+                    self.viewModel.input.request.accept(())
                 }
         })
     }

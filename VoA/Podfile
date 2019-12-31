@@ -6,7 +6,9 @@ target 'VoA' do
   pod 'RxSwift', '~> 5'
   pod 'RxCocoa', '~> 5'
   pod 'SnapKit', '~> 5.0.0'
-  pod 'Moya', '~> 13.0'
+  pod 'Alamofire', '~> 5.0.0-rc.3'
+  pod 'ObjectMapper', '~> 3.4'
+  pod 'SwiftyJSON', '~> 4.0'
   pod 'SwiftlyIndicator'
   pod 'CancelBag'
 

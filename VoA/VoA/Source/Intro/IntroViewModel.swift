@@ -8,6 +8,8 @@
 
 import Combine
 import CancelBag
+import RxSwift
+import RxCocoa
 
 enum IntroViewState {
     case showTitle(Int)
@@ -20,11 +22,11 @@ class IntroViewModel: NSObject, ReactiveViewModelable {
     typealias OutputType = Output
     
     struct Input {
-        public let request = PassthroughSubject<Void, Error>()
+        public let request = PublishRelay<Void>()
     }
     
     struct Output {
-        public let viewState = PassthroughSubject<IntroViewState, Error>()
+        public let state = PublishRelay<IntroViewState>()
     }
     
     public lazy var input: InputType = Input()
@@ -33,23 +35,21 @@ class IntroViewModel: NSObject, ReactiveViewModelable {
     private var currentIndex: Int = -1
     
     private let cancelbag = CancelBag()
+    private let bag = DisposeBag()
     
     override init() {
         super.init()
         
         input.request
-            .sink(receiveCompletion: { (error) in
-            
-        }, receiveValue: { [weak self] _ in
-            guard let self = self else { return }
-            self.currentIndex += 1
-            guard self.currentIndex < 4 else {
-                self.output.viewState.send(.complete)
-                return
-            }
-            
-            self.output.viewState.send(.showTitle(self.currentIndex))
-        }).cancel(with: cancelbag)
-        
+            .subscribe(onNext: { [weak self] _ in
+                guard let self = self else { return }
+                self.currentIndex += 1
+                guard self.currentIndex < 4 else {
+                    self.output.state.accept(.complete)
+                    return
+                }
+                
+                self.output.state.accept(.showTitle(self.currentIndex))
+            }).disposed(by: bag)
     }
 }
