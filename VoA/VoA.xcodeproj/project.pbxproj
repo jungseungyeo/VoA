@@ -18,6 +18,10 @@
 		984DF88E23B9DE9D00579322 /* ExtesnioUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984DF88D23B9DE9D00579322 /* ExtesnioUIView.swift */; };
 		984DF89123B9E59900579322 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984DF89023B9E59900579322 /* HomeViewController.swift */; };
 		98A3CEFC23B9FADC007FEAC4 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A3CEFB23B9FADC007FEAC4 /* HomeView.swift */; };
+		98C1595523BAEEB200B14118 /* Networker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C1595423BAEEB200B14118 /* Networker.swift */; };
+		98C1595823BAEF3600B14118 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C1595723BAEF3600B14118 /* NetworkError.swift */; };
+		98C1595A23BAEF7D00B14118 /* VoAError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C1595923BAEF7D00B14118 /* VoAError.swift */; };
+		98C1595C23BAEFCC00B14118 /* VoAService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C1595B23BAEFCC00B14118 /* VoAService.swift */; };
 		98E1F1EC23B86481004CCCC2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E1F1EB23B86481004CCCC2 /* AppDelegate.swift */; };
 		98E1F1EE23B86481004CCCC2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E1F1ED23B86481004CCCC2 /* SceneDelegate.swift */; };
 		98E1F1F523B86481004CCCC2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 98E1F1F423B86481004CCCC2 /* Assets.xcassets */; };
@@ -51,6 +55,10 @@
 		984DF88D23B9DE9D00579322 /* ExtesnioUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtesnioUIView.swift; sourceTree = "<group>"; };
 		984DF89023B9E59900579322 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		98A3CEFB23B9FADC007FEAC4 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		98C1595423BAEEB200B14118 /* Networker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networker.swift; sourceTree = "<group>"; };
+		98C1595723BAEF3600B14118 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		98C1595923BAEF7D00B14118 /* VoAError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoAError.swift; sourceTree = "<group>"; };
+		98C1595B23BAEFCC00B14118 /* VoAService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoAService.swift; sourceTree = "<group>"; };
 		98E1F1E823B86481004CCCC2 /* VoA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VoA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		98E1F1EB23B86481004CCCC2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		98E1F1ED23B86481004CCCC2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -87,6 +95,8 @@
 		984DF87123B9BF4600579322 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				98C1595623BAEF2900B14118 /* Error */,
+				98C1595323BAEEA500B14118 /* SDK */,
 				984DF88C23B9DE9400579322 /* Extension */,
 				984DF87523B9C06800579322 /* Protocol */,
 				984DF87223B9BF5200579322 /* Base */,
@@ -155,6 +165,24 @@
 				98A3CEFB23B9FADC007FEAC4 /* HomeView.swift */,
 			);
 			path = Home;
+			sourceTree = "<group>";
+		};
+		98C1595323BAEEA500B14118 /* SDK */ = {
+			isa = PBXGroup;
+			children = (
+				98C1595B23BAEFCC00B14118 /* VoAService.swift */,
+				98C1595423BAEEB200B14118 /* Networker.swift */,
+			);
+			path = SDK;
+			sourceTree = "<group>";
+		};
+		98C1595623BAEF2900B14118 /* Error */ = {
+			isa = PBXGroup;
+			children = (
+				98C1595923BAEF7D00B14118 /* VoAError.swift */,
+				98C1595723BAEF3600B14118 /* NetworkError.swift */,
+			);
+			path = Error;
 			sourceTree = "<group>";
 		};
 		98E1F1DF23B86481004CCCC2 = {
@@ -368,7 +396,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				98C1595A23BAEF7D00B14118 /* VoAError.swift in Sources */,
 				984DF87423B9BF6000579322 /* BaseViewController.swift in Sources */,
+				98C1595C23BAEFCC00B14118 /* VoAService.swift in Sources */,
+				98C1595823BAEF3600B14118 /* NetworkError.swift in Sources */,
 				984DF88923B9D4B000579322 /* IntroView.swift in Sources */,
 				98E1F1EC23B86481004CCCC2 /* AppDelegate.swift in Sources */,
 				984DF88723B9D46D00579322 /* IntroViewController.swift in Sources */,
@@ -380,6 +411,7 @@
 				98A3CEFC23B9FADC007FEAC4 /* HomeView.swift in Sources */,
 				984DF88B23B9D52800579322 /* IntroViewModel.swift in Sources */,
 				98E1F1EE23B86481004CCCC2 /* SceneDelegate.swift in Sources */,
+				98C1595523BAEEB200B14118 /* Networker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

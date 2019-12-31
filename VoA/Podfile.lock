@@ -1,12 +1,7 @@
 PODS:
-  - Alamofire (4.9.1)
+  - Alamofire (5.0.0-rc.3)
   - CancelBag (1.0.0)
-  - Moya (13.0.1):
-    - Moya/Core (= 13.0.1)
-  - Moya/Core (13.0.1):
-    - Alamofire (~> 4.1)
-    - Result (~> 4.1)
-  - Result (4.1.0)
+  - ObjectMapper (3.5.1)
   - RxBlocking (5.0.1):
     - RxSwift (~> 5)
   - RxCocoa (5.0.1):
@@ -19,23 +14,25 @@ PODS:
     - RxSwift (~> 5)
   - SnapKit (5.0.1)
   - SwiftlyIndicator (1.2.0)
+  - SwiftyJSON (4.3.0)
 
 DEPENDENCIES:
+  - Alamofire (~> 5.0.0-rc.3)
   - CancelBag
-  - Moya (~> 13.0)
+  - ObjectMapper (~> 3.4)
   - RxBlocking (~> 5)
   - RxCocoa (~> 5)
   - RxSwift (~> 5)
   - RxTest (~> 5)
   - SnapKit (~> 5.0.0)
   - SwiftlyIndicator
+  - SwiftyJSON (~> 4.0)
 
 SPEC REPOS:
   trunk:
     - Alamofire
     - CancelBag
-    - Moya
-    - Result
+    - ObjectMapper
     - RxBlocking
     - RxCocoa
     - RxRelay
@@ -43,12 +40,12 @@ SPEC REPOS:
     - RxTest
     - SnapKit
     - SwiftlyIndicator
+    - SwiftyJSON
 
 SPEC CHECKSUMS:
-  Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
+  Alamofire: ca8c0de6906873be89d6deec5c8de279e00bf872
   CancelBag: d6887449c885068d13fc120cd1a38e3239000923
-  Moya: f4a4b80ff2f8a4ffc208dfb31cd91636622fee6e
-  Result: bd966fac789cc6c1563440b348ab2598cc24d5c7
+  ObjectMapper: 70187b8941977c62ccfb423caf6b50be405cabf0
   RxBlocking: c5e090f42d046df8b0e7752742510f349963710f
   RxCocoa: e741b9749968e8a143e2b787f1dfbff2b63d0a5c
   RxRelay: 89d54507f4fd4d969e6ec1d4bd7f3673640b4640
@@ -56,7 +53,8 @@ SPEC CHECKSUMS:
   RxTest: 0132f952a61da82d5233abedaa559df91e5330e5
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
   SwiftlyIndicator: d22b59463ef18144df16dc89800e41972028ce59
+  SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
 
-PODFILE CHECKSUM: 8f03c4a904108fc13817dda3823ecee484968d3f
+PODFILE CHECKSUM: ef3c6df46feabc1f64353bee559d1edf7b3ace57
 
 COCOAPODS: 1.8.4
