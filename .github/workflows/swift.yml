@@ -9,7 +9,11 @@ jobs:
 
     steps:
     - uses: actions/checkout@v1
+    - name: rudy install
+      run: echo "ruby-2.6.3" > ~/.ruby-version
+    - name: gem install
+      run: sudo gem install
     - name: CocoaPod Install
-      run: ../../VoA pod install
+      run: pod install
     - name: Run tests
       run: swift test -v
