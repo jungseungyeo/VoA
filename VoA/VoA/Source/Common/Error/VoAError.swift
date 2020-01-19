@@ -2,13 +2,17 @@
 //  VoAError.swift
 //  VoA
 //
-//  Created by saenglin on 2019/12/31.
-//  Copyright © 2019 linsaeng. All rights reserved.
+//  Created by Jung seoung Yeo on 2020/01/14.
+//  Copyright © 2020 Linsaeng. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 enum VoAError: Int, Error, CustomStringConvertible {
+    
+    var code: Int {
+        return self.rawValue
+    }
     
     //Bad Request
     case common400 = 400
@@ -51,8 +55,62 @@ enum VoAError: Int, Error, CustomStringConvertible {
             return "url 파싱 실패"
         }
     }
+}
+
+class NetworkError: NSObject {
     
-    var code: Int {
-        return self.rawValue
+    private struct Const {
+        static let alertConfirm: String = "확인"
+    }
+    
+    public func alert(vc: UIViewController, error: Error?, action: ((Int) -> Void)?) {
+        guard let error = error, let fitpetError = VoAError(rawValue: (error as NSError).code) else {
+            unknownError(vc: vc, block: action)
+            return
+        }
+        
+        customError(vc: vc, error: fitpetError, action: action)
+    }
+    
+    private func customError(vc: UIViewController, error: VoAError, action: ((Int) -> Void)?) {
+        showAlert(vc: vc,
+                  title: "\(error)",
+                  message: "",
+                  error: error,
+                  block: action)
+    }
+    
+    private func unknownError(vc: UIViewController, block: ((Int) -> Void)?) {
+        showAlert(vc: vc,
+                  title: "\(VoAError.unknown)",
+                  message: "",
+                  error: VoAError.unknown,
+                  block: block)
+    }
+    
+    private func showAlert(vc: UIViewController, title: String?, message: String?, error: Error, block: ((Int) -> Void)?) {
+        let errroAlert = UIAlertController.errorAlert(title ?? "",
+                                                      message: message ?? "",
+                                                      error: error,
+                                                      defaultString: Const.alertConfirm,
+                                                      defaultHandler: { (action) in
+                                                          block?((error as NSError).code)
+        })
+        errroAlert.show(vc)
+    }
+}
+
+fileprivate extension UIAlertController {
+    @discardableResult
+    static func errorAlert( _ title: String = "", message: String, error: Error, defaultString: String, defaultHandler: ((Int) -> Void)?) -> UIAlertController {
+        let alertController = UIAlertController(title: title,
+                                                message: message,
+                                                preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: defaultString,
+                                                style: .cancel,
+                                                handler: { (action) in
+                                                    defaultHandler?((error as NSError).code)
+        }))
+        return alertController
     }
 }

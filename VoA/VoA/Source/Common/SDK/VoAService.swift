@@ -2,30 +2,29 @@
 //  VoAService.swift
 //  VoA
 //
-//  Created by saenglin on 2019/12/31.
-//  Copyright © 2019 linsaeng. All rights reserved.
+//  Created by Jung seoung Yeo on 2020/01/13.
+//  Copyright © 2020 Linsaeng. All rights reserved.
 //
-
-import Foundation
 
 import Alamofire
 
-final public class VoAService: NSObject {
+class VoAService: NSObject {
 
-    public var commonHeader: HTTPHeaders {
-        let headers = HTTPHeaders()
+    public var commonHeader: [AnyHashable : Any] {
+        var headers = [AnyHashable : Any]()
+        headers[""] = ""
         return headers
     }
-
-    private var apiHost: String {
-        return ""
+    
+    public var restHeader: HTTPHeaders {
+        var headers = HTTPHeaders()
+        headers[""] = ""
+        return headers
     }
-
+    
+    //http://localhost:4000
     public var apiURL: URL {
-        var components = URLComponents()
-        components.scheme = "https"
-        components.host = apiHost
-        return components.url!
+        return URL(string: "")!
     }
 
     public static let shared = VoAService()

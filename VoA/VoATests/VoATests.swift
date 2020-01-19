@@ -2,8 +2,8 @@
 //  VoATests.swift
 //  VoATests
 //
-//  Created by saenglin on 2019/12/29.
-//  Copyright © 2019 linsaeng. All rights reserved.
+//  Created by Jung seoung Yeo on 2020/01/11.
+//  Copyright © 2020 Linsaeng. All rights reserved.
 //
 
 import XCTest
@@ -22,7 +22,13 @@ class VoATests: XCTestCase {
     func testExample() {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
-        XCTAssertEqual(1, 1)
+    }
+
+    func testPerformanceExample() {
+        // This is an example of a performance test case.
+        self.measure {
+            // Put the code you want to measure the time of here.
+        }
     }
 
 }

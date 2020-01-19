@@ -2,8 +2,8 @@
 //  BaseView.swift
 //  VoA
 //
-//  Created by saenglin on 2019/12/30.
-//  Copyright © 2019 linsaeng. All rights reserved.
+//  Created by Jung seoung Yeo on 2020/01/14.
+//  Copyright © 2020 Linsaeng. All rights reserved.
 //
 
 import UIKit
@@ -31,6 +31,5 @@ class BaseView: UIView, BaseViewable {
         backgroundColor = VoAColor.Style.background
     }
     func setupUI() { }
-    
     
 }

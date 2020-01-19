@@ -2,11 +2,9 @@
 //  ReactiveViewModelable.swift
 //  VoA
 //
-//  Created by saenglin on 2019/12/30.
-//  Copyright © 2019 linsaeng. All rights reserved.
+//  Created by Jung seoung Yeo on 2020/01/13.
+//  Copyright © 2020 Linsaeng. All rights reserved.
 //
-
-import Foundation
 
 protocol ReactiveViewModelable {
     associatedtype InputType
