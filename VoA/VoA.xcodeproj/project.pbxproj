@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4C02C2DA23D446CE0049D988 /* VoAIntegrator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C02C2D923D446CE0049D988 /* VoAIntegrator.swift */; };
+		4C02C2DD23D4479F0049D988 /* FirebaseIntegrator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C02C2DC23D4479F0049D988 /* FirebaseIntegrator.swift */; };
 		4C33B5CF23CD6538003A0484 /* Netwoker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C33B5CE23CD6538003A0484 /* Netwoker.swift */; };
 		4C33B5D423CD690C003A0484 /* VoAError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C33B5D323CD690C003A0484 /* VoAError.swift */; };
 		4C33B5D723CD6CF4003A0484 /* ExtensionUIAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C33B5D623CD6CF4003A0484 /* ExtensionUIAlertViewController.swift */; };
@@ -20,6 +22,7 @@
 		4C570F5623CC629E00C438CA /* ReactiveViewModelable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C570F5523CC629E00C438CA /* ReactiveViewModelable.swift */; };
 		4C570F5823CC62F700C438CA /* SplashViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C570F5723CC62F700C438CA /* SplashViewModel.swift */; };
 		4C570F5B23CC641700C438CA /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C570F5A23CC641700C438CA /* BaseViewController.swift */; };
+		4C5D0DF423D4450D00B3800D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4C5D0DF323D4450D00B3800D /* GoogleService-Info.plist */; };
 		4C5D650823C96CC100822386 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5D650723C96CC100822386 /* SplashViewController.swift */; };
 		4C5D650A23C96CCD00822386 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5D650923C96CCD00822386 /* ViewController.swift */; };
 		4C5D650C23C96DB100822386 /* VoAColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5D650B23C96DB100822386 /* VoAColor.swift */; };
@@ -48,6 +51,8 @@
 /* Begin PBXFileReference section */
 		087F85FA55F8FFDE72829D69 /* Pods-VoATests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VoATests.debug.xcconfig"; path = "Target Support Files/Pods-VoATests/Pods-VoATests.debug.xcconfig"; sourceTree = "<group>"; };
 		431B4870E5DD1BF151602FE7 /* Pods-VoATests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VoATests.release.xcconfig"; path = "Target Support Files/Pods-VoATests/Pods-VoATests.release.xcconfig"; sourceTree = "<group>"; };
+		4C02C2D923D446CE0049D988 /* VoAIntegrator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoAIntegrator.swift; sourceTree = "<group>"; };
+		4C02C2DC23D4479F0049D988 /* FirebaseIntegrator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseIntegrator.swift; sourceTree = "<group>"; };
 		4C33B5CE23CD6538003A0484 /* Netwoker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Netwoker.swift; sourceTree = "<group>"; };
 		4C33B5D323CD690C003A0484 /* VoAError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoAError.swift; sourceTree = "<group>"; };
 		4C33B5D623CD6CF4003A0484 /* ExtensionUIAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionUIAlertViewController.swift; sourceTree = "<group>"; };
@@ -61,6 +66,7 @@
 		4C570F5523CC629E00C438CA /* ReactiveViewModelable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReactiveViewModelable.swift; sourceTree = "<group>"; };
 		4C570F5723CC62F700C438CA /* SplashViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewModel.swift; sourceTree = "<group>"; };
 		4C570F5A23CC641700C438CA /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		4C5D0DF323D4450D00B3800D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4C5D650723C96CC100822386 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		4C5D650923C96CCD00822386 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		4C5D650B23C96DB100822386 /* VoAColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoAColor.swift; sourceTree = "<group>"; };
@@ -77,6 +83,8 @@
 		4C8D740A23D2C1F5005BEFAA /* KakaoOpenSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = KakaoOpenSDK.framework; sourceTree = "<group>"; };
 		4C8D740C23D2C256005BEFAA /* VoA-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "VoA-Bridging-Header.h"; sourceTree = "<group>"; };
 		4C8D740F23D2C330005BEFAA /* ExtensionNSAttributedString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionNSAttributedString.swift; sourceTree = "<group>"; };
+		4CB83C8823D549B9006B8711 /* VoA.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = VoA.entitlements; sourceTree = "<group>"; };
+		4CE9D2F723D544050090F645 /* VoARelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = VoARelease.entitlements; sourceTree = "<group>"; };
 		813F61DC0558B3D410448E08 /* Pods-VoA.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VoA.debug.xcconfig"; path = "Target Support Files/Pods-VoA/Pods-VoA.debug.xcconfig"; sourceTree = "<group>"; };
 		A27AAFE9CFBDBC1998A60A24 /* libPods-VoATests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-VoATests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA51C22EA9BFCCDBC75F47A9 /* Pods-VoA.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VoA.release.xcconfig"; path = "Target Support Files/Pods-VoA/Pods-VoA.release.xcconfig"; sourceTree = "<group>"; };
@@ -104,6 +112,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4C02C2D823D446C10049D988 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				4C02C2D923D446CE0049D988 /* VoAIntegrator.swift */,
+				4C02C2DC23D4479F0049D988 /* FirebaseIntegrator.swift */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
 		4C33B5CD23CD6524003A0484 /* REST */ = {
 			isa = PBXGroup;
 			children = (
@@ -187,6 +204,7 @@
 		4C5D650523C96CA800822386 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				4C02C2D823D446C10049D988 /* Util */,
 				4C33B5D523CD6CE9003A0484 /* Extension */,
 				4C33B5D223CD6902003A0484 /* Error */,
 				4C570F5923CC640D00C438CA /* Base */,
@@ -230,6 +248,8 @@
 		4C7D06D423C9611B0096B86C /* VoA */ = {
 			isa = PBXGroup;
 			children = (
+				4CB83C8823D549B9006B8711 /* VoA.entitlements */,
+				4CE9D2F723D544050090F645 /* VoARelease.entitlements */,
 				4C570F4623CC5FEF00C438CA /* schema.json */,
 				4C7D06D523C9611B0096B86C /* AppDelegate.swift */,
 				4C7D06D723C9611B0096B86C /* SceneDelegate.swift */,
@@ -237,6 +257,7 @@
 				4C7D06DE23C961240096B86C /* Assets.xcassets */,
 				4C7D06E023C961240096B86C /* LaunchScreen.storyboard */,
 				4C7D06E323C961240096B86C /* Info.plist */,
+				4C5D0DF323D4450D00B3800D /* GoogleService-Info.plist */,
 				4C5D650423C96C8D00822386 /* Source */,
 				4C8D740C23D2C256005BEFAA /* VoA-Bridging-Header.h */,
 			);
@@ -360,6 +381,7 @@
 			files = (
 				4C7D06E223C961240096B86C /* LaunchScreen.storyboard in Resources */,
 				4C570F4723CC5FF000C438CA /* schema.json in Resources */,
+				4C5D0DF423D4450D00B3800D /* GoogleService-Info.plist in Resources */,
 				4C7D06DF23C961240096B86C /* Assets.xcassets in Resources */,
 				4C570F4D23CC609200C438CA /* LaunchListQuery.graphql in Resources */,
 			);
@@ -452,6 +474,7 @@
 				4C570F5323CC621200C438CA /* VoAService.swift in Sources */,
 				4C570F5123CC61EE00C438CA /* GraphqlNetworker.swift in Sources */,
 				4C46F78723CE083B0031D3E0 /* ExtensionUIView.swift in Sources */,
+				4C02C2DA23D446CE0049D988 /* VoAIntegrator.swift in Sources */,
 				4C570F5623CC629E00C438CA /* ReactiveViewModelable.swift in Sources */,
 				4C570F5823CC62F700C438CA /* SplashViewModel.swift in Sources */,
 				4C570F5B23CC641700C438CA /* BaseViewController.swift in Sources */,
@@ -463,6 +486,7 @@
 				4C570F4F23CC615400C438CA /* LaunchListQuery.swift in Sources */,
 				4C46F78423CE047F0031D3E0 /* BaseView.swift in Sources */,
 				4C8D741023D2C330005BEFAA /* ExtensionNSAttributedString.swift in Sources */,
+				4C02C2DD23D4479F0049D988 /* FirebaseIntegrator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -618,6 +642,7 @@
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = VoA/VoA.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 524TVTU6B9;
@@ -630,6 +655,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 0.0.1;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -667,6 +693,7 @@
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = VoA/VoARelease.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 524TVTU6B9;
@@ -680,6 +707,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 0.0.1;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
 					"$(inherited)",

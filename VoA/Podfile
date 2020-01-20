@@ -13,6 +13,9 @@ target 'VoA' do
   
   pod 'Apollo', '0.20.0', :inhibit_warnings => true
   pod 'RxApolloClient', '1.3.0', :inhibit_warnings => true
+  
+  pod 'Firebase/Analytics'
+  pod 'Firebase/Messaging'
 
   target 'VoATests' do
     inherit! :search_paths

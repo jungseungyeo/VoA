@@ -12,6 +12,12 @@ import SnapKit
 
 class SplashView: BaseView {
     
+    lazy var logoText: UILabel = {
+        let label = UILabel(frame: .zero)
+        label.text = "굳 밤!"
+        return label
+    }()
+    
     lazy var kakaoBtn: UIButton = {
         let button = UIButton(type: .system)
         button.backgroundColor = const.kakaobgColor
@@ -58,7 +64,8 @@ class SplashView: BaseView {
     override func setup() {
         super.setup()
         
-        addSubviews(kakaoBtn)
+        addSubviews(logoText,
+                    kakaoBtn)
         
         kakaoBtn.addSubviews(kakaoIcon)
     }
