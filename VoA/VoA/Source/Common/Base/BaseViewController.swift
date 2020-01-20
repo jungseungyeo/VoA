@@ -13,7 +13,6 @@ import SwiftlyIndicator
 protocol BaseViewControllerable {
     func setup()
     func bind()
-    func addIndicator(view: BaseView)
     func handleError(error: Error?)
 }
 
@@ -25,8 +24,6 @@ class BaseViewController: UIViewController, BaseViewControllerable {
         return control
     }()
     
-    var indicator: SwiftlyIndicator?
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -37,10 +34,6 @@ class BaseViewController: UIViewController, BaseViewControllerable {
     func setup() { }
     func bind() { }
     func handleError(error: Error?) { }
-    
-    func addIndicator(view: BaseView) {
-        indicator = SwiftlyIndicator(view)
-    }
     
     @objc
     func handleRefresh(_ sender: UIRefreshControl) { }

@@ -8,6 +8,8 @@
 
 import UIKit
 
+import KakaoOpenSDK
+
 @available(iOS 13.0, *)
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -17,6 +19,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let sceneWindow = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: sceneWindow)
+        window?.overrideUserInterfaceStyle = .light
         window?.backgroundColor = VoAColor.Style.background
         window?.rootViewController = ViewController()
         window?.makeKeyAndVisible()
@@ -26,6 +29,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 
     func sceneDidBecomeActive(_ scene: UIScene) {
+        KOSession.handleDidBecomeActive()
     }
 
     func sceneWillResignActive(_ scene: UIScene) {
@@ -37,6 +41,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func sceneDidEnterBackground(_ scene: UIScene) {
     }
 
+    func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
+        for URLContext in URLContexts {
+            if KOSession.isKakaoAccountLoginCallback(URLContext.url.absoluteURL) {
+                KOSession.handleOpen(URLContext.url)
+            }
+        }
+    }
 
 }
 

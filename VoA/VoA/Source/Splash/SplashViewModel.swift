@@ -11,17 +11,22 @@ import RxCocoa
 
 import KakaoOpenSDK
 
+enum SplashViewState {
+    case request
+    case complete
+    case error(Error?)
+}
+
 class SplashViewModel: NSObject, ReactiveViewModelable {
     typealias InputType = Input
     typealias OutputType = Output
     
     struct Input {
-
-        public let kakaoLoginTapped = PublishRelay<Void>()
+        public let requestNextMove = PublishRelay<Void>()
     }
     
     struct Output {
-        
+        public let viewState = PublishRelay<SplashViewState>()
     }
     
     public lazy var input: InputType = Input()
@@ -37,40 +42,20 @@ class SplashViewModel: NSObject, ReactiveViewModelable {
     
     private func rxBind() {
 
-        input.kakaoLoginTapped
+        input.requestNextMove
+            .map { _ -> SplashViewState in
+                return .request
+        }.bind(to: output.viewState)
+        .disposed(by: bag)
+        
+        
+        input.requestNextMove
+            .delay(1.5, scheduler: MainScheduler.instance)
             .subscribe(onNext: { [weak self] (_) in
                 guard let self = self else { return }
-                self.kakaoLogin()
+                self.output.viewState.accept(.complete)
             }).disposed(by: bag)
+        
     }
-    
-    func kakaoLogin() {
-        guard let session = KOSession.shared() else { return }
 
-        // session이 있으면 닫아주는 역할
-        if session.isOpen() {
-            session.close()
-        }
-        // open 시도
-        session.open(completionHandler: { [unowned self] error in
-            guard error == nil else {
-                
-                return
-            }
-
-            //인증되어 있는지 여부. [token canRefresh]와 동일한 결과를 리턴합니다.
-            if session.isOpen() {
-                KOSessionTask.userMeTask(completion: { error, userInfo in
-
-                    
-                    print("UserInfo : \(userInfo)")
-                    
-                })
-            } else {
-                // 카카오 로그인이 열리지 않음
-                
-            }
-        })
-    }
-    
 }

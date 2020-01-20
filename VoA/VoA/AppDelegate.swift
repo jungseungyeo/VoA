@@ -35,22 +35,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             return true
         }
         
+        window?.overrideUserInterfaceStyle = .light
+        
         return true
     }
     
-    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
-      if KOSession.isKakaoAccountLoginCallback(url.absoluteURL) {
-        return KOSession.handleOpen(url)
-      }
-      
-      return true
+    func applicationDidBecomeActive(_ application: UIApplication) {
+        KOSession.handleDidBecomeActive()
     }
     
-    func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
-      if KOSession.isKakaoAccountLoginCallback(url.absoluteURL) {
-        return KOSession.handleOpen(url)
-      }
-      return true
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey: Any] = [:]) -> Bool {
+        // 카카오 로그인
+        if KOSession.isKakaoAccountLoginCallback(url.absoluteURL) {
+          return KOSession.handleOpen(url)
+        }
+        return true
     }
 
     // MARK: UISceneSession Lifecycle

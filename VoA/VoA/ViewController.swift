@@ -12,6 +12,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .darkGray
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -19,8 +20,10 @@ class ViewController: UIViewController {
         
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }
-            UIApplication.shared.windows.first?.rootViewController = self.moveSplash()
-            UIApplication.shared.windows.first?.makeKeyAndVisible()
+            let window = UIApplication.shared.windows.first
+            window?.overrideUserInterfaceStyle = .light
+            window?.rootViewController = self.moveSplash()
+            window?.makeKeyAndVisible()
         }
     }
 }

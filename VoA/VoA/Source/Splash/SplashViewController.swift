@@ -10,6 +10,7 @@ import UIKit
 
 import RxSwift
 import RxCocoa
+import SwiftlyIndicator
 
 class SplashViewController: BaseViewController {
     
@@ -22,6 +23,11 @@ class SplashViewController: BaseViewController {
         return splashView
     }()
     
+    private lazy var indicator: SwiftlyIndicator = {
+        let indicator = SwiftlyIndicator(splashView)
+        return indicator
+    }()
+    
     private let viewModel = SplashViewModel()
     private let bag = DisposeBag()
     
@@ -29,15 +35,41 @@ class SplashViewController: BaseViewController {
         super.setup()
         
         view = splashView
-        addIndicator(view: splashView)
     }
     
     override func bind() {
         super.bind()
         
-        splashView.kakaoBtn.rx.tap
-            .map { _ in return }
-            .bind(to: viewModel.input.kakaoLoginTapped )
-        .disposed(by: bag)
+        viewModel.output.viewState
+            .subscribe(onNext: { [weak self] (state) in
+                guard let self = self else { return }
+                switch state {
+                case .request:
+                    self.indicator.start()
+                case .complete:
+                    self.indicator.stop()
+                    self.moveLogin()
+                case .error(let error):
+                    self.handleError(error: error)
+                }
+            }).disposed(by: bag)
+    }
+    
+    override func handleError(error: Error?) {
+        super.handleError(error: error)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        viewModel.input.requestNextMove.accept(())
+    }
+}
+
+private extension SplashViewController {
+    func moveLogin() {
+        let window = UIApplication.shared.windows.first
+        window?.overrideUserInterfaceStyle = .light
+        window?.rootViewController = LoginViewController.instance()
+        window?.makeKeyAndVisible()
     }
 }
