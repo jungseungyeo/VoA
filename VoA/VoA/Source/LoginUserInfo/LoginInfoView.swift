@@ -66,6 +66,14 @@ class LoginInfoView: BaseView {
                                                              font: .systemFont(ofSize: 16,
                                                                                weight: .regular),
                                                              color: VoAColor.Style.white.withAlphaComponent(0.3))
+        static let profileTopOffset: CGFloat = 52
+        static let sideOffset: CGFloat = 30
+        static let nameTopOffset: CGFloat = 28
+        static let nameBorderTopOffset: CGFloat = 8
+        static let nameBorderHeight: CGFloat = 50
+        static let nameTextFieldSideOffset: CGFloat = 20
+        static let clearBtnSize: CGFloat = 24
+        static let clearBtnSideOffset: CGFloat = 10
     }
     
     private let const = Const()
@@ -86,38 +94,37 @@ class LoginInfoView: BaseView {
         super.setupUI()
         
         proImg.snp.remakeConstraints { make in
-            make.top.equalTo(safeAreaLayoutGuide).offset(52)
+            make.top.equalTo(safeAreaLayoutGuide).offset(Const.profileTopOffset)
             make.centerX.equalToSuperview()
             make.size.equalTo(Const.profileSize)
         }
         
         nameDesription.snp.remakeConstraints { make in
-            make.left.equalToSuperview().inset(30)
-            make.top.equalTo(proImg.snp.bottom).offset(28)
+            make.left.equalToSuperview().inset(Const.sideOffset)
+            make.top.equalTo(proImg.snp.bottom).offset(Const.nameTopOffset)
         }
         
         nameBorderView.snp.remakeConstraints { make in
-            make.top.equalTo(nameDesription.snp.bottom).offset(8)
+            make.top.equalTo(nameDesription.snp.bottom).offset(Const.nameBorderTopOffset)
             make.left.equalTo(nameDesription.snp.left)
-            make.right.equalToSuperview().inset(30)
-            make.height.equalTo(50)
+            make.right.equalToSuperview().inset(Const.sideOffset)
+            make.height.equalTo(Const.nameBorderHeight)
         }
         
         nameTextField.snp.remakeConstraints { make in
             make.top.bottom.equalToSuperview()
-            make.left.right.equalToSuperview().inset(20)
+            make.left.right.equalToSuperview().inset(Const.nameTextFieldSideOffset)
         }
         
         nicknameCount.snp.remakeConstraints { make in
             make.centerY.equalTo(nameDesription.snp.centerY)
-            make.right.equalToSuperview().inset(30)
+            make.right.equalToSuperview().inset(Const.sideOffset)
         }
         
         clearNickNameBtn.snp.remakeConstraints { make in
-            make.size.equalTo(24)
+            make.size.equalTo(Const.clearBtnSize)
             make.centerY.equalToSuperview()
-            make.right.equalToSuperview().inset(10)
+            make.right.equalToSuperview().inset(Const.clearBtnSideOffset)
         }
-        
     }
 }

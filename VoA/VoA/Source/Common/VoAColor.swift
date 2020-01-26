@@ -11,42 +11,18 @@ import UIKit
 class VoAColor: NSObject {
     
     struct Style {
-        
-        static var background: UIColor {
-            return .init(r: 34,
-                         g: 34,
-                         b: 34,
-                         a: 1.0)
-        }
-        
-        static var white: UIColor {
-            return .white
-        }
-        
+        static var background: UIColor = .init(r: 34, g: 34, b: 34, a: 1.0)
+        static var white: UIColor = .white
     }
     
     struct Splash {
-        static let logoTextColor: UIColor = .init(r: 229,
-                                                  g: 145,
-                                                  b: 76,
-                                                  a: 1.0)
-        
-        static let logoDescriptionTextColor: UIColor = .init(r: 255,
-                                                             g: 255,
-                                                             b: 255,
-                                                             a: 0.5)
+        static let logoTextColor: UIColor = .init(r: 229, g: 145, b: 76, a: 1.0)
+        static let logoDescriptionTextColor: UIColor = .init(r: 255, g: 255, b: 255, a: 0.5)
     }
     
     struct Login {
-        static let kakaoColor: UIColor = .init(r: 255,
-                                               g: 222,
-                                               b: 2,
-                                               a: 1.0)
-        
-        static let kakaoTextColor: UIColor = .init(r: 34,
-                                                   g: 34,
-                                                   b: 34,
-                                                   a: 1.0)
+        static let kakaoColor: UIColor = .init(r: 255, g: 222, b: 2, a: 1.0)
+        static let kakaoTextColor: UIColor = .init(r: 34, g: 34, b: 34, a: 1.0)
     }
     
     struct LoinInfo {

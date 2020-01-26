@@ -47,7 +47,9 @@ class LoginView: SplashView {
                                                         right: 0)
         static let btnHeight: CGFloat = 55
         static let sideInset: CGFloat = 30
-        static let kakaoBottomInset: CGFloat = 242
+        static let kakaoBottomInset: CGFloat = VoAUtil.isiPhoneSE ? 150 : 242
+        static let kakaoImgOffset: CGFloat = 80
+        static let btnOffset: CGFloat = 20
     }
     
     override func setup() {
@@ -72,11 +74,11 @@ class LoginView: SplashView {
 
         kakaoImg.snp.remakeConstraints { make in
             make.centerY.equalTo(kakaoBtn.snp.centerY)
-            make.left.equalToSuperview().inset(80)
+            make.left.equalToSuperview().inset(Const.kakaoImgOffset)
         }
         
         appleBtn.snp.makeConstraints { make in
-            make.top.equalTo(kakaoBtn.snp.bottom).offset(20)
+            make.top.equalTo(kakaoBtn.snp.bottom).offset(Const.btnOffset)
             make.centerX.equalToSuperview()
             make.left.equalToSuperview().inset(Const.sideInset)
             make.right.equalToSuperview().inset(Const.sideInset)
