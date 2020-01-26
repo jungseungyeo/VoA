@@ -12,44 +12,68 @@ import SnapKit
 
 class SplashView: BaseView {
     
+    lazy var logoImg: UIImageView = {
+        let iv = UIImageView(image: UIImage(named: "TestLogo"))
+        iv.contentMode = .scaleAspectFit
+        return iv
+    }()
+    
     lazy var logoText: UILabel = {
         let label = UILabel(frame: .zero)
-        label.attributedText = .init(string: "굳밤",
-                                     font: .systemFont(ofSize: 30,
-                                                       weight: .bold),
-                                     color: .orange)
+        label.attributedText = Const.logoText
+        label.numberOfLines = 0
         return label
     }()
     
-    lazy var descriptionText: UILabel = {
+    lazy var logoDescription: UILabel = {
         let label = UILabel(frame: .zero)
-        label.attributedText = .init(string: "안전귀가앱",
-                                     font: .systemFont(ofSize: 15,
-                                                       weight: .bold),
-                                     color: .gray)
+        label.attributedText = Const.logoDescriptionText
+        label.numberOfLines = 0
         return label
     }()
     
+    
+    private struct Const {
+        static let imgSize: CGSize = .init(width: 47,
+                                           height: 50)
+        static let logoText: NSAttributedString = .init(string: "굿밤",
+                                                        font: .systemFont(ofSize: 28,
+                                                                          weight: .bold),
+                                                        color: VoAColor.Splash.logoTextColor)
+        static let logoDescriptionText: NSAttributedString = .init(string: "안심귀가앱",
+                                                                   font: .systemFont(ofSize: 20,
+                                                                                     weight: .bold),
+                                                                   color: VoAColor.Splash.logoDescriptionTextColor)
+    }
+    
+    private let cosnt = Const()
     
     override func setup() {
         super.setup()
         
-        backgroundColor = .darkGray
+        addSubviews(logoImg,
+                    logoText,
+                    logoDescription)
         
-        addSubviews(logoText,
-                    descriptionText)
     }
     
     override func setupUI() {
         super.setupUI()
         
-        logoText.snp.makeConstraints { make in
+        logoImg.snp.remakeConstraints { make in
             make.centerX.equalToSuperview()
-            make.top.equalToSuperview().inset(150)
+            make.top.equalToSuperview().inset(165)
+            make.height.equalTo(Const.imgSize.height)
+            make.width.equalTo(Const.imgSize.width)
         }
         
-        descriptionText.snp.makeConstraints { make in
-            make.top.equalTo(logoText.snp.bottom).offset(10)
+        logoText.snp.remakeConstraints { make in
+            make.top.equalTo(logoImg.snp.bottom).offset(16)
+            make.centerX.equalToSuperview()
+        }
+        
+        logoDescription.snp.makeConstraints { make in
+            make.top.equalTo(logoText.snp.bottom).offset(20)
             make.centerX.equalToSuperview()
         }
     }

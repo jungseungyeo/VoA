@@ -69,7 +69,7 @@ private extension SplashViewController {
     func moveLogin() {
         let window = UIApplication.shared.windows.first
         window?.overrideUserInterfaceStyle = .light
-        window?.rootViewController = LoginViewController.instance()
+        window?.rootViewController = LoginNavigationController.instance(controller: LoginViewController.instance())
         window?.makeKeyAndVisible()
     }
 }

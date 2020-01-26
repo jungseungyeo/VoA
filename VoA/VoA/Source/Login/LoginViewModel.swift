@@ -15,6 +15,11 @@ enum LoginViewState {
     case error(Error?)
 }
 
+struct KakaoPresentModel {
+    let nickName: String?
+    let profileURL: URL?
+}
+
 class LoginViewModel: NSObject, ReactiveViewModelable {
     
     typealias InputType = Input
@@ -32,6 +37,8 @@ class LoginViewModel: NSObject, ReactiveViewModelable {
     public lazy var output: OutputType = Output()
     
     private let bag = DisposeBag()
+    
+    private(set) var kakaoPresentModel: KakaoPresentModel? = nil
     
     override init() {
         super.init()
@@ -67,6 +74,14 @@ class LoginViewModel: NSObject, ReactiveViewModelable {
             if session.isOpen() {
                 KOSessionTask.userMeTask(completion: { [weak self] error, userInfo in
                     guard let self = self else { return }
+                    
+                    let nickname = userInfo?.account?.profile?.nickname
+                    let profileUrl = userInfo?.account?.profile?.profileImageURL
+                    
+                    let kakaoPresentModel = KakaoPresentModel(nickName: nickname,
+                                                              profileURL: profileUrl)
+                    
+                    self.kakaoPresentModel = kakaoPresentModel
                     self.output.viewState.accept(.complete)
                 })
             } else {

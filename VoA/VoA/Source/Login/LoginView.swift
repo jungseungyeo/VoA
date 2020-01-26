@@ -8,75 +8,79 @@
 
 import UIKit
 
+import AuthenticationServices
+
 class LoginView: SplashView {
     
     lazy var kakaoBtn: UIButton = {
-        let button = UIButton(type: .system)
-        button.backgroundColor = const.kakaobgColor
-        button.setAttributedTitle(NSAttributedString(string: const.kakaoTitle,
-                                                     font: .systemFont(ofSize: 16, weight: .bold),
-                                                     color: const.kakaoBtnColor),
-                                  for: .normal)
-        button.contentEdgeInsets = const.kakaoTitleInset
-        button.layer.cornerRadius = const.kakaoBtnHeight / 2
-        return button
+        let btn = UIButton(type: .system)
+        btn.layer.cornerRadius = Const.btnHeight / 2
+        btn.backgroundColor = VoAColor.Login.kakaoColor
+        btn.setAttributedTitle(Const.kakaoText, for: .normal)
+        btn.contentEdgeInsets = Const.kakaoTextInset
+        return btn
     }()
     
-    lazy var kakaoIcon: UIImageView = {
-        let imageView = UIImageView(image: const.kakaoIconImage)
-        imageView.contentMode = .scaleAspectFit
-        return imageView
+    private lazy var kakaoImg: UIImageView = {
+        let iv = UIImageView(image: UIImage(named: "imgKakaologin"))
+        iv.contentMode = .scaleAspectFit
+        return iv
+    }()
+    
+    lazy var appleBtn: ASAuthorizationAppleIDButton = {
+        let btn = ASAuthorizationAppleIDButton(authorizationButtonType: .signIn,
+                                               authorizationButtonStyle: .black)
+        btn.cornerRadius = Const.btnHeight / 2
+        return btn
     }()
     
     private let const = Const()
     
     private struct Const {
-
-        let ratio = UIScreen.main.bounds.height / 667
-
-        let bgImage = UIImage(named: "splashBg")
-
-        let widthOffset: CGFloat = 24
-        let kakaoBtnHeight: CGFloat = 48
-        let kakaobgColor = UIColor(r: 255, g: 235, b: 0)
-        let kakaoTitle: String = "카카오계정으로 로그인"
-        let kakaoBtnColor: UIColor = UIColor(r: 60, g: 30, b: 30)
-        let kakaoTitleInset: UIEdgeInsets = .init(top: 16, left: 40, bottom: 16, right: 0)
-
-        let kakaoBottomOffset: CGFloat = 18
-
-        let bottomOffset: CGFloat = 64
-
-        let kakaoIconImage = UIImage(named: "imgKakaologin")
-        let kakaoIconLeftOffset: CGFloat = 26
-        let kakaoHeightOffset: CGFloat = 3
-        let kakaIconWidht: CGFloat = 53
+        static let kakaoText: NSAttributedString = .init(string: "카카오톡으로 로그인",
+                                                         font: .systemFont(ofSize: 18,
+                                                                           weight: .bold),
+                                                         color: VoAColor.Login.kakaoTextColor)
+        static let kakaoTextInset: UIEdgeInsets = .init(top: 0,
+                                                        left: 36,
+                                                        bottom: 0,
+                                                        right: 0)
+        static let btnHeight: CGFloat = 55
+        static let sideInset: CGFloat = 30
+        static let kakaoBottomInset: CGFloat = 242
     }
     
     override func setup() {
         super.setup()
         
-        addSubviews(logoText,
-                    kakaoBtn)
+        addSubviews(kakaoBtn,
+                    kakaoImg,
+                    appleBtn)
         
-        kakaoBtn.addSubviews(kakaoIcon)
     }
     
     override func setupUI() {
         super.setupUI()
         
         kakaoBtn.snp.remakeConstraints { make in
-            make.left.equalToSuperview().offset(const.widthOffset)
-            make.right.equalToSuperview().offset(-const.widthOffset)
-            make.height.equalTo(const.kakaoBtnHeight)
-            make.bottom.equalTo(safeAreaLayoutGuide).offset(-123)
+            make.bottom.equalToSuperview().inset(Const.kakaoBottomInset)
+            make.centerX.equalToSuperview()
+            make.left.equalToSuperview().inset(Const.sideInset)
+            make.right.equalToSuperview().inset(Const.sideInset)
+            make.height.equalTo(Const.btnHeight)
         }
 
-        kakaoIcon.snp.remakeConstraints { make in
-            make.left.equalToSuperview().offset(const.kakaoIconLeftOffset)
-            make.top.equalToSuperview().offset(const.kakaoHeightOffset)
-            make.bottom.equalToSuperview().offset(-const.kakaoHeightOffset)
-            make.width.equalTo(const.kakaIconWidht)
+        kakaoImg.snp.remakeConstraints { make in
+            make.centerY.equalTo(kakaoBtn.snp.centerY)
+            make.left.equalToSuperview().inset(80)
+        }
+        
+        appleBtn.snp.makeConstraints { make in
+            make.top.equalTo(kakaoBtn.snp.bottom).offset(20)
+            make.centerX.equalToSuperview()
+            make.left.equalToSuperview().inset(Const.sideInset)
+            make.right.equalToSuperview().inset(Const.sideInset)
+            make.height.equalTo(Const.btnHeight)
         }
     }
 }

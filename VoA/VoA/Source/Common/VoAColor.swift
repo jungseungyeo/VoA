@@ -13,12 +13,46 @@ class VoAColor: NSObject {
     struct Style {
         
         static var background: UIColor {
-            if #available(iOS 13, *) {
-                return .systemBackground
-            }
+            return .init(r: 34,
+                         g: 34,
+                         b: 34,
+                         a: 1.0)
+        }
+        
+        static var white: UIColor {
             return .white
         }
         
+    }
+    
+    struct Splash {
+        static let logoTextColor: UIColor = .init(r: 229,
+                                                  g: 145,
+                                                  b: 76,
+                                                  a: 1.0)
+        
+        static let logoDescriptionTextColor: UIColor = .init(r: 255,
+                                                             g: 255,
+                                                             b: 255,
+                                                             a: 0.5)
+    }
+    
+    struct Login {
+        static let kakaoColor: UIColor = .init(r: 255,
+                                               g: 222,
+                                               b: 2,
+                                               a: 1.0)
+        
+        static let kakaoTextColor: UIColor = .init(r: 34,
+                                                   g: 34,
+                                                   b: 34,
+                                                   a: 1.0)
+    }
+    
+    struct LoinInfo {
+        static let profileColor: UIColor = .init(r: 242, g: 218, b: 188)
+        static let confirmColor: UIColor = .init(r: 255, g: 148, b: 59)
+        static let notValidConfirmColor: UIColor = .init(r: 136, g: 136, b: 136)
     }
 }
 
@@ -26,22 +60,6 @@ extension UIColor {
 
     convenience init(r: CGFloat, g: CGFloat, b: CGFloat, a: CGFloat = 1.0) {
         self.init(red: r/255, green: g/255, blue: b/255, alpha: a)
-    }
-
-    struct Home {
-        static let black = UIColor(r: 51, g: 51, b: 51)
-        static let blue = UIColor(r: 95, g: 108, b: 204)
-        static let pink = UIColor(r: 179, g: 118, b: 135)
-
-        static let bgBlue = UIColor(r: 242, g: 243, b: 251)
-        static let bgPink = UIColor(r: 241, g: 237, b: 238)
-
-        static let bgGray = UIColor(r: 247, g: 247, b: 247)
-        static let textGray = UIColor(r: 170, g: 170, b: 170)
-    }
-
-    struct Steps {
-        static let placeHolder = UIColor(r: 170, g: 170, b: 170)
     }
 
 }

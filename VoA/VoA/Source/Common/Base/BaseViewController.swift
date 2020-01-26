@@ -8,8 +8,6 @@
 
 import UIKit
 
-import SwiftlyIndicator
-
 protocol BaseViewControllerable {
     func setup()
     func bind()
@@ -31,7 +29,17 @@ class BaseViewController: UIViewController, BaseViewControllerable {
         bind()
     }
     
-    func setup() { }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    }
+    
+    func setup() {
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.isTranslucent = true
+        self.navigationController?.interactivePopGestureRecognizer?.delegate = self
+        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
+    }
     func bind() { }
     func handleError(error: Error?) { }
     
@@ -45,3 +53,5 @@ class BaseViewController: UIViewController, BaseViewControllerable {
         super.present(viewControllerToPresent, animated: flag, completion: completion)
     }
 }
+
+extension BaseViewController: UIGestureRecognizerDelegate { }
