@@ -114,6 +114,12 @@ class LoginInfoViewController: BaseViewController {
             self.loginInfoView.nameTextField.text = clearStirng
             }).disposed(by: bag)
         
+        viewModel.output.moveHome
+            .subscribe(onNext: { [weak self] (navi) in
+                guard let self = self else { return }
+                self.moveHome(navigation: navi)
+            }).disposed(by: bag)
+        
         viewModel.input.nickNameString.accept(viewModel.kakaoInfoPresnetModel.nickName)
     }
     
@@ -132,7 +138,7 @@ private extension LoginInfoViewController {
     
     @objc
     func confirmTapped(sender: UIBarButtonItem) {
-        viewModel.input.confirmTapped.accept(())
+        viewModel.input.confirmTapped.accept(loginInfoView.nameTextField.text ?? "")
     }
     
     func showlimtNickNameAlert() {
@@ -142,6 +148,13 @@ private extension LoginInfoViewController {
                                 defaultHandler: {
                                     
         }).show(self)
+    }
+    
+    func moveHome(navigation: LGSideMenuController) {
+        let window = UIApplication.shared.windows.first
+        window?.overrideUserInterfaceStyle = .light
+        window?.rootViewController = navigation
+        window?.makeKeyAndVisible()
     }
 }
 
@@ -153,7 +166,7 @@ extension LoginInfoViewController: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         guard !viewModel.output.isValidNickName.value else { return false }
-        viewModel.input.confirmTapped.accept(())
+        viewModel.input.confirmTapped.accept(loginInfoView.nameTextField.text ?? "")
         return true
     }
 }

@@ -36,6 +36,10 @@ class VoAColor: NSObject {
         static let rightGradient: UIColor = .init(r: 255, g: 148, b: 59)
         static let cancelBackgroundColor: UIColor = .init(r: 136, g: 136, b: 136)
     }
+    
+    struct Home {
+        static let logoColor: UIColor = .init(r: 255, g: 161, b: 72)
+    }
 }
 
 extension UIColor {

@@ -84,6 +84,7 @@ PODS:
   - Kingfisher (5.13.0):
     - Kingfisher/Core (= 5.13.0)
   - Kingfisher/Core (5.13.0)
+  - LGSideMenuController (2.1.1)
   - nanopb (0.3.9011):
     - nanopb/decode (= 0.3.9011)
     - nanopb/encode (= 0.3.9011)
@@ -115,6 +116,7 @@ DEPENDENCIES:
   - Firebase/Analytics
   - Firebase/Messaging
   - Kingfisher (~> 5.0)
+  - LGSideMenuController
   - ObjectMapper (~> 3.4)
   - RxApolloClient (= 1.3.0)
   - RxBlocking (= 5.0.0)
@@ -143,6 +145,7 @@ SPEC REPOS:
     - GoogleDataTransportCCTSupport
     - GoogleUtilities
     - Kingfisher
+    - LGSideMenuController
     - nanopb
     - ObjectMapper
     - PromisesObjC
@@ -174,6 +177,7 @@ SPEC CHECKSUMS:
   GoogleDataTransportCCTSupport: cad3cd6cdbdbad6b5c2c9206ec413402755faaaa
   GoogleUtilities: f8de7ddf8c706f58e9b405d53e38bbdaa2731e5a
   Kingfisher: 0d334cada987fcddbe9b5cec516406e1ee9d4748
+  LGSideMenuController: ae40c80983ab8b8801c7cef0a6804d43aaa72d45
   nanopb: 18003b5e52dab79db540fe93fe9579f399bd1ccd
   ObjectMapper: 70187b8941977c62ccfb423caf6b50be405cabf0
   PromisesObjC: c119f3cd559f50b7ae681fa59dc1acd19173b7e6
@@ -188,6 +192,6 @@ SPEC CHECKSUMS:
   SwiftlyIndicator: d22b59463ef18144df16dc89800e41972028ce59
   SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
 
-PODFILE CHECKSUM: 80a7ea9e557e873c335de978c2f3a7a4d458b0f5
+PODFILE CHECKSUM: 1ac7cd9b90181ac7c029c4929e116d647aa6e3a5
 
 COCOAPODS: 1.8.4

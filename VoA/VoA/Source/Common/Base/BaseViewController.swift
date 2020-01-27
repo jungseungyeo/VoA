@@ -52,6 +52,11 @@ class BaseViewController: UIViewController, BaseViewControllerable {
         viewControllerToPresent.modalPresentationStyle = type
         super.present(viewControllerToPresent, animated: flag, completion: completion)
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        navigationController?.interactivePopGestureRecognizer?.isEnabled = (navigationController?.viewControllers.count ?? 0) == 1 ? false : true
+    }
 }
 
 extension BaseViewController: UIGestureRecognizerDelegate { }

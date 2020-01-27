@@ -38,10 +38,14 @@
 		4C8D740B23D2C1F5005BEFAA /* KakaoOpenSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C8D740A23D2C1F5005BEFAA /* KakaoOpenSDK.framework */; };
 		4C8D741023D2C330005BEFAA /* ExtensionNSAttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8D740F23D2C330005BEFAA /* ExtensionNSAttributedString.swift */; };
 		4CB737DC23D5E27600E90929 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CB737DB23D5E27600E90929 /* HomeViewController.swift */; };
-		4CB737DE23D5E2B000E90929 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CB737DD23D5E2B000E90929 /* HomeView.swift */; };
 		5036A061A8E5814C8AC6D2BC /* libPods-VoATests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A27AAFE9CFBDBC1998A60A24 /* libPods-VoATests.a */; };
+		9839076523DF215000AAA064 /* LeftMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9839076423DF215000AAA064 /* LeftMenuView.swift */; };
+		9839076723DF244200AAA064 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9839076623DF244200AAA064 /* HomeViewModel.swift */; };
+		9839076923DF28E900AAA064 /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9839076823DF28E900AAA064 /* UserViewModel.swift */; };
 		9861E52923DE9F5F007844D6 /* AppleLoginSuccesAlert.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9861E52823DE9F5F007844D6 /* AppleLoginSuccesAlert.xib */; };
 		9861E52B23DE9F6E007844D6 /* AppleLoginSuccesAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9861E52A23DE9F6E007844D6 /* AppleLoginSuccesAlert.swift */; };
+		9861E52D23DEB832007844D6 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9861E52C23DEB832007844D6 /* HomeViewController.xib */; };
+		9861E53023DECC61007844D6 /* LeftMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9861E52F23DECC61007844D6 /* LeftMenuViewController.swift */; };
 		988D2B4123DDA32B005CD84F /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 988D2B4023DDA32B005CD84F /* BaseNavigationController.swift */; };
 		988D2B4423DDA895005CD84F /* LoginInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 988D2B4323DDA895005CD84F /* LoginInfoViewController.swift */; };
 		988D2B4623DDAAE9005CD84F /* LoginInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 988D2B4523DDAAE9005CD84F /* LoginInfoView.swift */; };
@@ -99,12 +103,16 @@
 		4C8D740C23D2C256005BEFAA /* VoA-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "VoA-Bridging-Header.h"; sourceTree = "<group>"; };
 		4C8D740F23D2C330005BEFAA /* ExtensionNSAttributedString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionNSAttributedString.swift; sourceTree = "<group>"; };
 		4CB737DB23D5E27600E90929 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		4CB737DD23D5E2B000E90929 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		4CB83C8823D549B9006B8711 /* VoA.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = VoA.entitlements; sourceTree = "<group>"; };
 		4CE9D2F723D544050090F645 /* VoARelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = VoARelease.entitlements; sourceTree = "<group>"; };
 		813F61DC0558B3D410448E08 /* Pods-VoA.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VoA.debug.xcconfig"; path = "Target Support Files/Pods-VoA/Pods-VoA.debug.xcconfig"; sourceTree = "<group>"; };
+		9839076423DF215000AAA064 /* LeftMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftMenuView.swift; sourceTree = "<group>"; };
+		9839076623DF244200AAA064 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		9839076823DF28E900AAA064 /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
 		9861E52823DE9F5F007844D6 /* AppleLoginSuccesAlert.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AppleLoginSuccesAlert.xib; sourceTree = "<group>"; };
 		9861E52A23DE9F6E007844D6 /* AppleLoginSuccesAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleLoginSuccesAlert.swift; sourceTree = "<group>"; };
+		9861E52C23DEB832007844D6 /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
+		9861E52F23DECC61007844D6 /* LeftMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftMenuViewController.swift; sourceTree = "<group>"; };
 		988D2B4023DDA32B005CD84F /* BaseNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
 		988D2B4323DDA895005CD84F /* LoginInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInfoViewController.swift; sourceTree = "<group>"; };
 		988D2B4523DDAAE9005CD84F /* LoginInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInfoView.swift; sourceTree = "<group>"; };
@@ -142,6 +150,7 @@
 				4C02C2D923D446CE0049D988 /* VoAIntegrator.swift */,
 				4C02C2DC23D4479F0049D988 /* FirebaseIntegrator.swift */,
 				988FFA0623DDF485002ED832 /* VoAUtil.swift */,
+				9839076823DF28E900AAA064 /* UserViewModel.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -316,8 +325,10 @@
 		4CB737DA23D5E26300E90929 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				9861E52E23DECC51007844D6 /* LeftMenu */,
 				4CB737DB23D5E27600E90929 /* HomeViewController.swift */,
-				4CB737DD23D5E2B000E90929 /* HomeView.swift */,
+				9861E52C23DEB832007844D6 /* HomeViewController.xib */,
+				9839076623DF244200AAA064 /* HomeViewModel.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -339,6 +350,15 @@
 				9861E52A23DE9F6E007844D6 /* AppleLoginSuccesAlert.swift */,
 			);
 			path = AppleLoginSuccesAlert;
+			sourceTree = "<group>";
+		};
+		9861E52E23DECC51007844D6 /* LeftMenu */ = {
+			isa = PBXGroup;
+			children = (
+				9861E52F23DECC61007844D6 /* LeftMenuViewController.swift */,
+				9839076423DF215000AAA064 /* LeftMenuView.swift */,
+			);
+			path = LeftMenu;
 			sourceTree = "<group>";
 		};
 		988D2B4223DDA874005CD84F /* LoginUserInfo */ = {
@@ -452,6 +472,7 @@
 				4C570F4723CC5FF000C438CA /* schema.json in Resources */,
 				4C5D0DF423D4450D00B3800D /* GoogleService-Info.plist in Resources */,
 				4C7D06DF23C961240096B86C /* Assets.xcassets in Resources */,
+				9861E52D23DEB832007844D6 /* HomeViewController.xib in Resources */,
 				4C570F4D23CC609200C438CA /* LaunchListQuery.graphql in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -537,13 +558,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				988D2B4123DDA32B005CD84F /* BaseNavigationController.swift in Sources */,
+				9839076723DF244200AAA064 /* HomeViewModel.swift in Sources */,
 				4C24CA7723D5D013007D6F5D /* LoginViewModel.swift in Sources */,
 				988D2B4623DDAAE9005CD84F /* LoginInfoView.swift in Sources */,
 				4C24CA7323D5CF69007D6F5D /* LoginViewController.swift in Sources */,
 				4C33B5D723CD6CF4003A0484 /* ExtensionUIAlertViewController.swift in Sources */,
-				4CB737DE23D5E2B000E90929 /* HomeView.swift in Sources */,
 				4C5D650823C96CC100822386 /* SplashViewController.swift in Sources */,
 				988D2B4423DDA895005CD84F /* LoginInfoViewController.swift in Sources */,
+				9861E53023DECC61007844D6 /* LeftMenuViewController.swift in Sources */,
+				9839076523DF215000AAA064 /* LeftMenuView.swift in Sources */,
 				4C33B5D423CD690C003A0484 /* VoAError.swift in Sources */,
 				4C33B5CF23CD6538003A0484 /* Netwoker.swift in Sources */,
 				4C570F5323CC621200C438CA /* VoAService.swift in Sources */,
@@ -565,6 +588,7 @@
 				4C5D650C23C96DB100822386 /* VoAColor.swift in Sources */,
 				4C570F4F23CC615400C438CA /* LaunchListQuery.swift in Sources */,
 				4C46F78423CE047F0031D3E0 /* BaseView.swift in Sources */,
+				9839076923DF28E900AAA064 /* UserViewModel.swift in Sources */,
 				4C8D741023D2C330005BEFAA /* ExtensionNSAttributedString.swift in Sources */,
 				4C02C2DD23D4479F0049D988 /* FirebaseIntegrator.swift in Sources */,
 			);

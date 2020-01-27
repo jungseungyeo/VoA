@@ -16,13 +16,14 @@ class LoginInfoViewModel: ReactiveViewModelable {
     
     struct Input {
         public let nickNameString = PublishRelay<String?>()
-        public let confirmTapped = PublishRelay<Void>()
+        public let confirmTapped = PublishRelay<String>()
     }
     
     struct Output {
         public let nickNameCount = PublishRelay<String>()
         public let isValidNickName = BehaviorRelay<Bool>(value: false)
         public let limitNickNameAlert = PublishRelay<String>()
+        public let moveHome = PublishRelay<LGSideMenuController>()
     }
     
     public lazy var input: InputType = Input()
@@ -82,6 +83,23 @@ class LoginInfoViewModel: ReactiveViewModelable {
             
             let resultNickName = sumNickName.map { String($0) }.joined()
             self.output.limitNickNameAlert.accept(resultNickName)
+            }).disposed(by: bag)
+        
+        input.confirmTapped
+            .subscribe(onNext: { [weak self] (nickName) in
+                guard let self = self else { return }
+                
+                let model = KakaoPresentModel(nickName: nickName,
+                                              profileURL: self.kakaoInfoPresnetModel.profileURL)
+                
+                UserViewModel.shared.kakaoPresentModel = model
+                
+                let viewModel = HomeViewModel()
+                let homeNavigationController = HomeNavigationViewController(rootViewController: HomeViewController.instance(homeViewModel: viewModel))
+                let navi = LGSideMenuController(rootViewController: homeNavigationController, leftViewController: LeftMenuViewController.init(homeViewModel: viewModel), rightViewController: nil)
+                navi.panGesture.isEnabled = false
+                navi.leftViewWidth = 280
+                self.output.moveHome.accept(navi)
             }).disposed(by: bag)
         
     }
