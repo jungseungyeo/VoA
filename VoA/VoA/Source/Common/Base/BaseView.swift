@@ -27,6 +27,12 @@ class BaseView: UIView, BaseViewable {
         setupUI()
     }
     
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        setup()
+        setupUI()
+    }
+    
     func setup() {
         backgroundColor = VoAColor.Style.background
     }

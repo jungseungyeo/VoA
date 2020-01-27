@@ -46,10 +46,10 @@ class BaseViewController: UIViewController, BaseViewControllerable {
     @objc
     func handleRefresh(_ sender: UIRefreshControl) { }
     
-    override open func present(_ viewControllerToPresent: UIViewController,
+    open func present(_ viewControllerToPresent: UIViewController,
                                animated flag: Bool,
-                               completion: (() -> Void)? = nil) {
-        viewControllerToPresent.modalPresentationStyle = .fullScreen
+                               completion: (() -> Void)? = nil, type: UIModalPresentationStyle  = .fullScreen) {
+        viewControllerToPresent.modalPresentationStyle = type
         super.present(viewControllerToPresent, animated: flag, completion: completion)
     }
 }

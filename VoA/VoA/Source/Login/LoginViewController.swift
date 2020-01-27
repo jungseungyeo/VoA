@@ -26,6 +26,11 @@ class LoginViewController: BaseViewController {
     }
     
     private lazy var loginView = LoginView(frame: view.bounds)
+    private lazy var appleLoginAlertController: AppleLoginSuccesAlert = {
+        let alert = AppleLoginSuccesAlert.instance()
+        alert.delegate = self
+        return alert
+    }()
     
     private let viewModel = LoginViewModel()
     private let bag = DisposeBag()
@@ -96,14 +101,7 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
     func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
         
         if let credential = authorization.credential as? ASAuthorizationAppleIDCredential {
-            let user = credential.user
-            let email = credential.email
-            let fullName = credential.fullName
-            
-            print("user : \(user)")
-            print("email : \(email ?? "")")
-            print("fullname: \(fullName)")
-            
+            present(appleLoginAlertController, animated: false, completion: nil, type: .overFullScreen)
         } else {
             handleError(error: VoAError.unknown)
         }
@@ -112,4 +110,15 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
     func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
         handleError(error: error)
     }
+}
+
+extension LoginViewController: AppleLoginSuccesAlertable {
+    func confirmTapped() {
+        self.appleLoginAlertController.dismiss(animated: false, completion: { [weak self] in
+            guard let self = self else { return }
+            self.viewModel.input.kakaoLoginTapped.accept(())
+        })
+    }
+    
+    func cancelTapped() { }
 }

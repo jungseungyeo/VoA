@@ -30,6 +30,12 @@ class VoAColor: NSObject {
         static let confirmColor: UIColor = .init(r: 255, g: 148, b: 59)
         static let notValidConfirmColor: UIColor = .init(r: 136, g: 136, b: 136)
     }
+    
+    struct AppleLoginAlert {
+        static let leftGradient: UIColor = .init(r: 255, g: 198, b: 109)
+        static let rightGradient: UIColor = .init(r: 255, g: 148, b: 59)
+        static let cancelBackgroundColor: UIColor = .init(r: 136, g: 136, b: 136)
+    }
 }
 
 extension UIColor {

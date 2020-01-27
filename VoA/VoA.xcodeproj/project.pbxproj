@@ -40,6 +40,8 @@
 		4CB737DC23D5E27600E90929 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CB737DB23D5E27600E90929 /* HomeViewController.swift */; };
 		4CB737DE23D5E2B000E90929 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CB737DD23D5E2B000E90929 /* HomeView.swift */; };
 		5036A061A8E5814C8AC6D2BC /* libPods-VoATests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A27AAFE9CFBDBC1998A60A24 /* libPods-VoATests.a */; };
+		9861E52923DE9F5F007844D6 /* AppleLoginSuccesAlert.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9861E52823DE9F5F007844D6 /* AppleLoginSuccesAlert.xib */; };
+		9861E52B23DE9F6E007844D6 /* AppleLoginSuccesAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9861E52A23DE9F6E007844D6 /* AppleLoginSuccesAlert.swift */; };
 		988D2B4123DDA32B005CD84F /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 988D2B4023DDA32B005CD84F /* BaseNavigationController.swift */; };
 		988D2B4423DDA895005CD84F /* LoginInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 988D2B4323DDA895005CD84F /* LoginInfoViewController.swift */; };
 		988D2B4623DDAAE9005CD84F /* LoginInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 988D2B4523DDAAE9005CD84F /* LoginInfoView.swift */; };
@@ -101,6 +103,8 @@
 		4CB83C8823D549B9006B8711 /* VoA.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = VoA.entitlements; sourceTree = "<group>"; };
 		4CE9D2F723D544050090F645 /* VoARelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = VoARelease.entitlements; sourceTree = "<group>"; };
 		813F61DC0558B3D410448E08 /* Pods-VoA.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VoA.debug.xcconfig"; path = "Target Support Files/Pods-VoA/Pods-VoA.debug.xcconfig"; sourceTree = "<group>"; };
+		9861E52823DE9F5F007844D6 /* AppleLoginSuccesAlert.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AppleLoginSuccesAlert.xib; sourceTree = "<group>"; };
+		9861E52A23DE9F6E007844D6 /* AppleLoginSuccesAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleLoginSuccesAlert.swift; sourceTree = "<group>"; };
 		988D2B4023DDA32B005CD84F /* BaseNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
 		988D2B4323DDA895005CD84F /* LoginInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInfoViewController.swift; sourceTree = "<group>"; };
 		988D2B4523DDAAE9005CD84F /* LoginInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInfoView.swift; sourceTree = "<group>"; };
@@ -145,6 +149,7 @@
 		4C24CA7123D5CF54007D6F5D /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				9861E52723DE9F3A007844D6 /* AppleLoginSuccesAlert */,
 				4C24CA7223D5CF69007D6F5D /* LoginViewController.swift */,
 				4C24CA7423D5CFC7007D6F5D /* LoginView.swift */,
 				4C24CA7623D5D013007D6F5D /* LoginViewModel.swift */,
@@ -327,6 +332,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		9861E52723DE9F3A007844D6 /* AppleLoginSuccesAlert */ = {
+			isa = PBXGroup;
+			children = (
+				9861E52823DE9F5F007844D6 /* AppleLoginSuccesAlert.xib */,
+				9861E52A23DE9F6E007844D6 /* AppleLoginSuccesAlert.swift */,
+			);
+			path = AppleLoginSuccesAlert;
+			sourceTree = "<group>";
+		};
 		988D2B4223DDA874005CD84F /* LoginUserInfo */ = {
 			isa = PBXGroup;
 			children = (
@@ -434,6 +448,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4C7D06E223C961240096B86C /* LaunchScreen.storyboard in Resources */,
+				9861E52923DE9F5F007844D6 /* AppleLoginSuccesAlert.xib in Resources */,
 				4C570F4723CC5FF000C438CA /* schema.json in Resources */,
 				4C5D0DF423D4450D00B3800D /* GoogleService-Info.plist in Resources */,
 				4C7D06DF23C961240096B86C /* Assets.xcassets in Resources */,
@@ -543,6 +558,7 @@
 				4C570F5B23CC641700C438CA /* BaseViewController.swift in Sources */,
 				4C7D06D623C9611B0096B86C /* AppDelegate.swift in Sources */,
 				4C5D650A23C96CCD00822386 /* ViewController.swift in Sources */,
+				9861E52B23DE9F6E007844D6 /* AppleLoginSuccesAlert.swift in Sources */,
 				988FFA0723DDF485002ED832 /* VoAUtil.swift in Sources */,
 				4C7D06D823C9611B0096B86C /* SceneDelegate.swift in Sources */,
 				4C5D651323C9710200822386 /* SplashView.swift in Sources */,
