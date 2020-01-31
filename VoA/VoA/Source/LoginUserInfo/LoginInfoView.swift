@@ -35,9 +35,10 @@ class LoginInfoView: BaseView {
     
     lazy var nameTextField: UITextField = {
         let textField = UITextField(frame: .zero)
-        textField.placeholder = "김철수"
+        textField.attributedPlaceholder = Const.nickNamePlaceHolderString
         textField.keyboardType = .default
         textField.returnKeyType = .done
+        textField.enablesReturnKeyAutomatically = true
         textField.textColor = VoAColor.Style.white
         return textField
     }()
@@ -66,6 +67,10 @@ class LoginInfoView: BaseView {
                                                              font: .systemFont(ofSize: 16,
                                                                                weight: .regular),
                                                              color: VoAColor.Style.white.withAlphaComponent(0.3))
+        static let nickNamePlaceHolderString: NSAttributedString = .init(string: "린생",
+                                                                         font: .systemFont(ofSize: 16,
+                                                                                           weight: .regular),
+                                                                         color: VoAColor.Style.white.withAlphaComponent(0.4))
         static let profileTopOffset: CGFloat = 52
         static let sideOffset: CGFloat = 30
         static let nameTopOffset: CGFloat = 28

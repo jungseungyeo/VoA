@@ -10,6 +10,7 @@ target 'VoA' do
   pod 'ObjectMapper', '~> 3.4', :inhibit_warnings => true
   pod 'SwiftyJSON', '4.0', :inhibit_warnings => true
   pod 'SwiftlyIndicator', '1.2.0'
+  pod 'SwiftlyUserDefault'
   pod 'Kingfisher', '~> 5.0'
   pod 'LGSideMenuController'
   

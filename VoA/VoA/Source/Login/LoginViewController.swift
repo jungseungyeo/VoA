@@ -86,7 +86,7 @@ private extension LoginViewController {
     }
     
     @objc
-    private func appleLoginTapped() {
+    func appleLoginTapped() {
         let request = ASAuthorizationAppleIDProvider().createRequest()
         request.requestedScopes = [.fullName, .email]
         let controller = ASAuthorizationController(authorizationRequests: [request])
@@ -100,8 +100,8 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
     
     func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
         
-        if let credential = authorization.credential as? ASAuthorizationAppleIDCredential {
-            present(appleLoginAlertController, animated: false, completion: nil, type: .overFullScreen)
+        if let _ = authorization.credential as? ASAuthorizationAppleIDCredential {
+            animationPresent(appleLoginAlertController, presentAnimated: false)
         } else {
             handleError(error: VoAError.unknown)
         }
@@ -120,5 +120,7 @@ extension LoginViewController: AppleLoginSuccesAlertable {
         })
     }
     
-    func cancelTapped() { }
+    func cancelTapped() {
+        animationPresent(appleLoginAlertController, presentAnimated: false, isPresent: false)
+    }
 }

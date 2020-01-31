@@ -32,9 +32,17 @@ class HomeViewController: BaseViewController {
     
     private lazy var logoBtn: UIBarButtonItem = {
         let btn = UIBarButtonItem(title: "Lamp",
-                                  style: .plain, target: self, action: nil)
-        btn.tintColor = VoAColor.Home.logoColor
+                                  style: .plain, target: nil, action: nil)
+        btn.setTitleTextAttributes([.foregroundColor : VoAColor.Home.logoColor],
+                                   for: .disabled)
+        btn.isEnabled = false
         return btn
+    }()
+    
+    private lazy var alertView: StartArriveAlertViewController = {
+        let vc = StartArriveAlertViewController()
+        vc.delegate = self
+        return vc
     }()
     
     private let viewModel: HomeViewModel
@@ -65,7 +73,10 @@ class HomeViewController: BaseViewController {
         super.setup()
 
         navigationItem.leftBarButtonItems = [menuBtn, logoBtn]
-        
+        setupCreateRoomBtn()
+    }
+    
+    private func setupCreateRoomBtn() {
         createRoomBtn.setWidthGradient(colorLeft: Const.leftGradient, colorRight: Const.rightGradient)
         createRoomBtn.layer.cornerRadius = 60 / 2
         createRoomBtn.clipsToBounds = true
@@ -74,7 +85,32 @@ class HomeViewController: BaseViewController {
     
     override func bind() {
         super.bind()
+        
+        createRoomBtn.rx.tap
+            .map { _ in return }
+            .bind(to: viewModel.input.createRoomBtnTapped)
+        .disposed(by: bag)
+        
+        viewModel.output.createBtnAction
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: { [weak self] (_) in
+                guard let self = self else { return }
+                self.navigationController?.pushViewController(CreateRoomViewController.instance(),
+                                                              animated: true)
+            }).disposed(by: bag)
     }
+}
+
+extension HomeViewController: StartArriveAlertViewControllerable {
+    func confirm() {
+        
+    }
+    
+    func cancel() {
+        animationPresent(alertView, presentAnimated: false, isPresent: false)
+    }
+    
+    
 }
 
 private extension HomeViewController {

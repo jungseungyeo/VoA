@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -15,11 +15,11 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="juL-d3-SoO">
-                    <rect key="frame" x="17" y="480" width="341" height="60"/>
+                    <rect key="frame" x="17" y="675" width="380" height="60"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="60" id="aba-Vc-1h7"/>
                     </constraints>
@@ -28,8 +28,8 @@
             </subviews>
             <color key="backgroundColor" red="0.13333333333333333" green="0.13333333333333333" blue="0.13333333333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="juL-d3-SoO" secondAttribute="trailing" constant="17" id="ciz-QM-5Wd"/>
-                <constraint firstItem="juL-d3-SoO" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="17" id="t9g-GI-Jj3"/>
+                <constraint firstItem="juL-d3-SoO" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="17" id="3QG-2X-v00"/>
+                <constraint firstAttribute="trailing" secondItem="juL-d3-SoO" secondAttribute="trailing" constant="17" id="dU2-RE-hy2"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="juL-d3-SoO" secondAttribute="bottom" constant="127" id="wvT-Qi-xhs"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>

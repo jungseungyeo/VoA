@@ -39,6 +39,8 @@
 		4C8D741023D2C330005BEFAA /* ExtensionNSAttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8D740F23D2C330005BEFAA /* ExtensionNSAttributedString.swift */; };
 		4CB737DC23D5E27600E90929 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CB737DB23D5E27600E90929 /* HomeViewController.swift */; };
 		5036A061A8E5814C8AC6D2BC /* libPods-VoATests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A27AAFE9CFBDBC1998A60A24 /* libPods-VoATests.a */; };
+		9807431323E305ED00900C6E /* CreateRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9807431223E305ED00900C6E /* CreateRoomViewController.swift */; };
+		9807431523E3062C00900C6E /* CreateRoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9807431423E3062C00900C6E /* CreateRoomView.swift */; };
 		9839076523DF215000AAA064 /* LeftMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9839076423DF215000AAA064 /* LeftMenuView.swift */; };
 		9839076723DF244200AAA064 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9839076623DF244200AAA064 /* HomeViewModel.swift */; };
 		9839076923DF28E900AAA064 /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9839076823DF28E900AAA064 /* UserViewModel.swift */; };
@@ -51,6 +53,10 @@
 		988D2B4623DDAAE9005CD84F /* LoginInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 988D2B4523DDAAE9005CD84F /* LoginInfoView.swift */; };
 		988FFA0523DDBD4F002ED832 /* LoginInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 988FFA0423DDBD4F002ED832 /* LoginInfoViewModel.swift */; };
 		988FFA0723DDF485002ED832 /* VoAUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 988FFA0623DDF485002ED832 /* VoAUtil.swift */; };
+		9892C3EF23E328C80017AAA1 /* CreateRoomViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9892C3EE23E328C80017AAA1 /* CreateRoomViewModel.swift */; };
+		98AC10E623E2CE45007D849C /* ExtensionSwiftlyUserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98AC10E523E2CE45007D849C /* ExtensionSwiftlyUserDefault.swift */; };
+		98AC10E923E2D48F007D849C /* StartArriveAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98AC10E823E2D48F007D849C /* StartArriveAlertViewController.swift */; };
+		98AC10EB23E2D4DD007D849C /* StartArriveAlertViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 98AC10EA23E2D4DD007D849C /* StartArriveAlertViewController.xib */; };
 		C6775C3D2ED193085C52BF36 /* libPods-VoA.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F200F6CD0D0A9C3D4F5D9D2F /* libPods-VoA.a */; };
 /* End PBXBuildFile section */
 
@@ -106,6 +112,8 @@
 		4CB83C8823D549B9006B8711 /* VoA.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = VoA.entitlements; sourceTree = "<group>"; };
 		4CE9D2F723D544050090F645 /* VoARelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = VoARelease.entitlements; sourceTree = "<group>"; };
 		813F61DC0558B3D410448E08 /* Pods-VoA.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VoA.debug.xcconfig"; path = "Target Support Files/Pods-VoA/Pods-VoA.debug.xcconfig"; sourceTree = "<group>"; };
+		9807431223E305ED00900C6E /* CreateRoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRoomViewController.swift; sourceTree = "<group>"; };
+		9807431423E3062C00900C6E /* CreateRoomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRoomView.swift; sourceTree = "<group>"; };
 		9839076423DF215000AAA064 /* LeftMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftMenuView.swift; sourceTree = "<group>"; };
 		9839076623DF244200AAA064 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		9839076823DF28E900AAA064 /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
@@ -118,6 +126,10 @@
 		988D2B4523DDAAE9005CD84F /* LoginInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInfoView.swift; sourceTree = "<group>"; };
 		988FFA0423DDBD4F002ED832 /* LoginInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInfoViewModel.swift; sourceTree = "<group>"; };
 		988FFA0623DDF485002ED832 /* VoAUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoAUtil.swift; sourceTree = "<group>"; };
+		9892C3EE23E328C80017AAA1 /* CreateRoomViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRoomViewModel.swift; sourceTree = "<group>"; };
+		98AC10E523E2CE45007D849C /* ExtensionSwiftlyUserDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionSwiftlyUserDefault.swift; sourceTree = "<group>"; };
+		98AC10E823E2D48F007D849C /* StartArriveAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartArriveAlertViewController.swift; sourceTree = "<group>"; };
+		98AC10EA23E2D4DD007D849C /* StartArriveAlertViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StartArriveAlertViewController.xib; sourceTree = "<group>"; };
 		A27AAFE9CFBDBC1998A60A24 /* libPods-VoATests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-VoATests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA51C22EA9BFCCDBC75F47A9 /* Pods-VoA.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VoA.release.xcconfig"; path = "Target Support Files/Pods-VoA/Pods-VoA.release.xcconfig"; sourceTree = "<group>"; };
 		F200F6CD0D0A9C3D4F5D9D2F /* libPods-VoA.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-VoA.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -151,6 +163,7 @@
 				4C02C2DC23D4479F0049D988 /* FirebaseIntegrator.swift */,
 				988FFA0623DDF485002ED832 /* VoAUtil.swift */,
 				9839076823DF28E900AAA064 /* UserViewModel.swift */,
+				98AC10E523E2CE45007D849C /* ExtensionSwiftlyUserDefault.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -325,6 +338,8 @@
 		4CB737DA23D5E26300E90929 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				9807431123E305DD00900C6E /* CreateRoom */,
+				98AC10E723E2D479007D849C /* StartArriveAlert */,
 				9861E52E23DECC51007844D6 /* LeftMenu */,
 				4CB737DB23D5E27600E90929 /* HomeViewController.swift */,
 				9861E52C23DEB832007844D6 /* HomeViewController.xib */,
@@ -341,6 +356,16 @@
 				A27AAFE9CFBDBC1998A60A24 /* libPods-VoATests.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9807431123E305DD00900C6E /* CreateRoom */ = {
+			isa = PBXGroup;
+			children = (
+				9807431223E305ED00900C6E /* CreateRoomViewController.swift */,
+				9807431423E3062C00900C6E /* CreateRoomView.swift */,
+				9892C3EE23E328C80017AAA1 /* CreateRoomViewModel.swift */,
+			);
+			path = CreateRoom;
 			sourceTree = "<group>";
 		};
 		9861E52723DE9F3A007844D6 /* AppleLoginSuccesAlert */ = {
@@ -369,6 +394,15 @@
 				988FFA0423DDBD4F002ED832 /* LoginInfoViewModel.swift */,
 			);
 			path = LoginUserInfo;
+			sourceTree = "<group>";
+		};
+		98AC10E723E2D479007D849C /* StartArriveAlert */ = {
+			isa = PBXGroup;
+			children = (
+				98AC10E823E2D48F007D849C /* StartArriveAlertViewController.swift */,
+				98AC10EA23E2D4DD007D849C /* StartArriveAlertViewController.xib */,
+			);
+			path = StartArriveAlert;
 			sourceTree = "<group>";
 		};
 		A66769CCBF7093EC82E17318 /* Pods */ = {
@@ -473,6 +507,7 @@
 				4C5D0DF423D4450D00B3800D /* GoogleService-Info.plist in Resources */,
 				4C7D06DF23C961240096B86C /* Assets.xcassets in Resources */,
 				9861E52D23DEB832007844D6 /* HomeViewController.xib in Resources */,
+				98AC10EB23E2D4DD007D849C /* StartArriveAlertViewController.xib in Resources */,
 				4C570F4D23CC609200C438CA /* LaunchListQuery.graphql in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -567,11 +602,15 @@
 				988D2B4423DDA895005CD84F /* LoginInfoViewController.swift in Sources */,
 				9861E53023DECC61007844D6 /* LeftMenuViewController.swift in Sources */,
 				9839076523DF215000AAA064 /* LeftMenuView.swift in Sources */,
+				98AC10E923E2D48F007D849C /* StartArriveAlertViewController.swift in Sources */,
 				4C33B5D423CD690C003A0484 /* VoAError.swift in Sources */,
 				4C33B5CF23CD6538003A0484 /* Netwoker.swift in Sources */,
 				4C570F5323CC621200C438CA /* VoAService.swift in Sources */,
 				4C570F5123CC61EE00C438CA /* GraphqlNetworker.swift in Sources */,
+				9807431323E305ED00900C6E /* CreateRoomViewController.swift in Sources */,
 				4C46F78723CE083B0031D3E0 /* ExtensionUIView.swift in Sources */,
+				9807431523E3062C00900C6E /* CreateRoomView.swift in Sources */,
+				9892C3EF23E328C80017AAA1 /* CreateRoomViewModel.swift in Sources */,
 				4C24CA7523D5CFC7007D6F5D /* LoginView.swift in Sources */,
 				4C02C2DA23D446CE0049D988 /* VoAIntegrator.swift in Sources */,
 				4CB737DC23D5E27600E90929 /* HomeViewController.swift in Sources */,
@@ -583,6 +622,7 @@
 				4C5D650A23C96CCD00822386 /* ViewController.swift in Sources */,
 				9861E52B23DE9F6E007844D6 /* AppleLoginSuccesAlert.swift in Sources */,
 				988FFA0723DDF485002ED832 /* VoAUtil.swift in Sources */,
+				98AC10E623E2CE45007D849C /* ExtensionSwiftlyUserDefault.swift in Sources */,
 				4C7D06D823C9611B0096B86C /* SceneDelegate.swift in Sources */,
 				4C5D651323C9710200822386 /* SplashView.swift in Sources */,
 				4C5D650C23C96DB100822386 /* VoAColor.swift in Sources */,
@@ -759,7 +799,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.0.2;
+				MARKETING_VERSION = 0.0.3;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -811,7 +851,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.0.2;
+				MARKETING_VERSION = 0.0.3;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
 					"$(inherited)",

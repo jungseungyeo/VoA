@@ -40,6 +40,17 @@ class VoAColor: NSObject {
     struct Home {
         static let logoColor: UIColor = .init(r: 255, g: 161, b: 72)
     }
+    
+    struct ArriveHomeAlert {
+        static let titleColor: UIColor = VoAColor.Style.white
+        static let subTitleColor: UIColor = .init(r: 136, g: 136, b: 136)
+    }
+    
+    struct CreateRoom {
+        static let validNextBtnColor: UIColor = .init(r: 255, g: 148, b: 59)
+        static let confirmColor: UIColor = VoAColor.LoinInfo.confirmColor
+        static let inValidConfirmColor: UIColor = VoAColor.LoinInfo.notValidConfirmColor
+    }
 }
 
 extension UIColor {

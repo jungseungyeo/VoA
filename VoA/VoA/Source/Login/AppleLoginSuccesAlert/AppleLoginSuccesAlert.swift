@@ -77,6 +77,5 @@ class AppleLoginSuccesAlert: BaseViewController {
     @objc
     private func cancelBtnTapped() {
         delegate?.cancelTapped()
-        self.dismiss(animated: false, completion: nil)
     }
 }

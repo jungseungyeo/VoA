@@ -96,7 +96,7 @@ class LoginInfoViewModel: ReactiveViewModelable {
                 
                 let viewModel = HomeViewModel()
                 let homeNavigationController = HomeNavigationViewController(rootViewController: HomeViewController.instance(homeViewModel: viewModel))
-                let navi = LGSideMenuController(rootViewController: homeNavigationController, leftViewController: LeftMenuViewController.init(homeViewModel: viewModel), rightViewController: nil)
+                let navi = LGSideMenuController(rootViewController: homeNavigationController, leftViewController: LeftMenuViewController.instance(homeViewModel: viewModel), rightViewController: nil)
                 navi.panGesture.isEnabled = false
                 navi.leftViewWidth = 280
                 self.output.moveHome.accept(navi)

@@ -108,6 +108,7 @@ PODS:
     - RxSwift (~> 5)
   - SnapKit (5.0.0)
   - SwiftlyIndicator (1.2.0)
+  - SwiftlyUserDefault (0.0.1)
   - SwiftyJSON (4.0.0)
 
 DEPENDENCIES:
@@ -125,6 +126,7 @@ DEPENDENCIES:
   - RxTest (= 5.0.0)
   - SnapKit (= 5.0.0)
   - SwiftlyIndicator (= 1.2.0)
+  - SwiftlyUserDefault
   - SwiftyJSON (= 4.0)
 
 SPEC REPOS:
@@ -158,6 +160,7 @@ SPEC REPOS:
     - RxTest
     - SnapKit
     - SwiftlyIndicator
+    - SwiftlyUserDefault
     - SwiftyJSON
 
 SPEC CHECKSUMS:
@@ -190,8 +193,9 @@ SPEC CHECKSUMS:
   RxTest: 4349afe98f564e0a9bc19063368904622d17d49a
   SnapKit: fd22d10eb9aff484d79a8724eab922c1ddf89bcf
   SwiftlyIndicator: d22b59463ef18144df16dc89800e41972028ce59
+  SwiftlyUserDefault: dd9bf7e144e5c323694a9db0932ce69ad6df4caf
   SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
 
-PODFILE CHECKSUM: 1ac7cd9b90181ac7c029c4929e116d647aa6e3a5
+PODFILE CHECKSUM: b751dd53b6795e2fa4a22b473ed479f0cc7188e5
 
 COCOAPODS: 1.8.4

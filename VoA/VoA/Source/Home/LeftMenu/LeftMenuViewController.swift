@@ -22,7 +22,7 @@ class LeftMenuViewController: BaseViewController {
         return LeftMenuViewController(homeViewModel: homeViewModel)
     }
     
-    init(homeViewModel: HomeViewModel) {
+    private init(homeViewModel: HomeViewModel) {
         viewModel = homeViewModel
         super.init(nibName: nil, bundle: nil)
     }
@@ -53,5 +53,15 @@ class LeftMenuViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        print("leftMenu viewWillAppear")
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        print("leftMenu viewDidAppear")
     }
 }

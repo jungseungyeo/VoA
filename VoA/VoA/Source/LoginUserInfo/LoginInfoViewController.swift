@@ -21,6 +21,13 @@ class LoginInfoViewController: BaseViewController {
     private let viewModel: LoginInfoViewModel
     private let bag = DisposeBag()
     
+    private struct Const {
+        static let inValidNinameMessge: String = "이름은 10글자를 초과 할 수 없습니다."
+        static let confirm: String = "확인"
+    }
+    
+    private let const = Const()
+    
     init(loginViewModel: LoginInfoViewModel) {
         viewModel = loginViewModel
         super.init(nibName: nil, bundle: nil)
@@ -91,7 +98,6 @@ class LoginInfoViewController: BaseViewController {
             .subscribe(onNext: { [weak self] (flag) in
                 guard let self = self else { return }
                 self.loginInfoView.clearNickNameBtn.isHidden = flag
-                self.loginInfoView.nameTextField.enablesReturnKeyAutomatically = !flag
                 self.navigationItem.rightBarButtonItem?.isEnabled = !flag
                 self.navigationItem.rightBarButtonItem?.tintColor = !flag ? VoAColor.LoinInfo.confirmColor : VoAColor.LoinInfo.notValidConfirmColor
                 
@@ -143,18 +149,26 @@ private extension LoginInfoViewController {
     
     func showlimtNickNameAlert() {
         UIAlertController.alert("",
-                                message: "이름은 10글자를 초과 할 수 없습니다.",
-                                defaultString: "확인",
+                                message: Const.inValidNinameMessge,
+                                defaultString: Const.confirm,
                                 defaultHandler: {
                                     
         }).show(self)
     }
     
     func moveHome(navigation: LGSideMenuController) {
-        let window = UIApplication.shared.windows.first
-        window?.overrideUserInterfaceStyle = .light
-        window?.rootViewController = navigation
-        window?.makeKeyAndVisible()
+        guard let window = UIApplication.shared.windows.first else { return }
+        
+        navigation.view.alpha = 0.0
+        window.overrideUserInterfaceStyle = .light
+        window.rootViewController = navigation
+        window.makeKeyAndVisible()
+        
+        UIView.transition(with: window,
+                          duration: 0.3,
+                          options: .transitionCrossDissolve, animations: {
+                            navigation.view.alpha = 1.0
+        })
     }
 }
 
