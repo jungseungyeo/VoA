@@ -43,6 +43,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
         for URLContext in URLContexts {
+//            카카오 초대 링크
+//            kakao60fc97458112734d14be80eca965f150://kakaolink?roomid=123123
+            
             if KOSession.isKakaoAccountLoginCallback(URLContext.url.absoluteURL) {
                 KOSession.handleOpen(URLContext.url)
             }

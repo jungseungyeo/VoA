@@ -3,6 +3,9 @@
 //
 
 #import <KakaoOpenSDK/KakaoOpenSDK.h>
+#import <KakaoLink/KakaoLink.h>
+#import <KakaoCommon/KakaoCommon.h>
+#import <KakaoMessageTemplate/KakaoMessageTemplate.h>
 
 #import "LGSideMenuController.h"
 #import "UIViewController+LGSideMenuController.h"

@@ -51,6 +51,9 @@
 		985F142123E408DB00899172 /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 985F142023E408DB00899172 /* BaseCollectionViewCell.swift */; };
 		985F142423E40AF700899172 /* MemberInviteHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 985F142323E40AF700899172 /* MemberInviteHeaderView.swift */; };
 		985F142623E40C9200899172 /* MemberInviteCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 985F142523E40C9200899172 /* MemberInviteCollectionViewCell.swift */; };
+		985F142923E41A8500899172 /* KakaoLink.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 985F142723E41A8400899172 /* KakaoLink.framework */; };
+		985F142A23E41A8500899172 /* KakaoMessageTemplate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 985F142823E41A8500899172 /* KakaoMessageTemplate.framework */; };
+		985F142C23E41C5A00899172 /* KakaoCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 985F142B23E41C5A00899172 /* KakaoCommon.framework */; };
 		9861E52923DE9F5F007844D6 /* AppleLoginSuccesAlert.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9861E52823DE9F5F007844D6 /* AppleLoginSuccesAlert.xib */; };
 		9861E52B23DE9F6E007844D6 /* AppleLoginSuccesAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9861E52A23DE9F6E007844D6 /* AppleLoginSuccesAlert.swift */; };
 		9861E52D23DEB832007844D6 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9861E52C23DEB832007844D6 /* HomeViewController.xib */; };
@@ -131,6 +134,9 @@
 		985F142023E408DB00899172 /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
 		985F142323E40AF700899172 /* MemberInviteHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberInviteHeaderView.swift; sourceTree = "<group>"; };
 		985F142523E40C9200899172 /* MemberInviteCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberInviteCollectionViewCell.swift; sourceTree = "<group>"; };
+		985F142723E41A8400899172 /* KakaoLink.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = KakaoLink.framework; sourceTree = "<group>"; };
+		985F142823E41A8500899172 /* KakaoMessageTemplate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = KakaoMessageTemplate.framework; sourceTree = "<group>"; };
+		985F142B23E41C5A00899172 /* KakaoCommon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = KakaoCommon.framework; sourceTree = "<group>"; };
 		9861E52823DE9F5F007844D6 /* AppleLoginSuccesAlert.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AppleLoginSuccesAlert.xib; sourceTree = "<group>"; };
 		9861E52A23DE9F6E007844D6 /* AppleLoginSuccesAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleLoginSuccesAlert.swift; sourceTree = "<group>"; };
 		9861E52C23DEB832007844D6 /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
@@ -154,8 +160,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				985F142C23E41C5A00899172 /* KakaoCommon.framework in Frameworks */,
 				C6775C3D2ED193085C52BF36 /* libPods-VoA.a in Frameworks */,
 				4C8D740B23D2C1F5005BEFAA /* KakaoOpenSDK.framework in Frameworks */,
+				985F142A23E41A8500899172 /* KakaoMessageTemplate.framework in Frameworks */,
+				985F142923E41A8500899172 /* KakaoLink.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -367,6 +376,9 @@
 		851F2FB048F4DBC148A5B09E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				985F142B23E41C5A00899172 /* KakaoCommon.framework */,
+				985F142723E41A8400899172 /* KakaoLink.framework */,
+				985F142823E41A8500899172 /* KakaoMessageTemplate.framework */,
 				4C8D740A23D2C1F5005BEFAA /* KakaoOpenSDK.framework */,
 				F200F6CD0D0A9C3D4F5D9D2F /* libPods-VoA.a */,
 				A27AAFE9CFBDBC1998A60A24 /* libPods-VoATests.a */,
