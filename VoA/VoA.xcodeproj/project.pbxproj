@@ -44,6 +44,13 @@
 		9839076523DF215000AAA064 /* LeftMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9839076423DF215000AAA064 /* LeftMenuView.swift */; };
 		9839076723DF244200AAA064 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9839076623DF244200AAA064 /* HomeViewModel.swift */; };
 		9839076923DF28E900AAA064 /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9839076823DF28E900AAA064 /* UserViewModel.swift */; };
+		985F141923E3F7BC00899172 /* MemberInviteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 985F141823E3F7BC00899172 /* MemberInviteViewController.swift */; };
+		985F141B23E3F7F000899172 /* MemeberInviteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 985F141A23E3F7F000899172 /* MemeberInviteView.swift */; };
+		985F141D23E3FCD300899172 /* MemberInviteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 985F141C23E3FCD300899172 /* MemberInviteViewModel.swift */; };
+		985F141F23E407E200899172 /* BaseCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 985F141E23E407E200899172 /* BaseCollectionReusableView.swift */; };
+		985F142123E408DB00899172 /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 985F142023E408DB00899172 /* BaseCollectionViewCell.swift */; };
+		985F142423E40AF700899172 /* MemberInviteHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 985F142323E40AF700899172 /* MemberInviteHeaderView.swift */; };
+		985F142623E40C9200899172 /* MemberInviteCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 985F142523E40C9200899172 /* MemberInviteCollectionViewCell.swift */; };
 		9861E52923DE9F5F007844D6 /* AppleLoginSuccesAlert.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9861E52823DE9F5F007844D6 /* AppleLoginSuccesAlert.xib */; };
 		9861E52B23DE9F6E007844D6 /* AppleLoginSuccesAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9861E52A23DE9F6E007844D6 /* AppleLoginSuccesAlert.swift */; };
 		9861E52D23DEB832007844D6 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9861E52C23DEB832007844D6 /* HomeViewController.xib */; };
@@ -117,6 +124,13 @@
 		9839076423DF215000AAA064 /* LeftMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftMenuView.swift; sourceTree = "<group>"; };
 		9839076623DF244200AAA064 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		9839076823DF28E900AAA064 /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
+		985F141823E3F7BC00899172 /* MemberInviteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberInviteViewController.swift; sourceTree = "<group>"; };
+		985F141A23E3F7F000899172 /* MemeberInviteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemeberInviteView.swift; sourceTree = "<group>"; };
+		985F141C23E3FCD300899172 /* MemberInviteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberInviteViewModel.swift; sourceTree = "<group>"; };
+		985F141E23E407E200899172 /* BaseCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionReusableView.swift; sourceTree = "<group>"; };
+		985F142023E408DB00899172 /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
+		985F142323E40AF700899172 /* MemberInviteHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberInviteHeaderView.swift; sourceTree = "<group>"; };
+		985F142523E40C9200899172 /* MemberInviteCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberInviteCollectionViewCell.swift; sourceTree = "<group>"; };
 		9861E52823DE9F5F007844D6 /* AppleLoginSuccesAlert.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AppleLoginSuccesAlert.xib; sourceTree = "<group>"; };
 		9861E52A23DE9F6E007844D6 /* AppleLoginSuccesAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleLoginSuccesAlert.swift; sourceTree = "<group>"; };
 		9861E52C23DEB832007844D6 /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
@@ -247,6 +261,8 @@
 				4C570F5A23CC641700C438CA /* BaseViewController.swift */,
 				4C46F78323CE047F0031D3E0 /* BaseView.swift */,
 				988D2B4023DDA32B005CD84F /* BaseNavigationController.swift */,
+				985F141E23E407E200899172 /* BaseCollectionReusableView.swift */,
+				985F142023E408DB00899172 /* BaseCollectionViewCell.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -361,11 +377,32 @@
 		9807431123E305DD00900C6E /* CreateRoom */ = {
 			isa = PBXGroup;
 			children = (
+				985F141723E3F78D00899172 /* MemberInvite */,
 				9807431223E305ED00900C6E /* CreateRoomViewController.swift */,
 				9807431423E3062C00900C6E /* CreateRoomView.swift */,
 				9892C3EE23E328C80017AAA1 /* CreateRoomViewModel.swift */,
 			);
 			path = CreateRoom;
+			sourceTree = "<group>";
+		};
+		985F141723E3F78D00899172 /* MemberInvite */ = {
+			isa = PBXGroup;
+			children = (
+				985F142223E40AE900899172 /* Items */,
+				985F141823E3F7BC00899172 /* MemberInviteViewController.swift */,
+				985F141A23E3F7F000899172 /* MemeberInviteView.swift */,
+				985F141C23E3FCD300899172 /* MemberInviteViewModel.swift */,
+			);
+			path = MemberInvite;
+			sourceTree = "<group>";
+		};
+		985F142223E40AE900899172 /* Items */ = {
+			isa = PBXGroup;
+			children = (
+				985F142323E40AF700899172 /* MemberInviteHeaderView.swift */,
+				985F142523E40C9200899172 /* MemberInviteCollectionViewCell.swift */,
+			);
+			path = Items;
 			sourceTree = "<group>";
 		};
 		9861E52723DE9F3A007844D6 /* AppleLoginSuccesAlert */ = {
@@ -597,6 +634,7 @@
 				4C24CA7723D5D013007D6F5D /* LoginViewModel.swift in Sources */,
 				988D2B4623DDAAE9005CD84F /* LoginInfoView.swift in Sources */,
 				4C24CA7323D5CF69007D6F5D /* LoginViewController.swift in Sources */,
+				985F141D23E3FCD300899172 /* MemberInviteViewModel.swift in Sources */,
 				4C33B5D723CD6CF4003A0484 /* ExtensionUIAlertViewController.swift in Sources */,
 				4C5D650823C96CC100822386 /* SplashViewController.swift in Sources */,
 				988D2B4423DDA895005CD84F /* LoginInfoViewController.swift in Sources */,
@@ -604,18 +642,23 @@
 				9839076523DF215000AAA064 /* LeftMenuView.swift in Sources */,
 				98AC10E923E2D48F007D849C /* StartArriveAlertViewController.swift in Sources */,
 				4C33B5D423CD690C003A0484 /* VoAError.swift in Sources */,
+				985F142423E40AF700899172 /* MemberInviteHeaderView.swift in Sources */,
+				985F141F23E407E200899172 /* BaseCollectionReusableView.swift in Sources */,
 				4C33B5CF23CD6538003A0484 /* Netwoker.swift in Sources */,
 				4C570F5323CC621200C438CA /* VoAService.swift in Sources */,
+				985F142623E40C9200899172 /* MemberInviteCollectionViewCell.swift in Sources */,
 				4C570F5123CC61EE00C438CA /* GraphqlNetworker.swift in Sources */,
 				9807431323E305ED00900C6E /* CreateRoomViewController.swift in Sources */,
 				4C46F78723CE083B0031D3E0 /* ExtensionUIView.swift in Sources */,
 				9807431523E3062C00900C6E /* CreateRoomView.swift in Sources */,
+				985F141923E3F7BC00899172 /* MemberInviteViewController.swift in Sources */,
 				9892C3EF23E328C80017AAA1 /* CreateRoomViewModel.swift in Sources */,
 				4C24CA7523D5CFC7007D6F5D /* LoginView.swift in Sources */,
 				4C02C2DA23D446CE0049D988 /* VoAIntegrator.swift in Sources */,
 				4CB737DC23D5E27600E90929 /* HomeViewController.swift in Sources */,
 				4C570F5623CC629E00C438CA /* ReactiveViewModelable.swift in Sources */,
 				4C570F5823CC62F700C438CA /* SplashViewModel.swift in Sources */,
+				985F141B23E3F7F000899172 /* MemeberInviteView.swift in Sources */,
 				988FFA0523DDBD4F002ED832 /* LoginInfoViewModel.swift in Sources */,
 				4C570F5B23CC641700C438CA /* BaseViewController.swift in Sources */,
 				4C7D06D623C9611B0096B86C /* AppDelegate.swift in Sources */,
@@ -625,6 +668,7 @@
 				98AC10E623E2CE45007D849C /* ExtensionSwiftlyUserDefault.swift in Sources */,
 				4C7D06D823C9611B0096B86C /* SceneDelegate.swift in Sources */,
 				4C5D651323C9710200822386 /* SplashView.swift in Sources */,
+				985F142123E408DB00899172 /* BaseCollectionViewCell.swift in Sources */,
 				4C5D650C23C96DB100822386 /* VoAColor.swift in Sources */,
 				4C570F4F23CC615400C438CA /* LaunchListQuery.swift in Sources */,
 				4C46F78423CE047F0031D3E0 /* BaseView.swift in Sources */,

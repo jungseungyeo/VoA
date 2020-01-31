@@ -100,6 +100,12 @@ class CreateRoomViewController: BaseViewController {
                 self.createRoomView.roomTitleTextField.text = ""
                 self.viewModel.input.createRoomTitle.accept("")
             }).disposed(by: bag)
+        
+        viewModel.output.moveMemberInvitte
+            .subscribe(onNext: { [weak self] (vc) in
+                guard let self = self else { return }
+                self.navigationController?.pushViewController(vc, animated: true)
+            }).disposed(by: bag)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -129,7 +135,7 @@ private extension CreateRoomViewController {
     
     @objc
     func nextTapped(sender: UIBarButtonItem) {
-        viewModel.input.confirmBtnTapped.accept(())
+        viewModel.input.confirmBtnTapped.accept(createRoomView.roomTitleTextField.text)
     }
 }
 
@@ -141,7 +147,7 @@ extension CreateRoomViewController: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         guard !viewModel.output.isValidCreateRoomTitle.value else { return false }
-        viewModel.input.confirmBtnTapped.accept(())
+        viewModel.input.confirmBtnTapped.accept(createRoomView.roomTitleTextField.text)
         return false
     }
 }

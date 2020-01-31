@@ -16,13 +16,14 @@ class CreateRoomViewModel: NSObject, ReactiveViewModelable {
     
     public struct Input {
         public let createRoomTitle = PublishRelay<String?>()
-        public let confirmBtnTapped = PublishRelay<Void>()
+        public let confirmBtnTapped = PublishRelay<String?>()
     }
     
     public struct Output {
         public let roomTitleCountString = PublishRelay<String>()
         public let isValidCreateRoomTitle = BehaviorRelay<Bool>(value: false)
         public let limitRoomTitleAlert = PublishRelay<String>()
+        public let moveMemberInvitte = PublishRelay<MemberInviteViewController>()
     }
     
     public lazy var input: InputType = Input()
@@ -79,6 +80,15 @@ class CreateRoomViewModel: NSObject, ReactiveViewModelable {
             let resultRoomTitle = sumRoomTitle.map { String($0) }.joined()
             self.output.limitRoomTitleAlert.accept(resultRoomTitle)
         }).disposed(by: bag)
+        
+        input.confirmBtnTapped
+            .subscribe(onNext: { [weak self] (roomTitle) in
+                guard let self = self else { return }
+                guard let roomTitle = roomTitle else { return }
+                let memberViewModel = MemberInviteViewModel(title: roomTitle)
+                let memberInviteViewController = MemberInviteViewController.instance(viewModel: memberViewModel)
+                self.output.moveMemberInvitte.accept(memberInviteViewController)
+            }).disposed(by: bag)
     }
     
 }

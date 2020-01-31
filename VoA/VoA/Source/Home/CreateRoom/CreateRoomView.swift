@@ -45,6 +45,7 @@ class CreateRoomView: BaseView {
         let btn = UIButton(type: .system)
         btn.setImage(UIImage(named: "icDelete"), for: .normal)
         btn.tintColor = VoAColor.Style.white.withAlphaComponent(0.2)
+        btn.isHidden = true
         return btn
     }()
     
