@@ -8,6 +8,14 @@
 
 import RxSwift
 import RxCocoa
+import SwiftyJSON
+import SwiftlyUserDefault
+
+enum LoginInfoViewState {
+    case request
+    case complete(LGSideMenuController)
+    case error(Error?)
+}
 
 class LoginInfoViewModel: ReactiveViewModelable {
     
@@ -23,7 +31,7 @@ class LoginInfoViewModel: ReactiveViewModelable {
         public let nickNameCount = PublishRelay<String>()
         public let isValidNickName = BehaviorRelay<Bool>(value: false)
         public let limitNickNameAlert = PublishRelay<String>()
-        public let moveHome = PublishRelay<LGSideMenuController>()
+        public let state = PublishRelay<LoginInfoViewState>()
     }
     
     public lazy var input: InputType = Input()
@@ -32,6 +40,7 @@ class LoginInfoViewModel: ReactiveViewModelable {
     private let bag = DisposeBag()
     
     public let kakaoInfoPresnetModel: KakaoPresentModel
+    private var userModel: UserModel?
     
     init(model: KakaoPresentModel) {
         kakaoInfoPresnetModel = model
@@ -47,11 +56,11 @@ class LoginInfoViewModel: ReactiveViewModelable {
         }.filter({ (count) -> Bool in
             return count <= 10
         })
-        .map { (count) -> String in
-            return "\(count) / 10"
+            .map { (count) -> String in
+                return "\(count) / 10"
         }
         .bind(to: output.nickNameCount)
-            .disposed(by: bag)
+        .disposed(by: bag)
         
         input.nickNameString
             .map { (nickName) -> Int in
@@ -83,26 +92,63 @@ class LoginInfoViewModel: ReactiveViewModelable {
             
             let resultNickName = sumNickName.map { String($0) }.joined()
             self.output.limitNickNameAlert.accept(resultNickName)
-            }).disposed(by: bag)
+        }).disposed(by: bag)
         
         input.confirmTapped
-            .subscribe(onNext: { [weak self] (nickName) in
-                guard let self = self else { return }
+            .map { _ -> LoginInfoViewState in
+                return .request
+        }.bind(to: output.state)
+            .disposed(by: bag)
+        
+        input.confirmTapped
+            .flatMap(weak: self) { (wself, customNickName) -> Observable<JSON> in
+                let model = KakaoPresentModel(nickName: customNickName,
+                                              profileURL: self.kakaoInfoPresnetModel.profileURL,
+                                              kakaoAccountToken: self.kakaoInfoPresnetModel.kakaoAccountToken)
+                return LoginNetworker.sigin(model: model).asObservable()
+        }.flatMap(weak: self) { (wself, json) -> Observable<JSON> in
+            let responseModel = wself.settingUserInfo(json: json)
+            self.userModel = responseModel?.data
+            return LoginNetworker.sendFcm(userID: responseModel?.data?.userID,
+                                          fcmToken: SwiftlyUserDefault.fcmToken).asObservable()
+        }.subscribe(onNext: { [weak self] (json) in
+            guard let self = self else { return }
+            UserViewModel.shared.userModel = self.userModel
+            SwiftlyUserDefault.nickName = self.userModel?.userName
+            SwiftlyUserDefault.profile = self.userModel?.profileURL
+            SwiftlyUserDefault.kakaoToken = self.kakaoInfoPresnetModel.kakaoAccountToken
+            
+            let viewModel = HomeViewModel()
+            let homeNavigationController = HomeNavigationViewController(rootViewController: HomeViewController.instance(homeViewModel: viewModel))
+            let navi = LGSideMenuController(rootViewController: homeNavigationController, leftViewController: LeftMenuViewController.instance(homeViewModel: viewModel), rightViewController: nil)
+            navi.panGesture.isEnabled = false
+            navi.leftViewWidth = 280
+            self.output.state.accept(.complete(navi))
+            }, onError: {  (error) in
                 
-                let model = KakaoPresentModel(nickName: nickName,
-                                              profileURL: self.kakaoInfoPresnetModel.profileURL)
-                
-                UserViewModel.shared.kakaoPresentModel = model
+                guard let json = VoAUtil.loadJSON("LoginResponseJson") as? [String: Any] else { return }
+                let responseModel = UserResponseModel(JSON: json)
+                UserViewModel.shared.userModel = responseModel?.data
+                SwiftlyUserDefault.nickName = responseModel?.data?.userName
+                SwiftlyUserDefault.profile = responseModel?.data?.profileURL
+                SwiftlyUserDefault.kakaoToken = self.kakaoInfoPresnetModel.kakaoAccountToken
                 
                 let viewModel = HomeViewModel()
                 let homeNavigationController = HomeNavigationViewController(rootViewController: HomeViewController.instance(homeViewModel: viewModel))
                 let navi = LGSideMenuController(rootViewController: homeNavigationController, leftViewController: LeftMenuViewController.instance(homeViewModel: viewModel), rightViewController: nil)
                 navi.panGesture.isEnabled = false
                 navi.leftViewWidth = 280
-                self.output.moveHome.accept(navi)
-            }).disposed(by: bag)
-        
+                self.output.state.accept(.complete(navi))
+                
+//                self.output.state.accept(.error(error))
+        }).disposed(by: bag)
     }
-    
-    
+}
+
+private extension LoginInfoViewModel {
+    func settingUserInfo(json: JSON) -> UserResponseModel? {
+        guard let dict = json.dictionaryObject else { return nil }
+        let model = UserResponseModel(JSON: dict)
+        return model
+    }
 }

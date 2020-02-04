@@ -1,0 +1,10 @@
+{
+    "status":-999,
+    "message":"",
+    "data": {
+        "authoToken": "1010101",
+        "userName": "린생",
+        "userID": 1010101,
+        "profileURL": "https://k.kakaocdn.net/dn/ceL7a8/btqzGliUqFE/PVnwdkiTke1SxDRUNuswz1/img_640x640.jpg"
+    }
+}

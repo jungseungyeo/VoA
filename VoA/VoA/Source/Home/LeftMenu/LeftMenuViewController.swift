@@ -35,10 +35,10 @@ class LeftMenuViewController: BaseViewController {
         super.setup()
         view = leftMenuView
         
-        if let profileUrl = UserViewModel.shared.kakaoPresentModel?.profileURL {
+        if let profileString = UserViewModel.shared.userModel?.profileURL, let profileUrl = URL(string: profileString) {
             leftMenuView.profileImg.kf.setImage(with: profileUrl)
         }
-        leftMenuView.userName.text = UserViewModel.shared.kakaoPresentModel?.nickName
+        leftMenuView.userName.text = UserViewModel.shared.userModel?.userName
     }
     
     override func bind() {

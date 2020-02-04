@@ -11,6 +11,8 @@ import UIKit
 
 import RxSwift
 import RxCocoa
+import SwiftlyUserDefault
+import SwiftlyIndicator
 
 class LoginNavigationController: BaseNaivgationController {
     
@@ -26,6 +28,8 @@ class LoginViewController: BaseViewController {
     }
     
     private lazy var loginView = LoginView(frame: view.bounds)
+    private lazy var indicator: SwiftlyIndicator = SwiftlyIndicator(loginView)
+    
     private lazy var appleLoginAlertController: AppleLoginSuccesAlert = {
         let alert = AppleLoginSuccesAlert.instance()
         alert.delegate = self
@@ -58,7 +62,7 @@ class LoginViewController: BaseViewController {
                 case .requeste:
                     print()
                 case .complete:
-                    self.moveHome()
+                    self.moveLoginInfo()
                 case .error(let error):
                     self.handleError(error: error)
                 }
@@ -78,7 +82,7 @@ class LoginViewController: BaseViewController {
 }
 
 private extension LoginViewController {
-    func moveHome() {
+    func moveLoginInfo() {
         guard let kakaoInfo = viewModel.kakaoPresentModel else {
             return
         }

@@ -31,9 +31,11 @@ class HomeViewController: BaseViewController {
     }()
     
     private lazy var logoBtn: UIBarButtonItem = {
-        let btn = UIBarButtonItem(title: "Lamp",
+        let btn = UIBarButtonItem(title: "다옴",
                                   style: .plain, target: nil, action: nil)
-        btn.setTitleTextAttributes([.foregroundColor : VoAColor.Home.logoColor],
+        btn.setTitleTextAttributes([.foregroundColor : VoAColor.Home.logoColor,
+                                    .font: UIFont.systemFont(ofSize: 20,
+                                                             weight: .bold)],
                                    for: .disabled)
         btn.isEnabled = false
         return btn

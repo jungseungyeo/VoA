@@ -8,6 +8,8 @@
 
 import RxSwift
 import RxCocoa
+import SwiftlyUserDefault
+import SwiftyJSON
 
 enum LoginViewState {
     case requeste
@@ -18,6 +20,7 @@ enum LoginViewState {
 struct KakaoPresentModel {
     let nickName: String?
     let profileURL: URL?
+    let kakaoAccountToken: String?
 }
 
 class LoginViewModel: NSObject, ReactiveViewModelable {
@@ -39,6 +42,7 @@ class LoginViewModel: NSObject, ReactiveViewModelable {
     private let bag = DisposeBag()
     
     private(set) var kakaoPresentModel: KakaoPresentModel? = nil
+    private var userModel: UserModel?
     
     override init() {
         super.init()
@@ -47,7 +51,7 @@ class LoginViewModel: NSObject, ReactiveViewModelable {
     }
     
     private func rxBind() {
-
+        
         input.kakaoLoginTapped
             .subscribe(onNext: { [weak self] (_) in
                 guard let self = self else { return }
@@ -57,7 +61,7 @@ class LoginViewModel: NSObject, ReactiveViewModelable {
     
     func kakaoLogin() {
         guard let session = KOSession.shared() else { return }
-
+        
         // session이 있으면 닫아주는 역할
         if session.isOpen() {
             session.close()
@@ -69,7 +73,7 @@ class LoginViewModel: NSObject, ReactiveViewModelable {
                 self.output.viewState.accept(.error(error))
                 return
             }
-
+            
             //인증되어 있는지 여부. [token canRefresh]와 동일한 결과를 리턴합니다.
             if session.isOpen() {
                 KOSessionTask.userMeTask(completion: { [weak self] error, userInfo in
@@ -79,7 +83,8 @@ class LoginViewModel: NSObject, ReactiveViewModelable {
                     let profileUrl = userInfo?.account?.profile?.profileImageURL
                     
                     let kakaoPresentModel = KakaoPresentModel(nickName: nickname,
-                                                              profileURL: profileUrl)
+                                                              profileURL: profileUrl,
+                                                              kakaoAccountToken: session.token?.accessToken)
                     
                     self.kakaoPresentModel = kakaoPresentModel
                     self.output.viewState.accept(.complete)

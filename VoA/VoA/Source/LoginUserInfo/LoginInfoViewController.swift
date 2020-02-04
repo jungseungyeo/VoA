@@ -11,6 +11,7 @@ import UIKit
 import Kingfisher
 import RxSwift
 import RxCocoa
+import SwiftlyIndicator
 
 class LoginInfoViewController: BaseViewController {
     
@@ -19,6 +20,7 @@ class LoginInfoViewController: BaseViewController {
     }
     
     private let viewModel: LoginInfoViewModel
+    private lazy var indicator: SwiftlyIndicator = SwiftlyIndicator(loginInfoView)
     private let bag = DisposeBag()
     
     private struct Const {
@@ -118,13 +120,22 @@ class LoginInfoViewController: BaseViewController {
             guard let self = self else { return }
             self.viewModel.input.nickNameString.accept(clearStirng)
             self.loginInfoView.nameTextField.text = clearStirng
+        }).disposed(by: bag)
+        
+        viewModel.output.state
+            .subscribe(onNext: { [weak self] (state) in
+                guard let self = self else { return }
+                switch state {
+                case .request:
+                    self.indicator.start()
+                case .complete(let navi):
+                    self.indicator.stop()
+                    self.moveHome(navigation: navi)
+                case .error(let error):
+                    self.handleError(error: error)
+                }
             }).disposed(by: bag)
         
-        viewModel.output.moveHome
-            .subscribe(onNext: { [weak self] (navi) in
-                guard let self = self else { return }
-                self.moveHome(navigation: navi)
-            }).disposed(by: bag)
         
         viewModel.input.nickNameString.accept(viewModel.kakaoInfoPresnetModel.nickName)
     }
@@ -133,6 +144,16 @@ class LoginInfoViewController: BaseViewController {
         super.viewDidAppear(animated)
         
         loginInfoView.nameTextField.becomeFirstResponder()
+    }
+    
+    override func handleError(error: Error?) {
+        super.handleError(error: error)
+        
+        NetworkError().alert(vc: self,
+                             error: error,
+                             action: { errorCode in
+                                
+        })
     }
 }
 

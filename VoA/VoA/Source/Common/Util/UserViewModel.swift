@@ -16,5 +16,5 @@ class UserViewModel: NSObject {
         super.init()
     }
     
-    public var kakaoPresentModel: KakaoPresentModel? = nil
+    public var userModel: UserModel?
 }

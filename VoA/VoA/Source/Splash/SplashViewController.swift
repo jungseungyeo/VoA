@@ -11,6 +11,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 import SwiftlyIndicator
+import SwiftlyUserDefault
 
 class SplashViewController: BaseViewController {
     
@@ -53,6 +54,22 @@ class SplashViewController: BaseViewController {
                     self.handleError(error: error)
                 }
             }).disposed(by: bag)
+        
+        viewModel.output.autoLoingState
+            .subscribe(onNext: { [weak self] (state) in
+                guard let self = self else { return }
+                
+                switch state {
+                case .request:
+                    self.indicator.start()
+                case .complete(let navi):
+                    self.indicator.stop()
+                    self.moveHome(navigation: navi)
+                case .error(let error):
+                    self.handleError(error: error)
+                }
+                
+            }).disposed(by: bag)
     }
     
     override func handleError(error: Error?) {
@@ -61,7 +78,12 @@ class SplashViewController: BaseViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        viewModel.input.requestNextMove.accept(())
+        
+        if viewModel.isKakaoSession, let _ = SwiftlyUserDefault.kakaoToken {
+            viewModel.input.authoLoginRequest.accept(())
+        } else {
+            viewModel.input.requestNextMove.accept(())
+        }
     }
 }
 
@@ -71,5 +93,20 @@ private extension SplashViewController {
         window?.overrideUserInterfaceStyle = .light
         window?.rootViewController = LoginNavigationController.instance(controller: LoginViewController.instance())
         window?.makeKeyAndVisible()
+    }
+    
+    func moveHome(navigation: LGSideMenuController) {
+        guard let window = UIApplication.shared.windows.first else { return }
+        
+        navigation.view.alpha = 0.0
+        window.overrideUserInterfaceStyle = .light
+        window.rootViewController = navigation
+        window.makeKeyAndVisible()
+        
+        UIView.transition(with: window,
+                          duration: 0.3,
+                          options: .transitionCrossDissolve, animations: {
+                            navigation.view.alpha = 1.0
+        })
     }
 }
