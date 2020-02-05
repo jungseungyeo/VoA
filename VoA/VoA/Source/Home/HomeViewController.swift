@@ -10,6 +10,7 @@ import UIKit
 
 import RxSwift
 import RxCocoa
+import SwiftlyIndicator
 
 class HomeNavigationViewController: BaseNaivgationController {
     
@@ -46,6 +47,7 @@ class HomeViewController: BaseViewController {
         vc.delegate = self
         return vc
     }()
+    private lazy var indicator: SwiftlyIndicator = .init(view)
     
     private let viewModel: HomeViewModel
     private let bag = DisposeBag()
@@ -100,7 +102,42 @@ class HomeViewController: BaseViewController {
                 self.navigationController?.pushViewController(CreateRoomViewController.instance(),
                                                               animated: true)
             }).disposed(by: bag)
+        
+        viewModel.output.networkState
+            .subscribe(onNext: { [weak self] (state) in
+                guard let self = self else { return }
+                switch state {
+                case .request:
+                    self.indicator.start()
+                case .complete:
+                    self.indicator.stop()
+                case .error(let error):
+                    self.handleError(error: error)
+                }
+                
+            }).disposed(by: bag)
+        
+        viewModel.output.changedView
+            .subscribe(onNext: { [weak self] (state) in
+                guard let self = self else { return }
+                switch state {
+                case .noneRoomView:
+                    print("noneRoomView")
+                case .noneStartRoomView:
+                    print("noneStartRoomView")
+                case .startingRoomView:
+                    print("startingRoomView")
+                }
+                
+            }).disposed(by: bag)
+        
+        viewModel.input.request.accept(())
     }
+    
+    override func handleError(error: Error?) {
+        super.handleError(error: error)
+    }
+
 }
 
 extension HomeViewController: StartArriveAlertViewControllerable {

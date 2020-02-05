@@ -1,0 +1,16 @@
+{
+    "status": 999,
+    "message": "",
+    "data":{
+        "roomDatas":[
+            {
+                "roomID": 10101,
+                "roomTitle": "테스트 귀가방"
+            },
+            {
+                "roomID": 10102,
+                "roomTitle": "테스트 귀가방2"
+            }
+        ]
+    }
+}

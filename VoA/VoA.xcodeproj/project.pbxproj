@@ -70,9 +70,17 @@
 		98AC10E623E2CE45007D849C /* ExtensionSwiftlyUserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98AC10E523E2CE45007D849C /* ExtensionSwiftlyUserDefault.swift */; };
 		98AC10E923E2D48F007D849C /* StartArriveAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98AC10E823E2D48F007D849C /* StartArriveAlertViewController.swift */; };
 		98AC10EB23E2D4DD007D849C /* StartArriveAlertViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 98AC10EA23E2D4DD007D849C /* StartArriveAlertViewController.xib */; };
+		98AEFED023EA50FB00485E8F /* RoomInfoData.json in Resources */ = {isa = PBXBuildFile; fileRef = 98AEFECF23EA50F600485E8F /* RoomInfoData.json */; };
+		98AEFED123EA50FC00485E8F /* RoomInfoData.json in Resources */ = {isa = PBXBuildFile; fileRef = 98AEFECF23EA50F600485E8F /* RoomInfoData.json */; };
+		98AEFED323EA524100485E8F /* RoomInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98AEFED223EA524100485E8F /* RoomInfoModel.swift */; };
 		98FAA87123E95F5000399E6C /* ExtensionReactive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98FAA87023E95F5000399E6C /* ExtensionReactive.swift */; };
 		98FAA87423E9627A00399E6C /* BaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98FAA87323E9627A00399E6C /* BaseModel.swift */; };
 		98FAA87723E963E600399E6C /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98FAA87623E963E600399E6C /* UserModel.swift */; };
+		98FAA87D23E99FFB00399E6C /* RoomInfoAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98FAA87C23E99FFB00399E6C /* RoomInfoAPI.swift */; };
+		98FAA87F23E9A0F100399E6C /* HomeNetworker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98FAA87E23E9A0F100399E6C /* HomeNetworker.swift */; };
+		98FAA88123E9A54100399E6C /* RoomIDsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98FAA88023E9A54100399E6C /* RoomIDsModel.swift */; };
+		98FAA88523E9A96A00399E6C /* RoomDatas.json in Resources */ = {isa = PBXBuildFile; fileRef = 98FAA88423E9A96A00399E6C /* RoomDatas.json */; };
+		98FAA88623E9A96A00399E6C /* RoomDatas.json in Resources */ = {isa = PBXBuildFile; fileRef = 98FAA88423E9A96A00399E6C /* RoomDatas.json */; };
 		C6775C3D2ED193085C52BF36 /* libPods-VoA.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F200F6CD0D0A9C3D4F5D9D2F /* libPods-VoA.a */; };
 /* End PBXBuildFile section */
 
@@ -159,9 +167,15 @@
 		98AC10E523E2CE45007D849C /* ExtensionSwiftlyUserDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionSwiftlyUserDefault.swift; sourceTree = "<group>"; };
 		98AC10E823E2D48F007D849C /* StartArriveAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartArriveAlertViewController.swift; sourceTree = "<group>"; };
 		98AC10EA23E2D4DD007D849C /* StartArriveAlertViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StartArriveAlertViewController.xib; sourceTree = "<group>"; };
+		98AEFECF23EA50F600485E8F /* RoomInfoData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = RoomInfoData.json; sourceTree = "<group>"; };
+		98AEFED223EA524100485E8F /* RoomInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomInfoModel.swift; sourceTree = "<group>"; };
 		98FAA87023E95F5000399E6C /* ExtensionReactive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionReactive.swift; sourceTree = "<group>"; };
 		98FAA87323E9627A00399E6C /* BaseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseModel.swift; sourceTree = "<group>"; };
 		98FAA87623E963E600399E6C /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		98FAA87C23E99FFB00399E6C /* RoomInfoAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomInfoAPI.swift; sourceTree = "<group>"; };
+		98FAA87E23E9A0F100399E6C /* HomeNetworker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeNetworker.swift; sourceTree = "<group>"; };
+		98FAA88023E9A54100399E6C /* RoomIDsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomIDsModel.swift; sourceTree = "<group>"; };
+		98FAA88423E9A96A00399E6C /* RoomDatas.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = RoomDatas.json; sourceTree = "<group>"; };
 		A27AAFE9CFBDBC1998A60A24 /* libPods-VoATests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-VoATests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA51C22EA9BFCCDBC75F47A9 /* Pods-VoA.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VoA.release.xcconfig"; path = "Target Support Files/Pods-VoA/Pods-VoA.release.xcconfig"; sourceTree = "<group>"; };
 		F200F6CD0D0A9C3D4F5D9D2F /* libPods-VoA.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-VoA.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -245,10 +259,10 @@
 		4C570F4823CC5FFB00C438CA /* SDK */ = {
 			isa = PBXGroup;
 			children = (
-				98FAA87223E9626800399E6C /* Models */,
 				4C570F5223CC621200C438CA /* VoAService.swift */,
 				4C33B5CE23CD6538003A0484 /* Netwoker.swift */,
 				98475C8423E94528000A8018 /* JsonFiles */,
+				98FAA87223E9626800399E6C /* Models */,
 				4C33B5CD23CD6524003A0484 /* REST */,
 				4C570F4923CC600100C438CA /* Graphql */,
 			);
@@ -418,6 +432,7 @@
 			isa = PBXGroup;
 			children = (
 				98475C7F23E93F44000A8018 /* LoginAPI.swift */,
+				98FAA87C23E99FFB00399E6C /* RoomInfoAPI.swift */,
 			);
 			path = APi;
 			sourceTree = "<group>";
@@ -426,6 +441,7 @@
 			isa = PBXGroup;
 			children = (
 				98475C8223E941F0000A8018 /* LoginNetworker.swift */,
+				98FAA87E23E9A0F100399E6C /* HomeNetworker.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -434,6 +450,8 @@
 			isa = PBXGroup;
 			children = (
 				98475C8523E94548000A8018 /* LoginResponseJson.json */,
+				98FAA88423E9A96A00399E6C /* RoomDatas.json */,
+				98AEFECF23EA50F600485E8F /* RoomInfoData.json */,
 			);
 			path = JsonFiles;
 			sourceTree = "<group>";
@@ -500,6 +518,8 @@
 			children = (
 				98FAA87323E9627A00399E6C /* BaseModel.swift */,
 				98FAA87623E963E600399E6C /* UserModel.swift */,
+				98FAA88023E9A54100399E6C /* RoomIDsModel.swift */,
+				98AEFED223EA524100485E8F /* RoomInfoModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -606,6 +626,8 @@
 				4C570F4723CC5FF000C438CA /* schema.json in Resources */,
 				4C5D0DF423D4450D00B3800D /* GoogleService-Info.plist in Resources */,
 				4C7D06DF23C961240096B86C /* Assets.xcassets in Resources */,
+				98AEFED023EA50FB00485E8F /* RoomInfoData.json in Resources */,
+				98FAA88523E9A96A00399E6C /* RoomDatas.json in Resources */,
 				9861E52D23DEB832007844D6 /* HomeViewController.xib in Resources */,
 				98AC10EB23E2D4DD007D849C /* StartArriveAlertViewController.xib in Resources */,
 				4C570F4D23CC609200C438CA /* LaunchListQuery.graphql in Resources */,
@@ -616,6 +638,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				98AEFED123EA50FC00485E8F /* RoomInfoData.json in Resources */,
+				98FAA88623E9A96A00399E6C /* RoomDatas.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -702,12 +726,14 @@
 				4C5D650823C96CC100822386 /* SplashViewController.swift in Sources */,
 				98FAA87423E9627A00399E6C /* BaseModel.swift in Sources */,
 				988D2B4423DDA895005CD84F /* LoginInfoViewController.swift in Sources */,
+				98FAA87D23E99FFB00399E6C /* RoomInfoAPI.swift in Sources */,
 				98475C8323E941F0000A8018 /* LoginNetworker.swift in Sources */,
 				9861E53023DECC61007844D6 /* LeftMenuViewController.swift in Sources */,
 				9839076523DF215000AAA064 /* LeftMenuView.swift in Sources */,
 				98AC10E923E2D48F007D849C /* StartArriveAlertViewController.swift in Sources */,
 				4C33B5D423CD690C003A0484 /* VoAError.swift in Sources */,
 				985F142423E40AF700899172 /* MemberInviteHeaderView.swift in Sources */,
+				98FAA88123E9A54100399E6C /* RoomIDsModel.swift in Sources */,
 				985F141F23E407E200899172 /* BaseCollectionReusableView.swift in Sources */,
 				4C33B5CF23CD6538003A0484 /* Netwoker.swift in Sources */,
 				98475C8023E93F44000A8018 /* LoginAPI.swift in Sources */,
@@ -719,6 +745,7 @@
 				4C46F78723CE083B0031D3E0 /* ExtensionUIView.swift in Sources */,
 				98FAA87723E963E600399E6C /* UserModel.swift in Sources */,
 				9807431523E3062C00900C6E /* CreateRoomView.swift in Sources */,
+				98FAA87F23E9A0F100399E6C /* HomeNetworker.swift in Sources */,
 				985F141923E3F7BC00899172 /* MemberInviteViewController.swift in Sources */,
 				9892C3EF23E328C80017AAA1 /* CreateRoomViewModel.swift in Sources */,
 				4C24CA7523D5CFC7007D6F5D /* LoginView.swift in Sources */,
@@ -730,6 +757,7 @@
 				988FFA0523DDBD4F002ED832 /* LoginInfoViewModel.swift in Sources */,
 				4C570F5B23CC641700C438CA /* BaseViewController.swift in Sources */,
 				4C7D06D623C9611B0096B86C /* AppDelegate.swift in Sources */,
+				98AEFED323EA524100485E8F /* RoomInfoModel.swift in Sources */,
 				4C5D650A23C96CCD00822386 /* ViewController.swift in Sources */,
 				9861E52B23DE9F6E007844D6 /* AppleLoginSuccesAlert.swift in Sources */,
 				988FFA0723DDF485002ED832 /* VoAUtil.swift in Sources */,

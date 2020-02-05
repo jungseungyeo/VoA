@@ -1,0 +1,50 @@
+{
+    "status": 999,
+    "message": "",
+    "data":{
+        "roomID": 1010101,
+        "roomTItle": "안전 귀가방",
+        "participants":[
+            {
+                "userID": 1010101,
+                "userName": "린생",
+                "userStatus": "noneStart",
+                "userProfileURL": "",
+                "elapsedTime": 0,
+                "totalTime": 0,
+                "responseTime": 0,
+                "isMessage": false
+            },
+            {
+                "userID": 1010102,
+                "userName": "재림",
+                "userStatus": "starting",
+                "userProfileURL": "",
+                "elapsedTime": 30,
+                "totalTime": 60,
+                "responseTime": 0,
+                "isMessage": false
+            },
+            {
+                "userID": 1010103,
+                "userName": "보미",
+                "userStatus": "end",
+                "userProfileURL": "",
+                "elapsedTime": 45,
+                "totalTime": 60,
+                "responseTime": 0,
+                "isMessage": true
+            },
+            {
+                "userID": 1010103,
+                "userName": "상환",
+                "userStatus": "past",
+                "userProfileURL": "",
+                "elapsedTime": 70,
+                "totalTime": 60,
+                "responseTime": 0,
+                "isMessage": false
+            }
+        ]
+    }
+}
