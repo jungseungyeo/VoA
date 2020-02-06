@@ -11,10 +11,16 @@ import RxCocoa
 
 import SwiftyJSON
 
-enum HomeViewSatus {
-    case noneRoomView // 내가 속한 방이 없고 방을 만들어야하는 View
-    case startingRoomView // 내가 속한 귀가방이 귀가 시작한 View
-    case noneStartRoomView // 내가 속한 귀가방이 아직 귀가를 시작하지 않은 View
+enum HomeViewSatus: Int {
+    case noneRoomView = 0 // 내가 속한 방이 없고 방을 만들어야하는 View
+    case noneStartRoomView = 1 // 내가 속한 귀가방이 귀가 시작한 View
+    case startingRoomView = 2 // 내가 속한 귀가방이 아직 귀가를 시작하지 않은 View
+}
+
+enum StartingRoomViewSection: Int {
+    case myStatus = 0
+    case memberStatus = 1
+    case endMemberStatus = 2
 }
 
 enum HomeNetworkState {
@@ -38,7 +44,7 @@ class HomeViewModel: NSObject, ReactiveViewModelable {
         public let createBtnAction: Observable<Void>
         public let networkState = PublishRelay<HomeNetworkState>()
         
-        public let changedView = PublishRelay<HomeViewSatus>()
+        public let changedView = BehaviorRelay<HomeViewSatus>(value: .noneStartRoomView)
     }
     
     private let bag = DisposeBag()
@@ -49,8 +55,27 @@ class HomeViewModel: NSObject, ReactiveViewModelable {
     public private(set) var roomDataModels: [RoomIDModel]?
     public private(set) var listRoomDataModels: [RoomIDModel]?
     
-    // Home
-    public private(set) var roomInfoModel: RoomInfoModel?
+    // starting Home
+    public private(set) lazy var roomInfoModel: RoomInfoModel? = nil
+    public private(set) lazy var myInfo: Participant? = nil
+    public private(set) lazy var normalParticipants: [Participant]? = nil
+    public private(set) lazy var endParticipants: [Participant]? = nil
+    
+    public private(set) lazy var sectionCount: Int = {
+        guard let participants = self.roomInfoModel?.participants else {
+            return 2
+        }
+        let count = participants
+            .filter({ (model) -> Bool in
+                guard let myUserID = UserViewModel.shared.userModel?.userID else { return false }
+                return (model.userID ?? 0) != myUserID
+            })
+            .filter { (model) -> Bool in
+                
+            return model.userStatus == .end
+        }.count
+        return count >= 1 ? 3 : 2
+    }()
     
     public private(set) var currentRoomID: Int?
     
@@ -77,6 +102,8 @@ class HomeViewModel: NSObject, ReactiveViewModelable {
             guard let self = self else { return }
             let model = self.settingRoomInfo(json: json)
             self.roomInfoModel = model
+            self.sortRoomInfo()
+            self.myInfo = self.getMyInfo()
             
             if (self.roomInfoModel?.participants?.count ?? 1) <= 1 {
                 // 귀가 방을 시작 할 수 없는 상태
@@ -87,22 +114,24 @@ class HomeViewModel: NSObject, ReactiveViewModelable {
                 self.output.networkState.accept(.complete)
                 self.output.changedView.accept(.startingRoomView)
             }
-        }, onError: { [weak self] (error) in
-            guard let self = self else { return }
-//            self.output.networkState.accept(.error(error))
-            let model = self.demoRoomInfo()
-            self.roomInfoModel = model
-            
-            if (self.roomInfoModel?.participants?.count ?? 1) <= 1 {
-                // 귀가 방을 시작 할 수 없는 상태
-                self.output.networkState.accept(.complete)
-                self.output.changedView.accept(.noneStartRoomView)
-            } else {
-                // 귀가 방을 시작하는 상태
-                self.output.networkState.accept(.complete)
-                self.output.changedView.accept(.startingRoomView)
-            }
-            }).disposed(by: bag)
+            }, onError: { [weak self] (error) in
+                guard let self = self else { return }
+                //            self.output.networkState.accept(.error(error))
+                let model = self.demoRoomInfo()
+                self.roomInfoModel = model
+                self.sortRoomInfo()
+                self.myInfo = self.getMyInfo()
+                
+                if (self.roomInfoModel?.participants?.count ?? 1) <= 1 {
+                    // 귀가 방을 시작 할 수 없는 상태
+                    self.output.networkState.accept(.complete)
+                    self.output.changedView.accept(.noneStartRoomView)
+                } else {
+                    // 귀가 방을 시작하는 상태
+                    self.output.networkState.accept(.complete)
+                    self.output.changedView.accept(.startingRoomView)
+                }
+        }).disposed(by: bag)
         
         input.request
             .map { _ -> HomeNetworkState in
@@ -171,6 +200,22 @@ private extension HomeViewModel {
         }
     }
     
+    func sortRoomInfo() {
+        guard let roomInfoModel = self.roomInfoModel else { return }
+        let endParticipants = roomInfoModel.participants?.filter({ (model) -> Bool in
+            return model.userStatus == .end
+        })
+        let normalParticipants = roomInfoModel.participants?.filter({ (model) -> Bool in
+            return model.userStatus != .end
+        }).filter({ (model) -> Bool in
+            guard let myUserID = UserViewModel.shared.userModel?.userID else { return false }
+            return (model.userID ?? 0) != myUserID
+        })
+        self.normalParticipants = normalParticipants
+        self.endParticipants = endParticipants
+        
+    }
+    
     func settingReuqestRoomtID() {
         guard let roomID = roomDataModels?.last?.roomID else { return }
         currentRoomID = roomID
@@ -189,5 +234,18 @@ private extension HomeViewModel {
         guard let dict = VoAUtil.loadJSON("RoomInfoData") as? [String: Any] else { return nil }
         let responseModel = RoomInfoRespnseModel(JSON: dict)
         return responseModel?.data
+    }
+}
+
+// Starting My Header
+extension HomeViewModel {
+    func getMyInfo() -> Participant? {
+        guard let myUserID = UserViewModel.shared.userModel?.userID else { return nil }
+        guard let myInfoModel = self.roomInfoModel?.participants else { return nil }
+        let myInfo = myInfoModel.filter { (model) -> Bool in
+            return (model.userID ?? 0) == myUserID
+        }.first
+        
+        return myInfo
     }
 }

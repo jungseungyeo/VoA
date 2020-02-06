@@ -51,6 +51,19 @@ class VoAColor: NSObject {
         static let confirmColor: UIColor = VoAColor.LoinInfo.confirmColor
         static let inValidConfirmColor: UIColor = VoAColor.LoinInfo.notValidConfirmColor
     }
+    
+    struct StartingRoom {
+        static let navigationBackgroundColor: UIColor = .init(r: 29, g: 30, b: 43)
+        static let headerMyStatusDescriptionColor: UIColor = .init(r: 155, g: 159, b: 188)
+        static let headerMyStatusnColor: UIColor = .init(r: 255, g: 177, b: 94)
+        static let noneStartTitleColor: UIColor = .init(r: 155, g: 159, b: 188)
+        static let startBtnTitleColor: UIColor = .init(r: 255, g: 177, b: 92)
+        static let startBlurTopColor: UIColor = .init(r: 38, g: 40, b: 54)
+        static let startBlurBottomColor: UIColor = .init(r: 15, g: 16, b: 21)
+        static let pastStartBtnLeftColor: UIColor = .init(r: 255, g: 129, b: 109)
+        static let pastStartBtnRigthColor: UIColor = .init(r: 255, g: 88, b: 59)
+        static let startingMemeberContainerViewColor: UIColor = .init(r: 47, g: 49, b: 68)
+    }
 }
 
 extension UIColor {

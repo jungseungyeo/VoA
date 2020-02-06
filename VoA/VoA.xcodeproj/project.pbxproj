@@ -41,12 +41,16 @@
 		5036A061A8E5814C8AC6D2BC /* libPods-VoATests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A27AAFE9CFBDBC1998A60A24 /* libPods-VoATests.a */; };
 		9807431323E305ED00900C6E /* CreateRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9807431223E305ED00900C6E /* CreateRoomViewController.swift */; };
 		9807431523E3062C00900C6E /* CreateRoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9807431423E3062C00900C6E /* CreateRoomView.swift */; };
+		9814577223EAE8EF008DF51E /* StartingMemeberHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9814577123EAE8EF008DF51E /* StartingMemeberHeaderView.swift */; };
+		9814577423EAEDE1008DF51E /* StartingRoomEndHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9814577323EAEDE1008DF51E /* StartingRoomEndHeaderView.swift */; };
 		9839076523DF215000AAA064 /* LeftMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9839076423DF215000AAA064 /* LeftMenuView.swift */; };
 		9839076723DF244200AAA064 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9839076623DF244200AAA064 /* HomeViewModel.swift */; };
 		9839076923DF28E900AAA064 /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9839076823DF28E900AAA064 /* UserViewModel.swift */; };
 		98475C8023E93F44000A8018 /* LoginAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98475C7F23E93F44000A8018 /* LoginAPI.swift */; };
 		98475C8323E941F0000A8018 /* LoginNetworker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98475C8223E941F0000A8018 /* LoginNetworker.swift */; };
 		98475C8623E94548000A8018 /* LoginResponseJson.json in Resources */ = {isa = PBXBuildFile; fileRef = 98475C8523E94548000A8018 /* LoginResponseJson.json */; };
+		985E75B123EAAD2E00C7AC1D /* NoneRoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 985E75B023EAAD2E00C7AC1D /* NoneRoomView.swift */; };
+		985E75B423EAAE2800C7AC1D /* NibInitializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 985E75B323EAAE2800C7AC1D /* NibInitializable.swift */; };
 		985F141923E3F7BC00899172 /* MemberInviteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 985F141823E3F7BC00899172 /* MemberInviteViewController.swift */; };
 		985F141B23E3F7F000899172 /* MemeberInviteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 985F141A23E3F7F000899172 /* MemeberInviteView.swift */; };
 		985F141D23E3FCD300899172 /* MemberInviteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 985F141C23E3FCD300899172 /* MemberInviteViewModel.swift */; };
@@ -59,8 +63,9 @@
 		985F142C23E41C5A00899172 /* KakaoCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 985F142B23E41C5A00899172 /* KakaoCommon.framework */; };
 		9861E52923DE9F5F007844D6 /* AppleLoginSuccesAlert.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9861E52823DE9F5F007844D6 /* AppleLoginSuccesAlert.xib */; };
 		9861E52B23DE9F6E007844D6 /* AppleLoginSuccesAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9861E52A23DE9F6E007844D6 /* AppleLoginSuccesAlert.swift */; };
-		9861E52D23DEB832007844D6 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9861E52C23DEB832007844D6 /* HomeViewController.xib */; };
+		9861E52D23DEB832007844D6 /* NoneRoomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9861E52C23DEB832007844D6 /* NoneRoomView.xib */; };
 		9861E53023DECC61007844D6 /* LeftMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9861E52F23DECC61007844D6 /* LeftMenuViewController.swift */; };
+		986C76BE23EC10E70015B161 /* StartingMemeberCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 986C76BD23EC10E70015B161 /* StartingMemeberCollectionCell.swift */; };
 		988D2B4123DDA32B005CD84F /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 988D2B4023DDA32B005CD84F /* BaseNavigationController.swift */; };
 		988D2B4423DDA895005CD84F /* LoginInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 988D2B4323DDA895005CD84F /* LoginInfoViewController.swift */; };
 		988D2B4623DDAAE9005CD84F /* LoginInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 988D2B4523DDAAE9005CD84F /* LoginInfoView.swift */; };
@@ -73,6 +78,8 @@
 		98AEFED023EA50FB00485E8F /* RoomInfoData.json in Resources */ = {isa = PBXBuildFile; fileRef = 98AEFECF23EA50F600485E8F /* RoomInfoData.json */; };
 		98AEFED123EA50FC00485E8F /* RoomInfoData.json in Resources */ = {isa = PBXBuildFile; fileRef = 98AEFECF23EA50F600485E8F /* RoomInfoData.json */; };
 		98AEFED323EA524100485E8F /* RoomInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98AEFED223EA524100485E8F /* RoomInfoModel.swift */; };
+		98B3E3E223EAB3F700EF6BBC /* StartingRoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B3E3E123EAB3F700EF6BBC /* StartingRoomView.swift */; };
+		98B3E3E923EAB9D600EF6BBC /* StartingRoomHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B3E3E823EAB9D600EF6BBC /* StartingRoomHeaderView.swift */; };
 		98FAA87123E95F5000399E6C /* ExtensionReactive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98FAA87023E95F5000399E6C /* ExtensionReactive.swift */; };
 		98FAA87423E9627A00399E6C /* BaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98FAA87323E9627A00399E6C /* BaseModel.swift */; };
 		98FAA87723E963E600399E6C /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98FAA87623E963E600399E6C /* UserModel.swift */; };
@@ -138,12 +145,16 @@
 		813F61DC0558B3D410448E08 /* Pods-VoA.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VoA.debug.xcconfig"; path = "Target Support Files/Pods-VoA/Pods-VoA.debug.xcconfig"; sourceTree = "<group>"; };
 		9807431223E305ED00900C6E /* CreateRoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRoomViewController.swift; sourceTree = "<group>"; };
 		9807431423E3062C00900C6E /* CreateRoomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRoomView.swift; sourceTree = "<group>"; };
+		9814577123EAE8EF008DF51E /* StartingMemeberHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartingMemeberHeaderView.swift; sourceTree = "<group>"; };
+		9814577323EAEDE1008DF51E /* StartingRoomEndHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartingRoomEndHeaderView.swift; sourceTree = "<group>"; };
 		9839076423DF215000AAA064 /* LeftMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftMenuView.swift; sourceTree = "<group>"; };
 		9839076623DF244200AAA064 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		9839076823DF28E900AAA064 /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
 		98475C7F23E93F44000A8018 /* LoginAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginAPI.swift; sourceTree = "<group>"; };
 		98475C8223E941F0000A8018 /* LoginNetworker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginNetworker.swift; sourceTree = "<group>"; };
 		98475C8523E94548000A8018 /* LoginResponseJson.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = LoginResponseJson.json; sourceTree = "<group>"; };
+		985E75B023EAAD2E00C7AC1D /* NoneRoomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoneRoomView.swift; sourceTree = "<group>"; };
+		985E75B323EAAE2800C7AC1D /* NibInitializable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibInitializable.swift; sourceTree = "<group>"; };
 		985F141823E3F7BC00899172 /* MemberInviteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberInviteViewController.swift; sourceTree = "<group>"; };
 		985F141A23E3F7F000899172 /* MemeberInviteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemeberInviteView.swift; sourceTree = "<group>"; };
 		985F141C23E3FCD300899172 /* MemberInviteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberInviteViewModel.swift; sourceTree = "<group>"; };
@@ -156,8 +167,9 @@
 		985F142B23E41C5A00899172 /* KakaoCommon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = KakaoCommon.framework; sourceTree = "<group>"; };
 		9861E52823DE9F5F007844D6 /* AppleLoginSuccesAlert.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AppleLoginSuccesAlert.xib; sourceTree = "<group>"; };
 		9861E52A23DE9F6E007844D6 /* AppleLoginSuccesAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleLoginSuccesAlert.swift; sourceTree = "<group>"; };
-		9861E52C23DEB832007844D6 /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
+		9861E52C23DEB832007844D6 /* NoneRoomView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoneRoomView.xib; sourceTree = "<group>"; };
 		9861E52F23DECC61007844D6 /* LeftMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftMenuViewController.swift; sourceTree = "<group>"; };
+		986C76BD23EC10E70015B161 /* StartingMemeberCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartingMemeberCollectionCell.swift; sourceTree = "<group>"; };
 		988D2B4023DDA32B005CD84F /* BaseNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
 		988D2B4323DDA895005CD84F /* LoginInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInfoViewController.swift; sourceTree = "<group>"; };
 		988D2B4523DDAAE9005CD84F /* LoginInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInfoView.swift; sourceTree = "<group>"; };
@@ -169,6 +181,8 @@
 		98AC10EA23E2D4DD007D849C /* StartArriveAlertViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StartArriveAlertViewController.xib; sourceTree = "<group>"; };
 		98AEFECF23EA50F600485E8F /* RoomInfoData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = RoomInfoData.json; sourceTree = "<group>"; };
 		98AEFED223EA524100485E8F /* RoomInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomInfoModel.swift; sourceTree = "<group>"; };
+		98B3E3E123EAB3F700EF6BBC /* StartingRoomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartingRoomView.swift; sourceTree = "<group>"; };
+		98B3E3E823EAB9D600EF6BBC /* StartingRoomHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartingRoomHeaderView.swift; sourceTree = "<group>"; };
 		98FAA87023E95F5000399E6C /* ExtensionReactive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionReactive.swift; sourceTree = "<group>"; };
 		98FAA87323E9627A00399E6C /* BaseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseModel.swift; sourceTree = "<group>"; };
 		98FAA87623E963E600399E6C /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
@@ -290,6 +304,7 @@
 		4C570F5423CC628B00C438CA /* Protocol */ = {
 			isa = PBXGroup;
 			children = (
+				985E75B323EAAE2800C7AC1D /* NibInitializable.swift */,
 				4C570F5523CC629E00C438CA /* ReactiveViewModelable.swift */,
 			);
 			path = Protocol;
@@ -397,8 +412,8 @@
 				9807431123E305DD00900C6E /* CreateRoom */,
 				98AC10E723E2D479007D849C /* StartArriveAlert */,
 				9861E52E23DECC51007844D6 /* LeftMenu */,
+				98134B4A23EAB22E0031E48A /* HomeViews */,
 				4CB737DB23D5E27600E90929 /* HomeViewController.swift */,
-				9861E52C23DEB832007844D6 /* HomeViewController.xib */,
 				9839076623DF244200AAA064 /* HomeViewModel.swift */,
 			);
 			path = Home;
@@ -426,6 +441,23 @@
 				9892C3EE23E328C80017AAA1 /* CreateRoomViewModel.swift */,
 			);
 			path = CreateRoom;
+			sourceTree = "<group>";
+		};
+		98134B4A23EAB22E0031E48A /* HomeViews */ = {
+			isa = PBXGroup;
+			children = (
+				98B3E3E623EAB9BC00EF6BBC /* StartingRoomView */,
+				98B3E3E523EAB9B200EF6BBC /* NoneView */,
+			);
+			path = HomeViews;
+			sourceTree = "<group>";
+		};
+		9814577523EBDCFC008DF51E /* MyStatus */ = {
+			isa = PBXGroup;
+			children = (
+				98B3E3E823EAB9D600EF6BBC /* StartingRoomHeaderView.swift */,
+			);
+			path = MyStatus;
 			sourceTree = "<group>";
 		};
 		98475C7E23E93F3A000A8018 /* APi */ = {
@@ -494,6 +526,14 @@
 			path = LeftMenu;
 			sourceTree = "<group>";
 		};
+		986C76BC23EC0F240015B161 /* EndMemberStatus */ = {
+			isa = PBXGroup;
+			children = (
+				9814577323EAEDE1008DF51E /* StartingRoomEndHeaderView.swift */,
+			);
+			path = EndMemberStatus;
+			sourceTree = "<group>";
+		};
 		988D2B4223DDA874005CD84F /* LoginUserInfo */ = {
 			isa = PBXGroup;
 			children = (
@@ -511,6 +551,43 @@
 				98AC10EA23E2D4DD007D849C /* StartArriveAlertViewController.xib */,
 			);
 			path = StartArriveAlert;
+			sourceTree = "<group>";
+		};
+		98B3E3E523EAB9B200EF6BBC /* NoneView */ = {
+			isa = PBXGroup;
+			children = (
+				985E75B023EAAD2E00C7AC1D /* NoneRoomView.swift */,
+				9861E52C23DEB832007844D6 /* NoneRoomView.xib */,
+			);
+			path = NoneView;
+			sourceTree = "<group>";
+		};
+		98B3E3E623EAB9BC00EF6BBC /* StartingRoomView */ = {
+			isa = PBXGroup;
+			children = (
+				98B3E3E723EAB9C600EF6BBC /* Items */,
+				98B3E3E123EAB3F700EF6BBC /* StartingRoomView.swift */,
+			);
+			path = StartingRoomView;
+			sourceTree = "<group>";
+		};
+		98B3E3E723EAB9C600EF6BBC /* Items */ = {
+			isa = PBXGroup;
+			children = (
+				9814577523EBDCFC008DF51E /* MyStatus */,
+				98E4FA6623EC0C6100F1F3A3 /* MemeberStatus */,
+				986C76BC23EC0F240015B161 /* EndMemberStatus */,
+			);
+			path = Items;
+			sourceTree = "<group>";
+		};
+		98E4FA6623EC0C6100F1F3A3 /* MemeberStatus */ = {
+			isa = PBXGroup;
+			children = (
+				9814577123EAE8EF008DF51E /* StartingMemeberHeaderView.swift */,
+				986C76BD23EC10E70015B161 /* StartingMemeberCollectionCell.swift */,
+			);
+			path = MemeberStatus;
 			sourceTree = "<group>";
 		};
 		98FAA87223E9626800399E6C /* Models */ = {
@@ -628,7 +705,7 @@
 				4C7D06DF23C961240096B86C /* Assets.xcassets in Resources */,
 				98AEFED023EA50FB00485E8F /* RoomInfoData.json in Resources */,
 				98FAA88523E9A96A00399E6C /* RoomDatas.json in Resources */,
-				9861E52D23DEB832007844D6 /* HomeViewController.xib in Resources */,
+				9861E52D23DEB832007844D6 /* NoneRoomView.xib in Resources */,
 				98AC10EB23E2D4DD007D849C /* StartArriveAlertViewController.xib in Resources */,
 				4C570F4D23CC609200C438CA /* LaunchListQuery.graphql in Resources */,
 			);
@@ -728,8 +805,10 @@
 				988D2B4423DDA895005CD84F /* LoginInfoViewController.swift in Sources */,
 				98FAA87D23E99FFB00399E6C /* RoomInfoAPI.swift in Sources */,
 				98475C8323E941F0000A8018 /* LoginNetworker.swift in Sources */,
+				985E75B423EAAE2800C7AC1D /* NibInitializable.swift in Sources */,
 				9861E53023DECC61007844D6 /* LeftMenuViewController.swift in Sources */,
 				9839076523DF215000AAA064 /* LeftMenuView.swift in Sources */,
+				986C76BE23EC10E70015B161 /* StartingMemeberCollectionCell.swift in Sources */,
 				98AC10E923E2D48F007D849C /* StartArriveAlertViewController.swift in Sources */,
 				4C33B5D423CD690C003A0484 /* VoAError.swift in Sources */,
 				985F142423E40AF700899172 /* MemberInviteHeaderView.swift in Sources */,
@@ -742,22 +821,27 @@
 				98FAA87123E95F5000399E6C /* ExtensionReactive.swift in Sources */,
 				4C570F5123CC61EE00C438CA /* GraphqlNetworker.swift in Sources */,
 				9807431323E305ED00900C6E /* CreateRoomViewController.swift in Sources */,
+				985E75B123EAAD2E00C7AC1D /* NoneRoomView.swift in Sources */,
 				4C46F78723CE083B0031D3E0 /* ExtensionUIView.swift in Sources */,
 				98FAA87723E963E600399E6C /* UserModel.swift in Sources */,
 				9807431523E3062C00900C6E /* CreateRoomView.swift in Sources */,
+				98B3E3E223EAB3F700EF6BBC /* StartingRoomView.swift in Sources */,
 				98FAA87F23E9A0F100399E6C /* HomeNetworker.swift in Sources */,
 				985F141923E3F7BC00899172 /* MemberInviteViewController.swift in Sources */,
 				9892C3EF23E328C80017AAA1 /* CreateRoomViewModel.swift in Sources */,
 				4C24CA7523D5CFC7007D6F5D /* LoginView.swift in Sources */,
+				9814577223EAE8EF008DF51E /* StartingMemeberHeaderView.swift in Sources */,
 				4C02C2DA23D446CE0049D988 /* VoAIntegrator.swift in Sources */,
 				4CB737DC23D5E27600E90929 /* HomeViewController.swift in Sources */,
 				4C570F5623CC629E00C438CA /* ReactiveViewModelable.swift in Sources */,
+				98B3E3E923EAB9D600EF6BBC /* StartingRoomHeaderView.swift in Sources */,
 				4C570F5823CC62F700C438CA /* SplashViewModel.swift in Sources */,
 				985F141B23E3F7F000899172 /* MemeberInviteView.swift in Sources */,
 				988FFA0523DDBD4F002ED832 /* LoginInfoViewModel.swift in Sources */,
 				4C570F5B23CC641700C438CA /* BaseViewController.swift in Sources */,
 				4C7D06D623C9611B0096B86C /* AppDelegate.swift in Sources */,
 				98AEFED323EA524100485E8F /* RoomInfoModel.swift in Sources */,
+				9814577423EAEDE1008DF51E /* StartingRoomEndHeaderView.swift in Sources */,
 				4C5D650A23C96CCD00822386 /* ViewController.swift in Sources */,
 				9861E52B23DE9F6E007844D6 /* AppleLoginSuccesAlert.swift in Sources */,
 				988FFA0723DDF485002ED832 /* VoAUtil.swift in Sources */,

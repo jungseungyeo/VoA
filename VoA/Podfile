@@ -11,14 +11,14 @@ target 'VoA' do
   pod 'SwiftyJSON', '4.0', :inhibit_warnings => true
   pod 'SwiftlyIndicator', '1.2.0'
   pod 'SwiftlyUserDefault'
-  pod 'Kingfisher', '~> 5.0'
-  pod 'LGSideMenuController'
+  pod 'Kingfisher', '~> 5.0', :inhibit_warnings => true
+  pod 'LGSideMenuController', :inhibit_warnings => true
   
   pod 'Apollo', '0.20.0', :inhibit_warnings => true
   pod 'RxApolloClient', '1.3.0', :inhibit_warnings => true
   
-  pod 'Firebase/Analytics'
-  pod 'Firebase/Messaging'
+  pod 'Firebase/Analytics', :inhibit_warnings => true
+  pod 'Firebase/Messaging', :inhibit_warnings => true
 
   target 'VoATests' do
     inherit! :search_paths

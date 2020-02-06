@@ -46,7 +46,7 @@ final public class Participant: BaseModel {
     
     public private(set) var userID: Int?
     public private(set) var userName: String?
-    public private(set) var userStatus: UserStatus?
+    public private(set) var userStatus: UserStatus = .noneStart
     public private(set) var userProfileURL: String?
     
     public private(set) var elapsedTime: Int?
