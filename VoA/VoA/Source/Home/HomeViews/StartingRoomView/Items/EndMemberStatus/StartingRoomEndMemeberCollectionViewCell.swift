@@ -1,5 +1,5 @@
 //
-//  StartingMemeberCollectionCell.swift
+//  StartingRoomEndMemeberCollectionViewCell.swift
 //  VoA
 //
 //  Created by saeng lin on 2020/02/06.
@@ -8,9 +8,11 @@
 
 import UIKit
 
-class StartingMemeberCollectionCell: BaseCollectionViewCell {
+import Kingfisher
+
+class StartingRoomEndMemeberCollectionViewCell: BaseCollectionViewCell {
     
-    static let registerID: String = "\(StartingMemeberCollectionCell.self)"
+    static let registerID: String = "\(StartingRoomEndMemeberCollectionViewCell.self)"
     
     lazy var containerView: UIView = {
         let containerView = UIView(frame: .zero)
@@ -47,7 +49,8 @@ class StartingMemeberCollectionCell: BaseCollectionViewCell {
     }()
     
     lazy var sendMessageBtn: UIButton = {
-        let btn = UIButton(type: .system)
+        let btn = UIButton(frame: .zero)
+        btn.isEnabled = false
         btn.setBackgroundImage(Const.requestMessageBtnImg, for: .normal)
         return btn
     }()
@@ -63,10 +66,10 @@ class StartingMemeberCollectionCell: BaseCollectionViewCell {
                                                                                  weight: .regular),
                                                                color: VoAColor.StartingRoom.memberRemindTimeColor)
         static let memberStatusTitle: NSAttributedString = .init(string: "123",
-                                                             font: .systemFont(ofSize: 16,
-                                                                               weight: .bold),
-                                                             color: VoAColor.Style.white)
-        static let requestMessageBtnImg: UIImage? = UIImage(named: "buttonNudgeNormal")
+                                                                 font: .systemFont(ofSize: 16,
+                                                                                   weight: .bold),
+                                                                 color: VoAColor.Style.white)
+        static let requestMessageBtnImg: UIImage? = UIImage(named: "buttonNudgeDepress")
         static let responseMessageBtnImg: UIImage? = UIImage(named: "buttonNudgeReturn")
         static let sendMessageSize: CGSize = .init(width: 93, height: 46)
     }
@@ -133,10 +136,12 @@ class StartingMemeberCollectionCell: BaseCollectionViewCell {
             remindTimeLabel.text = ""
         }
         
+        sendMessageBtn.isEnabled = isMessage
+        
         if isMessage {
-            sendMessageBtn.setBackgroundImage(Const.requestMessageBtnImg, for: .normal)
-        } else {
             sendMessageBtn.setBackgroundImage(Const.responseMessageBtnImg, for: .normal)
+        } else {
+            sendMessageBtn.setBackgroundImage(Const.requestMessageBtnImg, for: .normal)
         }
         
         switch userStatus {
@@ -147,11 +152,11 @@ class StartingMemeberCollectionCell: BaseCollectionViewCell {
             memberStatusLabel.text = "\(goHomeTime)분 후 도착"
             memberStatusLabel.textColor = VoAColor.Style.white
         case .end:
-            print()
+            memberStatusLabel.text = "귀가 완료"
+            memberStatusLabel.textColor = VoAColor.Style.white
         case .past:
             memberStatusLabel.text = "귀가 예정 시간 지남"
             memberStatusLabel.textColor = VoAColor.StartingRoom.memberWarningStatusColor
         }
     }
-
 }

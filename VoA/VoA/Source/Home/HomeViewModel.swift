@@ -248,4 +248,65 @@ extension HomeViewModel {
         
         return myInfo
     }
+    
+    func getMemberName(index: Int) -> String? {
+        guard let model = normalParticipants?[safe: index] else { return nil }
+        return model.userName
+    }
+    
+    func getMemberProfiletUrlString(index: Int) -> String? {
+        guard let model = normalParticipants?[safe: index] else { return nil }
+        return model.userProfileURL
+    }
+    
+    func getMemberGoHomeTime(index: Int) -> Int {
+        guard let model = normalParticipants?[safe: index] else { return 0 }
+        return (model.totalTime ?? 0) - (model.elapsedTime ?? 0)
+    }
+    
+    func getMemberRemindTime(index: Int) -> Int {
+        guard let model = normalParticipants?[safe: index] else { return 0 }
+        return model.responseTime ?? 0
+    }
+    
+    func getMemberStatus(index: Int) -> UserStatus {
+        guard let model = normalParticipants?[safe: index] else { return .noneStart }
+        return model.userStatus
+    }
+    
+    func isMemberMessage(index: Int) -> Bool {
+        guard let model = normalParticipants?[safe: index] else { return false }
+        return model.isMessage
+    }
+    
+    // endMemeber
+    func getEndMemberName(index: Int) -> String? {
+        guard let model = endParticipants?[safe: index] else { return nil }
+        return model.userName
+    }
+    
+    func getEndMemberProfiletUrlString(index: Int) -> String? {
+        guard let model = endParticipants?[safe: index] else { return nil }
+        return model.userProfileURL
+    }
+    
+    func getEndMemberGoHomeTime(index: Int) -> Int {
+        guard let model = endParticipants?[safe: index] else { return 0 }
+        return (model.totalTime ?? 0) - (model.elapsedTime ?? 0)
+    }
+    
+    func getEndMemberRemindTime(index: Int) -> Int {
+        guard let model = endParticipants?[safe: index] else { return 0 }
+        return model.responseTime ?? 0
+    }
+    
+    func getEndMemberStatus(index: Int) -> UserStatus {
+        guard let model = endParticipants?[safe: index] else { return .noneStart }
+        return model.userStatus
+    }
+    
+    func isEndMemberMessage(index: Int) -> Bool {
+        guard let model = endParticipants?[safe: index] else { return false }
+        return model.isMessage
+    }
 }

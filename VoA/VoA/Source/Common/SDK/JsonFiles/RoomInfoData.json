@@ -23,7 +23,7 @@
                 "elapsedTime": 30,
                 "totalTime": 60,
                 "responseTime": 0,
-                "isMessage": false
+                "isMessage": true
             },
             {
                 "userID": 1010103,
@@ -36,11 +36,21 @@
                 "isMessage": true
             },
             {
-                "userID": 1010103,
+                "userID": 1010104,
                 "userName": "상환",
                 "userStatus": "past",
                 "userProfileURL": "https://k.kakaocdn.net/dn/ceL7a8/btqzGliUqFE/PVnwdkiTke1SxDRUNuswz1/img_640x640.jpg",
                 "elapsedTime": 70,
+                "totalTime": 60,
+                "responseTime": 0,
+                "isMessage": false
+            },
+            {
+                "userID": 1010105,
+                "userName": "보미",
+                "userStatus": "end",
+                "userProfileURL": "https://k.kakaocdn.net/dn/ceL7a8/btqzGliUqFE/PVnwdkiTke1SxDRUNuswz1/img_640x640.jpg",
+                "elapsedTime": 45,
                 "totalTime": 60,
                 "responseTime": 0,
                 "isMessage": false

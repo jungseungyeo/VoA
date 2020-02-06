@@ -33,10 +33,15 @@ class HomeViewController: BaseViewController {
         startingRoomView.collectionView.delegate = self
         startingRoomView.collectionView.dataSource = self
         
+        startingRoomView.collectionView.addSubview(refreshControl)
+        
         startingRoomView.collectionView.register(StartingRoomHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: StartingRoomHeaderView.registerID)
         startingRoomView.collectionView.register(StartingMemeberHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: StartingMemeberHeaderView.registerID)
         startingRoomView.collectionView.register(StartingRoomEndHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: StartingRoomEndHeaderView.registerID)
+        
         startingRoomView.collectionView.register(StartingMemeberCollectionCell.self, forCellWithReuseIdentifier: StartingMemeberCollectionCell.registerID)
+        startingRoomView.collectionView.register(StartingRoomEndMemeberCollectionViewCell.self, forCellWithReuseIdentifier: StartingRoomEndMemeberCollectionViewCell.registerID)
+        
         return startingRoomView
     }()
     
@@ -133,14 +138,17 @@ class HomeViewController: BaseViewController {
     
     private func configueStartingRoomView() {
         logoBtn.title = viewModel.roomInfoModel?.roomTItle
-        
-        
     }
     
     override func handleError(error: Error?) {
         super.handleError(error: error)
     }
     
+    override func handleRefresh(_ sender: UIRefreshControl) {
+        super.handleRefresh(sender)
+        
+        viewModel.input.request.accept(())
+    }
 }
 
 private extension HomeViewController {
@@ -338,11 +346,27 @@ private extension HomeViewController {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: StartingMemeberCollectionCell.registerID, for: indexPath) as? StartingMemeberCollectionCell else {
                 return UICollectionViewCell()
             }
+            
+            cell.bind(name: viewModel.getMemberName(index: indexPath.item),
+                      profileURLstring: viewModel.getMemberProfiletUrlString(index: indexPath.row),
+                      remindTime: viewModel.getMemberRemindTime(index: indexPath.item),
+                      goHomeTime: viewModel.getMemberGoHomeTime(index: indexPath.item),
+                      isMessage: viewModel.isMemberMessage(index: indexPath.item),
+                      userStatus: viewModel.getMemberStatus(index: indexPath.item))
+            
             return cell
         case .endMemberStatus:
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: StartingMemeberCollectionCell.registerID, for: indexPath) as? StartingMemeberCollectionCell else {
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: StartingRoomEndMemeberCollectionViewCell.registerID, for: indexPath) as? StartingRoomEndMemeberCollectionViewCell else {
                 return UICollectionViewCell()
             }
+            
+            cell.bind(name: viewModel.getEndMemberName(index: indexPath.item),
+                      profileURLstring: viewModel.getEndMemberProfiletUrlString(index: indexPath.item),
+                      remindTime: viewModel.getEndMemberRemindTime(index: indexPath.row),
+                      goHomeTime: viewModel.getMemberGoHomeTime(index: indexPath.row),
+                      isMessage: viewModel.isEndMemberMessage(index: indexPath.row),
+                      userStatus: viewModel.getEndMemberStatus(index: indexPath.row))
+            
             return cell
         }
     }

@@ -63,6 +63,8 @@ class VoAColor: NSObject {
         static let pastStartBtnLeftColor: UIColor = .init(r: 255, g: 129, b: 109)
         static let pastStartBtnRigthColor: UIColor = .init(r: 255, g: 88, b: 59)
         static let startingMemeberContainerViewColor: UIColor = .init(r: 47, g: 49, b: 68)
+        static let memberRemindTimeColor: UIColor = .init(r: 155, g: 159, b: 188)
+        static let memberWarningStatusColor: UIColor = .init(r: 255, g: 90, b: 59)
     }
 }
 
