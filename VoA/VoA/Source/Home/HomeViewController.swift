@@ -28,6 +28,12 @@ class HomeViewController: BaseViewController {
         return noneRoomView
     }()
     
+    private lazy var showStartView: StartArriveAlertViewController = {
+        let alertView = StartArriveAlertViewController.instance()
+        alertView.delegate = self
+        return alertView
+    }()
+    
     private lazy var startingRoomView: StartingRoomView = {
         let startingRoomView = StartingRoomView(frame: view.bounds)
         startingRoomView.collectionView.delegate = self
@@ -133,7 +139,32 @@ class HomeViewController: BaseViewController {
                 
             }).disposed(by: bag)
         
+        rxMyHeaderBind()
+        
         viewModel.input.request.accept(())
+    }
+    
+    private func rxMyHeaderBind() {
+        viewModel.output.goHomeAlertShow
+            .subscribe(onNext: { [weak self] (_) in
+                guard let self = self else { return }
+                self.showStartGoHomeAlert()
+            }).disposed(by: bag)
+        
+        viewModel.output.endGoHomeTimeAlertTapped
+            .subscribe(onNext: { [weak self] (_) in
+                guard let self = self else { return }
+                UIAlertController.alert("",
+                                        message: "도착 하셨나요?",
+                                        defaultString: "확인",
+                                        cancelString: "취소",
+                                        defaultHandler: { [weak self] in
+                                            guard let self = self else { return }
+                                            self.viewModel.input.completeGoHomeBtnTapped.accept(())
+                                            
+                    }).show(self)
+                
+            }).disposed(by: bag)
     }
     
     private func configueStartingRoomView() {
@@ -245,12 +276,45 @@ extension HomeViewController: UICollectionViewDataSource {
             return startingCollectionView(collectionView, cellForItemAt: indexPath)
         }
     }
+}
+
+extension HomeViewController: StartArriveAlertViewControllerable {
+    func confirm(goHomeTime: Int) {
+        showStartView.animationPresent(self,
+                                       presentAnimated: false,
+                                       isPresent: false,
+                                       completion: { [weak self] in
+                                        guard let self = self else { return }
+                                        self.showStartView = self.getShowAlert()
+                                        self.viewModel.input.startGoHomeTimeAletTapped.accept(goHomeTime)
+        })
+    }
     
+    func cancel() {
+        showStartView.animationPresent(self,
+                                       presentAnimated: false,
+                                       isPresent: false,
+                                       completion: { [weak self] in
+                                        guard let self = self else { return }
+                                        self.showStartView = self.getShowAlert()
+        })
+    }
     
+    func getShowAlert() -> StartArriveAlertViewController {
+        let showAlert = StartArriveAlertViewController.instance()
+        showAlert.delegate = self
+        return showAlert
+    }
 }
 
 // StartingHomeViewController
 private extension HomeViewController {
+    
+    func showStartGoHomeAlert() {
+        animationPresent(showStartView,
+                         presentAnimated: false,
+                         modaltype: .overFullScreen)
+    }
     
     func startingNumberOfSections(in collectionView: UICollectionView) -> Int {
         return viewModel.sectionCount 
@@ -317,6 +381,17 @@ private extension HomeViewController {
             header.bind(myName: viewModel.myInfo?.userName,
                         myStatus: viewModel.myInfo?.userStatus,
                         remainingTime: 30)
+            
+            header.rx.startBtnTapped
+                .map { _ in return }
+                .bind(to: viewModel.input.myGoHomeBtnTapped)
+                .disposed(by: header.bag)
+            
+            header.rx.updateGoHomeBtnTapped
+                .map { _ in return }
+                .bind(to: viewModel.input.updateGoHomeTimeBtnTapped)
+                .disposed(by: header.bag)
+            
             return header
         case .memberStatus:
             guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: StartingMemeberHeaderView.registerID, for: indexPath) as? StartingMemeberHeaderView else {

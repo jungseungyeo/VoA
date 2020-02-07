@@ -66,6 +66,11 @@ class VoAColor: NSObject {
         static let memberRemindTimeColor: UIColor = .init(r: 155, g: 159, b: 188)
         static let memberWarningStatusColor: UIColor = .init(r: 255, g: 90, b: 59)
     }
+    
+    struct ShowStartAlert {
+        static let cancelBtnColor: UIColor = .init(r: 29, g: 30, b: 45)
+        static let canclerBtnShadowColor: UIColor = .init(r: 15, g: 16, b: 21)
+    }
 }
 
 extension UIColor {

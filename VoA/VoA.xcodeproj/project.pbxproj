@@ -41,6 +41,8 @@
 		5036A061A8E5814C8AC6D2BC /* libPods-VoATests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A27AAFE9CFBDBC1998A60A24 /* libPods-VoATests.a */; };
 		9807431323E305ED00900C6E /* CreateRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9807431223E305ED00900C6E /* CreateRoomViewController.swift */; };
 		9807431523E3062C00900C6E /* CreateRoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9807431423E3062C00900C6E /* CreateRoomView.swift */; };
+		980751AC23ED41A60027C141 /* RoomInfoStartingData.json in Resources */ = {isa = PBXBuildFile; fileRef = 980751AB23ED3F420027C141 /* RoomInfoStartingData.json */; };
+		980751AE23ED4F6E0027C141 /* RoomInfoComplete.json in Resources */ = {isa = PBXBuildFile; fileRef = 980751AD23ED4F6E0027C141 /* RoomInfoComplete.json */; };
 		980E169423EC335D00D016B0 /* StartingRoomEndMemeberCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980E169323EC335D00D016B0 /* StartingRoomEndMemeberCollectionViewCell.swift */; };
 		980E169723EC38A500D016B0 /* ExtensionColection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980E169623EC38A500D016B0 /* ExtensionColection.swift */; };
 		9814577223EAE8EF008DF51E /* StartingMemeberHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9814577123EAE8EF008DF51E /* StartingMemeberHeaderView.swift */; };
@@ -74,6 +76,7 @@
 		988FFA0523DDBD4F002ED832 /* LoginInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 988FFA0423DDBD4F002ED832 /* LoginInfoViewModel.swift */; };
 		988FFA0723DDF485002ED832 /* VoAUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 988FFA0623DDF485002ED832 /* VoAUtil.swift */; };
 		9892C3EF23E328C80017AAA1 /* CreateRoomViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9892C3EE23E328C80017AAA1 /* CreateRoomViewModel.swift */; };
+		98991CF723ED2D7500A73A8A /* StartArriveAlertViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98991CF623ED2D7500A73A8A /* StartArriveAlertViewModel.swift */; };
 		98AC10E623E2CE45007D849C /* ExtensionSwiftlyUserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98AC10E523E2CE45007D849C /* ExtensionSwiftlyUserDefault.swift */; };
 		98AC10E923E2D48F007D849C /* StartArriveAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98AC10E823E2D48F007D849C /* StartArriveAlertViewController.swift */; };
 		98AC10EB23E2D4DD007D849C /* StartArriveAlertViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 98AC10EA23E2D4DD007D849C /* StartArriveAlertViewController.xib */; };
@@ -147,6 +150,8 @@
 		813F61DC0558B3D410448E08 /* Pods-VoA.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VoA.debug.xcconfig"; path = "Target Support Files/Pods-VoA/Pods-VoA.debug.xcconfig"; sourceTree = "<group>"; };
 		9807431223E305ED00900C6E /* CreateRoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRoomViewController.swift; sourceTree = "<group>"; };
 		9807431423E3062C00900C6E /* CreateRoomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRoomView.swift; sourceTree = "<group>"; };
+		980751AB23ED3F420027C141 /* RoomInfoStartingData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = RoomInfoStartingData.json; sourceTree = "<group>"; };
+		980751AD23ED4F6E0027C141 /* RoomInfoComplete.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = RoomInfoComplete.json; sourceTree = "<group>"; };
 		980E169323EC335D00D016B0 /* StartingRoomEndMemeberCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartingRoomEndMemeberCollectionViewCell.swift; sourceTree = "<group>"; };
 		980E169623EC38A500D016B0 /* ExtensionColection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionColection.swift; sourceTree = "<group>"; };
 		9814577123EAE8EF008DF51E /* StartingMemeberHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartingMemeberHeaderView.swift; sourceTree = "<group>"; };
@@ -180,6 +185,7 @@
 		988FFA0423DDBD4F002ED832 /* LoginInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInfoViewModel.swift; sourceTree = "<group>"; };
 		988FFA0623DDF485002ED832 /* VoAUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoAUtil.swift; sourceTree = "<group>"; };
 		9892C3EE23E328C80017AAA1 /* CreateRoomViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRoomViewModel.swift; sourceTree = "<group>"; };
+		98991CF623ED2D7500A73A8A /* StartArriveAlertViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartArriveAlertViewModel.swift; sourceTree = "<group>"; };
 		98AC10E523E2CE45007D849C /* ExtensionSwiftlyUserDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionSwiftlyUserDefault.swift; sourceTree = "<group>"; };
 		98AC10E823E2D48F007D849C /* StartArriveAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartArriveAlertViewController.swift; sourceTree = "<group>"; };
 		98AC10EA23E2D4DD007D849C /* StartArriveAlertViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StartArriveAlertViewController.xib; sourceTree = "<group>"; };
@@ -415,7 +421,6 @@
 			isa = PBXGroup;
 			children = (
 				9807431123E305DD00900C6E /* CreateRoom */,
-				98AC10E723E2D479007D849C /* StartArriveAlert */,
 				9861E52E23DECC51007844D6 /* LeftMenu */,
 				98134B4A23EAB22E0031E48A /* HomeViews */,
 				4CB737DB23D5E27600E90929 /* HomeViewController.swift */,
@@ -460,6 +465,7 @@
 		9814577523EBDCFC008DF51E /* MyStatus */ = {
 			isa = PBXGroup;
 			children = (
+				98AC10E723E2D479007D849C /* StartArriveAlert */,
 				98B3E3E823EAB9D600EF6BBC /* StartingRoomHeaderView.swift */,
 			);
 			path = MyStatus;
@@ -489,6 +495,8 @@
 				98475C8523E94548000A8018 /* LoginResponseJson.json */,
 				98FAA88423E9A96A00399E6C /* RoomDatas.json */,
 				98AEFECF23EA50F600485E8F /* RoomInfoData.json */,
+				980751AB23ED3F420027C141 /* RoomInfoStartingData.json */,
+				980751AD23ED4F6E0027C141 /* RoomInfoComplete.json */,
 			);
 			path = JsonFiles;
 			sourceTree = "<group>";
@@ -555,6 +563,7 @@
 			children = (
 				98AC10E823E2D48F007D849C /* StartArriveAlertViewController.swift */,
 				98AC10EA23E2D4DD007D849C /* StartArriveAlertViewController.xib */,
+				98991CF623ED2D7500A73A8A /* StartArriveAlertViewModel.swift */,
 			);
 			path = StartArriveAlert;
 			sourceTree = "<group>";
@@ -711,6 +720,8 @@
 				4C7D06DF23C961240096B86C /* Assets.xcassets in Resources */,
 				98AEFED023EA50FB00485E8F /* RoomInfoData.json in Resources */,
 				98FAA88523E9A96A00399E6C /* RoomDatas.json in Resources */,
+				980751AE23ED4F6E0027C141 /* RoomInfoComplete.json in Resources */,
+				980751AC23ED41A60027C141 /* RoomInfoStartingData.json in Resources */,
 				9861E52D23DEB832007844D6 /* NoneRoomView.xib in Resources */,
 				98AC10EB23E2D4DD007D849C /* StartArriveAlertViewController.xib in Resources */,
 				4C570F4D23CC609200C438CA /* LaunchListQuery.graphql in Resources */,
@@ -849,6 +860,7 @@
 				4C570F5B23CC641700C438CA /* BaseViewController.swift in Sources */,
 				4C7D06D623C9611B0096B86C /* AppDelegate.swift in Sources */,
 				98AEFED323EA524100485E8F /* RoomInfoModel.swift in Sources */,
+				98991CF723ED2D7500A73A8A /* StartArriveAlertViewModel.swift in Sources */,
 				9814577423EAEDE1008DF51E /* StartingRoomEndHeaderView.swift in Sources */,
 				4C5D650A23C96CCD00822386 /* ViewController.swift in Sources */,
 				9861E52B23DE9F6E007844D6 /* AppleLoginSuccesAlert.swift in Sources */,
@@ -1031,7 +1043,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.0.4;
+				MARKETING_VERSION = 0.0.5;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -1083,7 +1095,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.0.4;
+				MARKETING_VERSION = 0.0.5;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
 					"$(inherited)",

@@ -8,6 +8,19 @@
 
 import Foundation
 
+import RxSwift
+import RxCocoa
+
+extension Reactive where Base: StartingRoomHeaderView {
+    var startBtnTapped: Observable<Void> {
+        return base.startBtn.rx.tap.asObservable()
+    }
+    
+    var updateGoHomeBtnTapped: Observable<Void> {
+        return base.startBtn.rx.tap.asObservable()
+    }
+}
+
 class StartingRoomHeaderView: BaseCollectionReusableView {
     
     static let registerID: String = "\(StartingRoomHeaderView.self)"
@@ -36,6 +49,8 @@ class StartingRoomHeaderView: BaseCollectionReusableView {
         
         return btn
     }()
+    
+    public var bag = DisposeBag()
     
     private struct Const {
         static let myStatusDescriptionForamt: String = "%@님의 귀가 상태"
@@ -69,6 +84,11 @@ class StartingRoomHeaderView: BaseCollectionReusableView {
         
         static let pastLeftGradient: UIColor = VoAColor.StartingRoom.pastStartBtnLeftColor
         static let pastRightGradient: UIColor = VoAColor.StartingRoom.pastStartBtnRigthColor
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        bag = DisposeBag()
     }
     
     override func setup() {
@@ -115,13 +135,13 @@ class StartingRoomHeaderView: BaseCollectionReusableView {
         switch status {
         case .noneStart:
             myStatusLabel.text = "귀가전"
-            myStatusLabel.textColor = VoAColor.StartingRoom.headerMyStatusDescriptionColor
+            myStatusLabel.textColor = VoAColor.StartingRoom.headerMyStatusnColor
             startBtn.isHidden = false
             startBtn.setBackgroundImage(Const.noneStartBtnImg, for: .normal)
             updateGoHomeTimeBtn.isHidden = true
         case .starting:
             myStatusLabel.text = "\(remainingTime ?? 0)분 후 도착"
-            myStatusLabel.textColor = VoAColor.StartingRoom.headerMyStatusDescriptionColor
+            myStatusLabel.textColor = VoAColor.StartingRoom.headerMyStatusnColor
             startBtn.isHidden = false
             startBtn.setBackgroundImage(Const.startingBtnImg, for: .normal)
             updateGoHomeTimeBtn.isHidden = false

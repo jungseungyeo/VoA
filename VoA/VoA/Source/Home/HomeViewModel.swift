@@ -38,6 +38,12 @@ class HomeViewModel: NSObject, ReactiveViewModelable {
         public let createRoomBtnTapped = PublishRelay<Void>()
         public let request = PublishRelay<Void>()
         public let requestRoomInfo = PublishRelay<Int?>()
+        
+        // Mystatus
+        public let myGoHomeBtnTapped = PublishRelay<Void>()
+        public let updateGoHomeTimeBtnTapped = PublishRelay<Void>()
+        public let startGoHomeTimeAletTapped = PublishRelay<Int>()
+        public let completeGoHomeBtnTapped = PublishRelay<Void>()
     }
     
     struct Output {
@@ -45,6 +51,11 @@ class HomeViewModel: NSObject, ReactiveViewModelable {
         public let networkState = PublishRelay<HomeNetworkState>()
         
         public let changedView = BehaviorRelay<HomeViewSatus>(value: .noneStartRoomView)
+        
+        // Mystatus
+//        public let goHomeAlertShow: Observable<Void>
+        public let goHomeAlertShow = PublishRelay<Void>()
+        public let endGoHomeTimeAlertTapped = PublishRelay<Void>()
     }
     
     private let bag = DisposeBag()
@@ -72,7 +83,7 @@ class HomeViewModel: NSObject, ReactiveViewModelable {
             })
             .filter { (model) -> Bool in
                 
-            return model.userStatus == .end
+                return model.userStatus == .end
         }.count
         return count >= 1 ? 3 : 2
     }()
@@ -168,7 +179,6 @@ class HomeViewModel: NSObject, ReactiveViewModelable {
                 
                 guard (roomDataModels?.count ?? 0) != 0 else {
                     // 귀가방 없는 상태
-                    
                     self.output.networkState.accept(.complete)
                     self.output.changedView.accept(.noneRoomView)
                     return
@@ -177,6 +187,107 @@ class HomeViewModel: NSObject, ReactiveViewModelable {
                 self.input.requestRoomInfo.accept(self.currentRoomID)
         }).disposed(by: bag)
         
+        input.startGoHomeTimeAletTapped
+            .map { _ -> HomeNetworkState in
+                return .request
+        }.bind(to: output.networkState)
+            .disposed(by: bag)
+        
+        input.startGoHomeTimeAletTapped
+            .flatMap(weak: self) { (wself, limitTime) -> Observable<JSON> in
+                let userID = UserViewModel.shared.userModel?.userID ?? 0
+                let roomID = wself.currentRoomID ?? 0
+                return HomeNetworker.startGoHomeTime(userID: userID,
+                                                     roomID: roomID,
+                                                     limitTime: limitTime).asObservable()
+        }.subscribe(onNext: { [weak self] (json) in
+            guard let self = self else { return }
+            let model = self.settingRoomInfo(json: json)
+            self.roomInfoModel = model
+            self.sortRoomInfo()
+            self.myInfo = self.getMyInfo()
+            
+            if (self.roomInfoModel?.participants?.count ?? 1) <= 1 {
+                // 귀가 방을 시작 할 수 없는 상태
+                self.output.networkState.accept(.complete)
+                self.output.changedView.accept(.noneStartRoomView)
+            } else {
+                // 귀가 방을 시작하는 상태
+                self.output.networkState.accept(.complete)
+                self.output.changedView.accept(.startingRoomView)
+            }
+        }, onError: { [weak self] (error) in
+            guard let self = self else { return }
+            //            self.output.networkState.accept(.error(error))
+            let model = self.demRoomInfoStarting()
+            self.roomInfoModel = model
+            self.sortRoomInfo()
+            self.myInfo = self.getMyInfo()
+            
+            if (self.roomInfoModel?.participants?.count ?? 1) <= 1 {
+                // 귀가 방을 시작 할 수 없는 상태
+                self.output.networkState.accept(.complete)
+                self.output.changedView.accept(.noneStartRoomView)
+            } else {
+                // 귀가 방을 시작하는 상태
+                self.output.networkState.accept(.complete)
+                self.output.changedView.accept(.startingRoomView)
+            }
+            }).disposed(by: bag)
+        
+        input.myGoHomeBtnTapped
+            .subscribe(onNext: { [weak self] (time) in
+                guard let self = self else { return }
+                guard let state = self.myInfo?.userStatus else { return }
+                
+                switch state {
+                case .noneStart:
+                    self.output.goHomeAlertShow.accept(())
+                default:
+                    self.output.endGoHomeTimeAlertTapped.accept(())
+                }
+                
+            }).disposed(by: bag)
+        
+        input.completeGoHomeBtnTapped
+            .flatMap(weak: self) { (wself, _) -> Observable<JSON> in
+                return HomeNetworker.completeGoHome(userID: UserViewModel.shared.userModel?.userID ?? 0,
+                    roomID: wself.currentRoomID ?? 0).asObservable()
+        }.subscribe(onNext: { [weak self] (json) in
+            guard let self = self else { return }
+            let model = self.settingRoomInfo(json: json)
+            self.roomInfoModel = model
+            self.sortRoomInfo()
+            self.myInfo = self.getMyInfo()
+            
+            if (self.roomInfoModel?.participants?.count ?? 1) <= 1 {
+                // 귀가 방을 시작 할 수 없는 상태
+                self.output.networkState.accept(.complete)
+                self.output.changedView.accept(.noneStartRoomView)
+            } else {
+                // 귀가 방을 시작하는 상태
+                self.output.networkState.accept(.complete)
+                self.output.changedView.accept(.startingRoomView)
+            }
+        }, onError: { [weak self] (error) in
+            guard let self = self else { return }
+            //            self.output.networkState.accept(.error(error))
+            let model = self.demRoomInfoComplete()
+            self.roomInfoModel = model
+            self.sortRoomInfo()
+            self.myInfo = self.getMyInfo()
+            
+            if (self.roomInfoModel?.participants?.count ?? 1) <= 1 {
+                // 귀가 방을 시작 할 수 없는 상태
+                self.output.networkState.accept(.complete)
+                self.output.changedView.accept(.noneStartRoomView)
+            } else {
+                // 귀가 방을 시작하는 상태
+                self.output.networkState.accept(.complete)
+                self.output.changedView.accept(.startingRoomView)
+            }
+            }).disposed(by: bag)
+            
     }
 }
 
@@ -232,6 +343,18 @@ private extension HomeViewModel {
     
     func demoRoomInfo() -> RoomInfoModel? {
         guard let dict = VoAUtil.loadJSON("RoomInfoData") as? [String: Any] else { return nil }
+        let responseModel = RoomInfoRespnseModel(JSON: dict)
+        return responseModel?.data
+    }
+    
+    func demRoomInfoStarting() -> RoomInfoModel? {
+        guard let dict = VoAUtil.loadJSON("RoomInfoStartingData") as? [String: Any] else { return nil }
+        let responseModel = RoomInfoRespnseModel(JSON: dict)
+        return responseModel?.data
+    }
+    
+    func demRoomInfoComplete() -> RoomInfoModel? {
+        guard let dict = VoAUtil.loadJSON("RoomInfoComplete") as? [String: Any] else { return nil }
         let responseModel = RoomInfoRespnseModel(JSON: dict)
         return responseModel?.data
     }
