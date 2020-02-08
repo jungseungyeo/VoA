@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -23,18 +23,18 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view alpha="0.40000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M2t-Z4-rMF">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X4v-E6-40B">
-                    <rect key="frame" x="15" y="137" width="345" height="393"/>
+                    <rect key="frame" x="15" y="251.66666666666663" width="384" height="393"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="045-rX-haH">
-                            <rect key="frame" x="77.5" y="45" width="190" height="41"/>
+                            <rect key="frame" x="97" y="45.000000000000028" width="190" height="40.666666666666657"/>
                             <string key="text">귀가까지 걸리는
  예상 소요시간을 알려주세요</string>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -42,19 +42,19 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="시간이 되면 푸시 알림으로 알려드려요" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CTa-Er-Wl0">
-                            <rect key="frame" x="46" y="94" width="253" height="20.5"/>
+                            <rect key="frame" x="65.666666666666686" y="93.666666666666657" width="253" height="20.333333333333329"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VNS-g5-tRW">
-                            <rect key="frame" x="151.5" y="156.5" width="42" height="20.5"/>
+                            <rect key="frame" x="171" y="156.00000000000003" width="42" height="20.333333333333343"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KEB-iy-rlX">
-                            <rect key="frame" x="267" y="147" width="40" height="40"/>
+                            <rect key="frame" x="306" y="146.00000000000003" width="40" height="40"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="40" id="5L8-hQ-XgP"/>
                                 <constraint firstAttribute="height" constant="40" id="Zra-dM-qbb"/>
@@ -62,7 +62,7 @@
                             <state key="normal" title="Button"/>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hxw-fT-fpV">
-                            <rect key="frame" x="38" y="147" width="40" height="40"/>
+                            <rect key="frame" x="38" y="146.00000000000003" width="40" height="40"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="40" id="ZQ1-nx-Nwz"/>
                                 <constraint firstAttribute="height" constant="40" id="s4o-ff-9MF"/>
@@ -70,15 +70,14 @@
                             <state key="normal" title="Button"/>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yt1-Kb-3D3">
-                            <rect key="frame" x="40" y="293" width="265" height="55"/>
+                            <rect key="frame" x="40" y="293" width="304" height="55"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="265" id="Drr-N6-40f"/>
                                 <constraint firstAttribute="height" constant="55" id="Zs7-mO-GKM"/>
                             </constraints>
                             <state key="normal" title="Button"/>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d0b-GX-pcL">
-                            <rect key="frame" x="39" y="230" width="267" height="55"/>
+                            <rect key="frame" x="39" y="230" width="306" height="55"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="55" id="FzB-vu-42e"/>
                             </constraints>
@@ -100,7 +99,6 @@
                         <constraint firstItem="VNS-g5-tRW" firstAttribute="top" secondItem="CTa-Er-Wl0" secondAttribute="bottom" constant="42" id="N0J-nq-9MA"/>
                         <constraint firstItem="KEB-iy-rlX" firstAttribute="centerY" secondItem="VNS-g5-tRW" secondAttribute="centerY" id="QJ4-JN-ZcH"/>
                         <constraint firstItem="yt1-Kb-3D3" firstAttribute="leading" secondItem="X4v-E6-40B" secondAttribute="leading" constant="40" id="TzD-Kf-p1N"/>
-                        <constraint firstAttribute="width" constant="345" id="Uo0-3Q-Ms7"/>
                         <constraint firstItem="d0b-GX-pcL" firstAttribute="leading" secondItem="X4v-E6-40B" secondAttribute="leading" constant="39" id="aNW-JF-iS9"/>
                         <constraint firstAttribute="trailing" secondItem="d0b-GX-pcL" secondAttribute="trailing" constant="39" id="fpe-Vo-GT9"/>
                         <constraint firstItem="yt1-Kb-3D3" firstAttribute="top" secondItem="d0b-GX-pcL" secondAttribute="bottom" constant="8" id="qtG-U5-17M"/>

@@ -17,7 +17,7 @@ extension Reactive where Base: StartingRoomHeaderView {
     }
     
     var updateGoHomeBtnTapped: Observable<Void> {
-        return base.startBtn.rx.tap.asObservable()
+        return base.updateGoHomeTimeBtn.rx.tap.asObservable()
     }
 }
 

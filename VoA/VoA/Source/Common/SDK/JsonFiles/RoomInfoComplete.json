@@ -10,9 +10,9 @@
                 "userName": "린생",
                 "userStatus": "end",
                 "userProfileURL": "https://k.kakaocdn.net/dn/ceL7a8/btqzGliUqFE/PVnwdkiTke1SxDRUNuswz1/img_640x640.jpg",
-                "elapsedTime": 10,
-                "totalTime": 60,
-                "responseTime": 0,
+                "elapsedTime": 0,
+                "totalTime": 0,
+                "responseTime": 30,
                 "isMessage": false
             },
             {
@@ -22,7 +22,7 @@
                 "userProfileURL": "https://k.kakaocdn.net/dn/ceL7a8/btqzGliUqFE/PVnwdkiTke1SxDRUNuswz1/img_640x640.jpg",
                 "elapsedTime": 30,
                 "totalTime": 60,
-                "responseTime": 0,
+                "responseTime": 10,
                 "isMessage": true
             },
             {
@@ -32,7 +32,7 @@
                 "userProfileURL": "https://k.kakaocdn.net/dn/ceL7a8/btqzGliUqFE/PVnwdkiTke1SxDRUNuswz1/img_640x640.jpg",
                 "elapsedTime": 45,
                 "totalTime": 60,
-                "responseTime": 0,
+                "responseTime": 40,
                 "isMessage": true
             },
             {
@@ -42,7 +42,7 @@
                 "userProfileURL": "https://k.kakaocdn.net/dn/ceL7a8/btqzGliUqFE/PVnwdkiTke1SxDRUNuswz1/img_640x640.jpg",
                 "elapsedTime": 70,
                 "totalTime": 60,
-                "responseTime": 0,
+                "responseTime": 50,
                 "isMessage": false
             },
             {
@@ -52,7 +52,7 @@
                 "userProfileURL": "https://k.kakaocdn.net/dn/ceL7a8/btqzGliUqFE/PVnwdkiTke1SxDRUNuswz1/img_640x640.jpg",
                 "elapsedTime": 45,
                 "totalTime": 60,
-                "responseTime": 0,
+                "responseTime": 30,
                 "isMessage": false
             }
         ]

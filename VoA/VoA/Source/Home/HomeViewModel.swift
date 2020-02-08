@@ -287,6 +287,13 @@ class HomeViewModel: NSObject, ReactiveViewModelable {
                 self.output.changedView.accept(.startingRoomView)
             }
             }).disposed(by: bag)
+        
+        input.updateGoHomeTimeBtnTapped
+            .map{ _ in return }
+            .subscribe(onNext: { [weak self] (_) in
+                guard let self = self else { return }
+                self.output.goHomeAlertShow.accept(())
+            }).disposed(by: bag)
             
     }
 }
