@@ -67,7 +67,7 @@ class StartingRoomHeaderView: BaseCollectionReusableView {
         static let startingBtnImg: UIImage? = UIImage(named: "buttonHomecomingEnd1")
         static let pastBtnImg: UIImage? = UIImage(named: "buttonHomecomingEnd2")
         
-        static let startBntSize: CGSize = .init(width: 110, height: 51)
+        static let startBntSize: CGSize = .init(width: 126, height: 61)
         
         static let topShadowSize: CGSize = .init(width: -3.0, height: -3.0)
         static let bottomShadowSize: CGSize = .init(width: 3.0, height: 3.0)

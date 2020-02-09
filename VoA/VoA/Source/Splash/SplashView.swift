@@ -34,9 +34,9 @@ class SplashView: BaseView {
     
     
     private struct Const {
-        static let imgSize: CGSize = .init(width: 47,
-                                           height: 50)
-        static let logoText: NSAttributedString = .init(string: "굿밤",
+        static let imgSize: CGSize = .init(width: 79,
+                                           height: 79)
+        static let logoText: NSAttributedString = .init(string: "다옴",
                                                         font: .systemFont(ofSize: 28,
                                                                           weight: .bold),
                                                         color: VoAColor.Splash.logoTextColor)
@@ -62,9 +62,8 @@ class SplashView: BaseView {
         
         logoImg.snp.remakeConstraints { make in
             make.centerX.equalToSuperview()
-            make.top.equalToSuperview().inset(165)
-            make.height.equalTo(Const.imgSize.height)
-            make.width.equalTo(Const.imgSize.width)
+            make.top.equalToSuperview().inset(135)
+            make.size.equalTo(Const.imgSize)
         }
         
         logoText.snp.remakeConstraints { make in
@@ -73,7 +72,7 @@ class SplashView: BaseView {
         }
         
         logoDescription.snp.makeConstraints { make in
-            make.top.equalTo(logoText.snp.bottom).offset(20)
+            make.top.equalTo(logoText.snp.bottom).offset(8)
             make.centerX.equalToSuperview()
         }
     }

@@ -124,7 +124,8 @@ class LoginInfoViewModel: ReactiveViewModelable {
             navi.panGesture.isEnabled = false
             navi.leftViewWidth = 280
             self.output.state.accept(.complete(navi))
-            }, onError: {  (error) in
+            }, onError: { [weak self] (error) in
+                guard let self = self else { return }
                 
                 guard let json = VoAUtil.loadJSON("LoginResponseJson") as? [String: Any] else { return }
                 let responseModel = UserResponseModel(JSON: json)

@@ -33,6 +33,17 @@ class LeftMenuView: BaseView {
         return label
     }()
     
+    lazy var collectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .vertical
+        layout.minimumLineSpacing = 0
+        layout.minimumInteritemSpacing = 0
+        let collectionView = UICollectionView(frame: .zero,
+                                              collectionViewLayout: layout)
+        collectionView.backgroundColor = VoAColor.Style.background
+        return collectionView
+    }()
+    
     private struct Const {
         static let dismissSize: CGSize = .init(width: 44, height: 44)
         static let profileSize: CGSize = .init(width: 40, height: 40)
@@ -43,6 +54,8 @@ class LeftMenuView: BaseView {
                                                               font: .systemFont(ofSize: 16,
                                                                                 weight: .bold),
                                                               color: VoAColor.Style.white)
+        static let userNameLeftOffset: CGFloat = 8
+        static let userNameRightOffset: CGFloat = -96
     }
     
     override func setup() {
@@ -50,7 +63,8 @@ class LeftMenuView: BaseView {
         
         addSubviews(dismissBtn,
                     profileImg,
-                    userName)
+                    userName,
+                    collectionView)
     }
     
     override func setupUI() {
@@ -70,8 +84,15 @@ class LeftMenuView: BaseView {
         
         userName.snp.remakeConstraints { make in
             make.centerY.equalTo(profileImg.snp.centerY)
-            make.left.equalTo(profileImg.snp.right).offset(8)
-            make.right.equalToSuperview().offset(-96)
+            make.left.equalTo(profileImg.snp.right).offset(Const.userNameLeftOffset)
+            make.right.equalToSuperview().offset(Const.userNameRightOffset)
+        }
+        
+        collectionView.snp.remakeConstraints { make in
+            make.top.equalTo(profileImg.snp.bottom)
+            make.left.equalToSuperview()
+            make.right.equalToSuperview()
+            make.bottom.equalToSuperview()
         }
     }
 }

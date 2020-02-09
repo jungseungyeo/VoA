@@ -11,7 +11,7 @@ import UIKit
 class VoAColor: NSObject {
     
     struct Style {
-        static var background: UIColor = .init(r: 34, g: 34, b: 34, a: 1.0)
+        static var background: UIColor = .init(r: 29, g: 30, b: 43, a: 1.0)
         static var white: UIColor = .white
     }
     
@@ -21,7 +21,9 @@ class VoAColor: NSObject {
     }
     
     struct Login {
-        static let kakaoColor: UIColor = .init(r: 255, g: 222, b: 2, a: 1.0)
+        static let kakaoColor: UIColor = .init(r: 29, g: 30, b: 43, a: 1.0)
+        static let topShadowColor: UIColor = .init(r: 48, g: 49, b: 68)
+        static let bottomShadowColor: UIColor = .init(r: 15, g: 16, b: 21)
         static let kakaoTextColor: UIColor = .init(r: 34, g: 34, b: 34, a: 1.0)
     }
     
@@ -35,6 +37,10 @@ class VoAColor: NSObject {
         static let leftGradient: UIColor = .init(r: 255, g: 198, b: 109)
         static let rightGradient: UIColor = .init(r: 255, g: 148, b: 59)
         static let cancelBackgroundColor: UIColor = .init(r: 136, g: 136, b: 136)
+    }
+    
+    struct LeftMenu {
+        static let headerTitelColor: UIColor = .init(r: 155, g: 159, b: 188)
     }
     
     struct Home {

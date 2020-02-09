@@ -18,7 +18,9 @@ extension LoginAPI: Networkerable {
         switch self {
         case .sigin:
             return (.post, VoAService.shared.apiURL
-                .appendingPathComponent(""))
+                .appendingPathComponent("api")
+                .appendingPathComponent("user")
+                .appendingPathComponent("login"))
         case .fcm:
             return (.post, VoAService.shared.apiURL
                 .appendingPathComponent(""))
@@ -31,8 +33,8 @@ extension LoginAPI: Networkerable {
         case .sigin(let model):
             params["kakaoToken"] = model.kakaoAccountToken ?? ""
             params["userName"] = model.nickName ?? ""
-            params["profileURL"] = model.profileURL?.absoluteString ?? ""
-            params["isAppUser"] = true
+//            params["profileURL"] = model.profileURL?.absoluteString ?? ""
+//            params["isAppUser"] = true
         case .fcm(let userID, let fcmToken):
             if let userID = userID {
                 params["userID"] = userID

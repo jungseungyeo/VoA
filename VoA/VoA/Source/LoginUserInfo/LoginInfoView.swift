@@ -28,8 +28,13 @@ class LoginInfoView: BaseView {
     lazy var nameBorderView: UIView = {
         let borderView = UIView(frame: .zero)
         borderView.layer.borderColor = VoAColor.Style.white.withAlphaComponent(0.2).cgColor
-        borderView.layer.borderWidth = 1
-        borderView.layer.cornerRadius = 5
+        borderView.layer.borderWidth = 1.0
+        borderView.layer.cornerRadius = Const.nameBorderHeight / 2
+        borderView.layer.shadowColor = VoAColor.Style.white.withAlphaComponent(0.3).cgColor
+        borderView.layer.shadowOffset = CGSize(width: 3.0, height: 3.0)
+        borderView.layer.shadowOpacity = 1.0
+        borderView.layer.shadowRadius = 4.0
+        borderView.layer.masksToBounds = false
         return borderView
     }()
     
@@ -58,7 +63,7 @@ class LoginInfoView: BaseView {
     
     private struct Const {
         static let profileSize: CGSize = .init(width: 100, height: 100)
-        static let nameDesriptionText: NSAttributedString = .init(string: "이름",
+        static let nameDesriptionText: NSAttributedString = .init(string: "이름을 입력해주세요",
                                                                   font: .systemFont(ofSize: 16,
                                                                                     weight: .bold),
                                                                   color: VoAColor.Style.white)
