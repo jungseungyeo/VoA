@@ -43,12 +43,15 @@ class HomeViewModel: NSObject, ReactiveViewModelable {
         public let roomCellTapped = PublishRelay<Int>()
         public let newCellTapped = PublishRelay<Int>()
         
+        // noneStartRoom
+        public let sendLink = PublishRelay<Void>()
         
         // Mystatus
         public let myGoHomeBtnTapped = PublishRelay<Void>()
         public let updateGoHomeTimeBtnTapped = PublishRelay<Void>()
         public let startGoHomeTimeAletTapped = PublishRelay<Int>()
         public let completeGoHomeBtnTapped = PublishRelay<Void>()
+        public let sendMessageTapped = PublishRelay<Int>()
     }
     
     struct Output {
@@ -59,6 +62,7 @@ class HomeViewModel: NSObject, ReactiveViewModelable {
         
         // leftMenu
         public let dismissLeftMenu = PublishRelay<Int?>()
+        public let moveNoneRoomView = PublishRelay<Void>()
         
         // Mystatus
         //        public let goHomeAlertShow: Observable<Void>
@@ -138,20 +142,6 @@ class HomeViewModel: NSObject, ReactiveViewModelable {
                 }
             case .failure(let error):
                 self.output.networkState.accept(.error(error))
-//                let model = self.demoRoomInfo()
-//                self.roomInfoModel = model
-//                self.sortRoomInfo()
-//                self.myInfo = self.getMyInfo()
-//
-//                if (self.roomInfoModel?.participants?.count ?? 1) <= 1 {
-//                    // 귀가 방을 시작 할 수 없는 상태
-//                    self.output.networkState.accept(.complete)
-//                    self.output.changedView.accept(.noneStartRoomView)
-//                } else {
-//                    // 귀가 방을 시작하는 상태
-//                    self.output.networkState.accept(.complete)
-//                    self.output.changedView.accept(.startingRoomView)
-//                }
             }
         }).disposed(by: bag)
         
@@ -164,15 +154,15 @@ class HomeViewModel: NSObject, ReactiveViewModelable {
         input.request
             .flatMap {
                 return HomeNetworker.getRoomID(userID: UserViewModel.shared.userModel?.userID)
-        }.subscribe(onNext: { [weak self] (result) in
-            guard let self = self else { return }
+        }.subscribe(onNext: {  (result) in
+//            guard let self = self else { return }
             
             switch result {
             case .success(let json):
                 let roomDataModels = self.settingRoomIDs(json: json)
                 self.roomDataModels = roomDataModels
-                self.sortRoomIDs()
-                self.settingReuqestRoomtID()
+                self.sortRoomIDs(roomDatas: roomDataModels)
+                self.settingReuqestRoomtID(roomModels: roomDataModels)
                 
                 guard (roomDataModels?.count ?? 0) != 0 else {
                     // 귀가방 없는 상태
@@ -185,19 +175,6 @@ class HomeViewModel: NSObject, ReactiveViewModelable {
                 self.input.requestRoomInfo.accept(self.currentRoomID)
             case .failure(let error):
                 self.output.networkState.accept(.error(error))
-//                let roomDataModels = self.demoRoomIDs()
-//                self.roomDataModels = roomDataModels
-//                self.sortRoomIDs()
-//                self.settingReuqestRoomtID()
-//
-//                guard (roomDataModels?.count ?? 0) != 0 else {
-//                    // 귀가방 없는 상태
-//                    self.output.networkState.accept(.complete)
-//                    self.output.changedView.accept(.noneRoomView)
-//                    return
-//                }
-//
-//                self.input.requestRoomInfo.accept(self.currentRoomID)
             }
             
         }).disposed(by: bag)
@@ -318,8 +295,8 @@ class HomeViewModel: NSObject, ReactiveViewModelable {
         
         
         input.roomCellTapped
-            .subscribe(onNext: { (index) in
-//                guard let self = self else { return }
+            .subscribe(onNext: { [weak self] (index) in
+                guard let self = self else { return }
                 guard let model = self.listRoomDataModels?[safe: index] else { return }
                 guard let selectedID = model.roomID else { return }
                 
@@ -328,6 +305,54 @@ class HomeViewModel: NSObject, ReactiveViewModelable {
                 } else {
                     self.output.dismissLeftMenu.accept(nil)
                 }
+                
+            }).disposed(by: bag)
+        
+        input.newCellTapped
+            .subscribe(onNext: { [weak self] (_) in
+                guard let self = self else { return }
+                self.output.moveNoneRoomView.accept(())
+            }).disposed(by: bag)
+        
+        input.sendLink
+            .subscribe(onNext: { [weak self] (_) in
+                guard let self = self else { return }
+                               let template = KMTFeedTemplate.init(builderBlock: { [weak self] (feedTemplateBuilder) in
+                                    guard let self = self else {return }
+
+                                    feedTemplateBuilder.content = KMTContentObject(builderBlock: { (contentBuilder) in
+                                        contentBuilder.title = ""
+                                        contentBuilder.desc = ""
+                                        contentBuilder.imageURL = URL(string: "https://miro.medium.com/fit/c/96/96/2*leGDnXsn4vEC85RCecbceA.png")!
+                                        contentBuilder.link = KMTLinkObject(builderBlock: { (klklinkBuilder) in
+                                        })
+                                        
+                                    })
+                                    
+                //                    feedTemplateBuilder.addButton(KMTButtonObject(builderBlock: { (buttonBuilder) in
+                //                        buttonBuilder.title = "웹으로 이동"
+                //                        buttonBuilder.link = KMTLinkObject(builderBlock: { (linkBuilder) in
+                ////                            linkBuilder.mobileWebURL = URL(string: "https://promissu.com/?roomid=\(self.invitingModel?.id ?? -999)")
+                //                        })
+                //                    }))
+                                    
+                                    feedTemplateBuilder.addButton(KMTButtonObject(builderBlock: { [weak self] (buttonBuilder) in
+                                        guard let self = self else { return }
+                                        buttonBuilder.title = "앱으로 이동"
+                                        buttonBuilder.link = KMTLinkObject(builderBlock: { [weak self] (linkBuilder) in
+                                            guard let self = self else { return }
+                                            linkBuilder.iosExecutionParams = "roomid=\(self.currentRoomID ?? -1)"
+                //                            linkBuilder.androidExecutionParams = "roomid=\(self.invitingModel?.id ?? -999)"
+                                        })
+                                    }))
+                                })
+                                
+                                KLKTalkLinkCenter.shared().sendDefault(with: template, success: { (warningMsg, argumentMsg) in
+                                    print("warningMsg: \(warningMsg)")
+                                    print("argumentMsg : \(argumentMsg)")
+                                }, failure: { (error) in
+                                    print("error \(error.localizedDescription)")
+                                })
                 
             }).disposed(by: bag)
     }
@@ -346,8 +371,8 @@ private extension HomeViewModel {
         return responseModel?.data
     }
     
-    func sortRoomIDs() {
-        guard let roomDatas = self.roomDataModels else { return }
+    func sortRoomIDs(roomDatas: [RoomIDModel]?) {
+        guard let roomDatas = roomDatas else { return }
         roomDataModels = roomDatas.sorted { (first, second) -> Bool in
             return (first.roomID ?? 0) > (second.roomID ?? 1)
         }
@@ -369,8 +394,8 @@ private extension HomeViewModel {
         
     }
     
-    func settingReuqestRoomtID() {
-        guard let roomID = roomDataModels?.last?.roomID else { return }
+    func settingReuqestRoomtID(roomModels: [RoomIDModel]?) {
+        guard let roomID = roomModels?.last?.roomID else { return }
         currentRoomID = roomID
         listRoomDataModels = roomDataModels
     }

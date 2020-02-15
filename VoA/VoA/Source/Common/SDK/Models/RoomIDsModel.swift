@@ -41,7 +41,7 @@ final class RoomIDModel: BaseModel {
     override func mapping(map: Map) {
         super.mapping(map: map)
         
-        roomID <- map["roomID"]
+        roomID <- map["roomId"]
         roomTitle <- map["roomTitle"]
     }
 }

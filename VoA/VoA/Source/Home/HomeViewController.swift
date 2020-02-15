@@ -28,6 +28,11 @@ class HomeViewController: BaseViewController {
         return noneRoomView
     }()
     
+    public lazy var noneStartRoomView: NoneStartRoomView = {
+        let noneStartRoomView = NoneStartRoomView(frame: view.bounds)
+        return noneStartRoomView
+    }()
+    
     private lazy var showStartView: StartArriveAlertViewController = {
         let alertView = StartArriveAlertViewController.instance()
         alertView.delegate = self
@@ -132,7 +137,7 @@ class HomeViewController: BaseViewController {
                     self.navigationItem.leftBarButtonItems = [self.menuBtn, self.logoBtn]
                     self.view = self.noneRoomView
                 case .noneStartRoomView:
-                    print("noneStartRoomView")
+                    self.view = self.noneStartRoomView
                 case .startingRoomView:
                     self.view = self.startingRoomView
                     self.configueStartingRoomView()
@@ -143,6 +148,7 @@ class HomeViewController: BaseViewController {
         
         rxMyHeaderBind()
         leftMenuBind()
+        noneStartRoomBind()
         
         viewModel.input.request.accept(())
     }
@@ -172,6 +178,13 @@ class HomeViewController: BaseViewController {
     
     private func leftMenuBind() {
         
+    }
+    
+    private func noneStartRoomBind() {
+        noneStartRoomView.linkBtn.rx.tap
+            .map { _ in return }
+            .bind(to: viewModel.input.sendLink)
+        .disposed(by: bag)
     }
     
     private func configueStartingRoomView() {
@@ -436,6 +449,12 @@ private extension HomeViewController {
                       isMessage: viewModel.isMemberMessage(index: indexPath.row),
                       userStatus: viewModel.getMemberStatus(index: indexPath.row),
                       state: viewModel.userGaugebar(index: indexPath.row))
+            
+            cell.rx.sendMessageBtnTapped
+                .map { _ -> Int in
+                    return indexPath.row
+            }.bind(to: viewModel.input.sendMessageTapped)
+                .disposed(by: cell.bag)
             
             return cell
         case .endMemberStatus:

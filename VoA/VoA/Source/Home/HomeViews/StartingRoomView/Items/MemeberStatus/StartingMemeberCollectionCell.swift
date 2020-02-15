@@ -8,6 +8,9 @@
 
 import UIKit
 
+import RxSwift
+import RxCocoa
+
 enum GaugebarState: Int {
     case none = 0
     case one = 25
@@ -34,9 +37,17 @@ enum GaugebarState: Int {
     }
 }
 
+extension Reactive where Base: StartingMemeberCollectionCell {
+    var sendMessageBtnTapped: Observable<Void> {
+        return base.sendMessageBtn.rx.tap.asObservable()
+    }
+}
+
 class StartingMemeberCollectionCell: BaseCollectionViewCell {
     
     static let registerID: String = "\(StartingMemeberCollectionCell.self)"
+    
+    public var bag = DisposeBag()
     
     lazy var containerView: UIView = {
         let containerView = UIView(frame: .zero)
@@ -101,6 +112,11 @@ class StartingMemeberCollectionCell: BaseCollectionViewCell {
         iv.contentMode = .scaleAspectFill
         return iv
     }()
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        bag = DisposeBag()
+    }
     
     private struct Const {
         static let profiletSize: CGSize = .init(width: 40, height: 40)

@@ -28,7 +28,7 @@ class NoneRoomView: BaseView {
     }
     
     private struct Const {
-        static let createRoomString: NSAttributedString = .init(string: "귀가방 만들기",
+        static let createRoomString: NSAttributedString = .init(string: "새로운 귀가방 만들기",
                                                                 font: .systemFont(ofSize: 18,
                                                                                   weight: .bold),
                                                                 color: VoAColor.Style.white)
@@ -36,7 +36,7 @@ class NoneRoomView: BaseView {
         static let leftGradient: UIColor = VoAColor.AppleLoginAlert.leftGradient
         static let rightGradient: UIColor = VoAColor.AppleLoginAlert.rightGradient
         
-        static let titleString: NSAttributedString = .init(string: "귀가방을 만들어보세요",
+        static let titleString: NSAttributedString = .init(string: "참여중인 귀가방이 없습니다",
                                                            font: .systemFont(ofSize: 18,
                                                                              weight: .bold),
                                                            color: VoAColor.Style.white)

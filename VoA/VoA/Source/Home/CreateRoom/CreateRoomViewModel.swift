@@ -97,17 +97,7 @@ class CreateRoomViewModel: NSObject, ReactiveViewModelable {
             case .failure(let error):
                 self.output.errorMessage.accept(error)
             }
-            
             }).disposed(by: bag)
-        
-        
-//            .subscribe(onNext: { [weak self] (roomTitle) in
-//                guard let self = self else { return }
-//                guard let roomTitle = roomTitle else { return }
-//                let memberViewModel = MemberInviteViewModel(title: roomTitle)
-//                let memberInviteViewController = MemberInviteViewController.instance(viewModel: memberViewModel)
-//                self.output.moveMemberInvitte.accept(memberInviteViewController)
-//            }).disposed(by: bag)
     }
     
 }

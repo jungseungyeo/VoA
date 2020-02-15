@@ -17,6 +17,7 @@
 		4C33B5D723CD6CF4003A0484 /* ExtensionUIAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C33B5D623CD6CF4003A0484 /* ExtensionUIAlertViewController.swift */; };
 		4C46F78423CE047F0031D3E0 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C46F78323CE047F0031D3E0 /* BaseView.swift */; };
 		4C46F78723CE083B0031D3E0 /* ExtensionUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C46F78623CE083B0031D3E0 /* ExtensionUIView.swift */; };
+		4C56058223F832FB00292A15 /* NoneStartRoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C56058123F832FB00292A15 /* NoneStartRoomView.swift */; };
 		4C570F4723CC5FF000C438CA /* schema.json in Resources */ = {isa = PBXBuildFile; fileRef = 4C570F4623CC5FEF00C438CA /* schema.json */; };
 		4C570F4D23CC609200C438CA /* LaunchListQuery.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 4C570F4C23CC609200C438CA /* LaunchListQuery.graphql */; };
 		4C570F4F23CC615400C438CA /* LaunchListQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C570F4E23CC615400C438CA /* LaunchListQuery.swift */; };
@@ -122,6 +123,7 @@
 		4C33B5D623CD6CF4003A0484 /* ExtensionUIAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionUIAlertViewController.swift; sourceTree = "<group>"; };
 		4C46F78323CE047F0031D3E0 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
 		4C46F78623CE083B0031D3E0 /* ExtensionUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionUIView.swift; sourceTree = "<group>"; };
+		4C56058123F832FB00292A15 /* NoneStartRoomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoneStartRoomView.swift; sourceTree = "<group>"; };
 		4C570F4623CC5FEF00C438CA /* schema.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = schema.json; sourceTree = "<group>"; };
 		4C570F4C23CC609200C438CA /* LaunchListQuery.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = LaunchListQuery.graphql; sourceTree = "<group>"; };
 		4C570F4E23CC615400C438CA /* LaunchListQuery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LaunchListQuery.swift; path = VoA/Source/Common/SDK/Graphql/Query/LaunchListQuery.swift; sourceTree = SOURCE_ROOT; };
@@ -285,6 +287,14 @@
 				980E169623EC38A500D016B0 /* ExtensionColection.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		4C56058023F832A200292A15 /* NoneStartRoomView */ = {
+			isa = PBXGroup;
+			children = (
+				4C56058123F832FB00292A15 /* NoneStartRoomView.swift */,
+			);
+			path = NoneStartRoomView;
 			sourceTree = "<group>";
 		};
 		4C570F4823CC5FFB00C438CA /* SDK */ = {
@@ -462,6 +472,7 @@
 		98134B4A23EAB22E0031E48A /* HomeViews */ = {
 			isa = PBXGroup;
 			children = (
+				4C56058023F832A200292A15 /* NoneStartRoomView */,
 				98B3E3E623EAB9BC00EF6BBC /* StartingRoomView */,
 				98B3E3E523EAB9B200EF6BBC /* NoneView */,
 			);
@@ -895,6 +906,7 @@
 				9839076923DF28E900AAA064 /* UserViewModel.swift in Sources */,
 				4C8D741023D2C330005BEFAA /* ExtensionNSAttributedString.swift in Sources */,
 				4C02C2DD23D4479F0049D988 /* FirebaseIntegrator.swift in Sources */,
+				4C56058223F832FB00292A15 /* NoneStartRoomView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -31,9 +31,11 @@ extension RoomInfoAPI: Networkerable {
                 .appendingPathComponent("api")
                 .appendingPathComponent("room")
                 .appendingPathComponent("new"))
-        case .getRoomInfo:
+        case .getRoomInfo(let roomID):
             return (.get, VoAService.shared.apiURL
-                .appendingPathComponent(""))
+                .appendingPathComponent("api")
+                .appendingPathComponent("room")
+                .appendingPathComponent("\(roomID)"))
         case .goHomeTime:
             return (.put, VoAService.shared.apiURL
                 .appendingPathComponent(""))
@@ -52,7 +54,8 @@ extension RoomInfoAPI: Networkerable {
             params["userId"] = userID ?? -1
             params["roomName"] = roomName ?? ""
         case .getRoomInfo(let roomID):
-            params["roomID"] = roomID
+            params["roomId"] = roomID
+            params["userId"] = UserViewModel.shared.userModel?.userID ?? -1
         case .goHomeTime(let userID, let roomID, let limitTime):
             params["userID"] = userID
             params["roomID"] = roomID

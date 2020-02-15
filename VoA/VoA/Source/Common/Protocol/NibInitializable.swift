@@ -18,6 +18,10 @@ extension NibInitializable where Self: UIView {
     static func initFromNibWithoutOtherOptions() -> Self? {
         return initFromNib(owner: nil, options: nil)
     }
+    
+    static func initFromNibWithoutOtherOptions(nibName: String) -> Self? {
+        return Bundle.main.loadNibNamed(nibName, owner: nil, options: nil)?.first as? Self
+    }
 }
 
 extension BaseView: NibInitializable {}

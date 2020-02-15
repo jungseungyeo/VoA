@@ -112,6 +112,13 @@ class LeftMenuViewController: BaseViewController {
                 self.viewModel.input.requestRoomInfo.accept(roomID)
                 
             }).disposed(by: bag)
+        
+        viewModel.output.moveNoneRoomView
+            .subscribe(onNext: { [weak self] (_) in
+                guard let self = self else { return }
+                self.sideMenuController?.hideLeftViewAnimated()
+                self.viewModel.output.changedView.accept(.noneRoomView)
+            }).disposed(by: bag)
     }
     
     override func viewDidLoad() {
