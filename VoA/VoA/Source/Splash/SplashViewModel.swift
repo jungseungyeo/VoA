@@ -95,7 +95,10 @@ class SplashViewModel: NSObject, ReactiveViewModelable {
             guard let self = self else { return }
             switch result {
             case .success(let json):
+                let responseModel = self.settingUserInfo(json: json)
+                self.userModel = responseModel?.data
                 UserViewModel.shared.userModel = self.userModel
+                self.setupHeader()
                 let viewModel = HomeViewModel()
                 let homeNavigationController = HomeNavigationViewController(rootViewController: HomeViewController.instance(homeViewModel: viewModel))
                 let navi = LGSideMenuController(rootViewController: homeNavigationController, leftViewController: LeftMenuViewController.instance(homeViewModel: viewModel), rightViewController: nil)
@@ -103,16 +106,7 @@ class SplashViewModel: NSObject, ReactiveViewModelable {
                 navi.leftViewWidth = 280
                 self.output.autoLoingState.accept(.complete(navi))
             case .failure(let error):
-                guard let json = VoAUtil.loadJSON("LoginResponseJson") as? [String: Any] else { return }
-                let responseModel = UserResponseModel(JSON: json)
-                UserViewModel.shared.userModel = responseModel?.data
-                
-                let viewModel = HomeViewModel()
-                let homeNavigationController = HomeNavigationViewController(rootViewController: HomeViewController.instance(homeViewModel: viewModel))
-                let navi = LGSideMenuController(rootViewController: homeNavigationController, leftViewController: LeftMenuViewController.instance(homeViewModel: viewModel), rightViewController: nil)
-                navi.panGesture.isEnabled = false
-                navi.leftViewWidth = 280
-                self.output.autoLoingState.accept(.complete(navi))
+                self.output.autoLoingState.accept(.error(error))
             }
         }).disposed(by: bag)
         
@@ -125,5 +119,9 @@ private extension SplashViewModel {
         guard let dict = json.dictionaryObject else { return nil }
         let model = UserResponseModel(JSON: dict)
         return model
+    }
+    
+    func setupHeader() {
+        VoAService.shared.addAccessToken(token: UserViewModel.shared.userModel?.token?.accessToken?.accessToken)
     }
 }

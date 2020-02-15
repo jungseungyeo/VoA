@@ -124,6 +124,9 @@ class LoginInfoViewModel: ReactiveViewModelable {
             
             switch result {
             case .success(let json):
+                let responseModel = self.settingUserInfo(json: json)
+                self.userModel = responseModel?.data
+                self.setupHeader()
                 UserViewModel.shared.userModel = self.userModel
                 SwiftlyUserDefault.nickName = self.userModel?.userName
                 SwiftlyUserDefault.profile = self.userModel?.profileURL
@@ -136,19 +139,7 @@ class LoginInfoViewModel: ReactiveViewModelable {
                 navi.leftViewWidth = 280
                 self.output.state.accept(.complete(navi))
             case .failure(let error):
-                guard let json = VoAUtil.loadJSON("LoginResponseJson") as? [String: Any] else { return }
-                let responseModel = UserResponseModel(JSON: json)
-                UserViewModel.shared.userModel = responseModel?.data
-                SwiftlyUserDefault.nickName = responseModel?.data?.userName
-                SwiftlyUserDefault.profile = responseModel?.data?.profileURL
-                SwiftlyUserDefault.kakaoToken = self.kakaoInfoPresnetModel.kakaoAccountToken
-                
-                let viewModel = HomeViewModel()
-                let homeNavigationController = HomeNavigationViewController(rootViewController: HomeViewController.instance(homeViewModel: viewModel))
-                let navi = LGSideMenuController(rootViewController: homeNavigationController, leftViewController: LeftMenuViewController.instance(homeViewModel: viewModel), rightViewController: nil)
-                navi.panGesture.isEnabled = false
-                navi.leftViewWidth = 280
-                self.output.state.accept(.complete(navi))
+                self.output.state.accept(.error(error))
             }
         }).disposed(by: bag)
     }
@@ -159,5 +150,9 @@ private extension LoginInfoViewModel {
         guard let dict = json.dictionaryObject else { return nil }
         let model = UserResponseModel(JSON: dict)
         return model
+    }
+    
+    func setupHeader() {
+        VoAService.shared.addAccessToken(token: UserViewModel.shared.userModel?.token?.accessToken?.accessToken)
     }
 }

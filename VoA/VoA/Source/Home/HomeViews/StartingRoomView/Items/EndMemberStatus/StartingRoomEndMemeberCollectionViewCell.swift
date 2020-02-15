@@ -55,6 +55,24 @@ class StartingRoomEndMemeberCollectionViewCell: BaseCollectionViewCell {
         return btn
     }()
     
+    lazy var fromtBackgaugebar: UIImageView = {
+        let iv = UIImageView(image: UIImage(named: "completeCopy3"))
+        iv.contentMode = .scaleAspectFill
+        return iv
+    }()
+    
+    lazy var endBackgaugebar: UIImageView = {
+        let iv = UIImageView(image: UIImage(named: "completeCopy1"))
+        iv.contentMode = .scaleAspectFill
+        return iv
+    }()
+    
+    lazy var middleBackgaugebar: UIImageView = {
+        let iv = UIImageView(image: UIImage(named: "completeCopy2"))
+        iv.contentMode = .scaleAspectFill
+        return iv
+    }()
+    
     private struct Const {
         static let profiletSize: CGSize = .init(width: 40, height: 40)
         static let nameTitle: NSAttributedString = .init(string: "123",
@@ -83,7 +101,10 @@ class StartingRoomEndMemeberCollectionViewCell: BaseCollectionViewCell {
                                   nameLabel,
                                   remindTimeLabel,
                                   memberStatusLabel,
-                                  sendMessageBtn)
+                                  sendMessageBtn,
+                                  fromtBackgaugebar,
+                                  endBackgaugebar,
+                                  middleBackgaugebar)
     }
     
     override func setupUI() {
@@ -120,6 +141,25 @@ class StartingRoomEndMemeberCollectionViewCell: BaseCollectionViewCell {
             make.top.equalToSuperview().offset(15)
             make.right.equalToSuperview().offset(-16)
             make.size.equalTo(Const.sendMessageSize)
+        }
+        
+        fromtBackgaugebar.snp.remakeConstraints { make in
+            make.left.equalToSuperview().offset(16)
+            make.size.equalTo(CGSize.init(width: 16, height: 16))
+            make.bottom.equalToSuperview().offset(-16)
+        }
+        
+        endBackgaugebar.snp.remakeConstraints { make in
+            make.right.equalToSuperview().offset(-16)
+            make.size.equalTo(CGSize.init(width: 16, height: 16))
+            make.bottom.equalToSuperview().offset(-16)
+        }
+        
+        middleBackgaugebar.snp.remakeConstraints { make in
+            make.height.equalTo(16)
+            make.left.equalTo(fromtBackgaugebar.snp.right)
+            make.right.equalTo(endBackgaugebar.snp.left)
+            make.centerY.equalTo(fromtBackgaugebar.snp.centerY)
         }
     }
     

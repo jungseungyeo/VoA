@@ -20,16 +20,63 @@
                     </constraints>
                     <state key="normal" title="Button"/>
                 </button>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ms7-8g-MRU">
+                    <rect key="frame" x="50" y="104" width="314" height="210"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="210" id="GgB-oT-Wu4"/>
+                        <constraint firstAttribute="width" secondItem="Ms7-8g-MRU" secondAttribute="height" multiplier="55:42" id="pE0-of-XGX"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nng-iz-hRv">
+                    <rect key="frame" x="131.33333333333337" y="334" width="151.66666666666663" height="20.333333333333314"/>
+                    <attributedString key="attributedText">
+                        <fragment content="귀가방을">
+                            <attributes>
+                                <font key="NSFont" size="17" name=".AppleSDGothicNeoI-Regular"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                            </attributes>
+                        </fragment>
+                        <fragment content=" ">
+                            <attributes>
+                                <font key="NSFont" metaFont="system" size="17"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                            </attributes>
+                        </fragment>
+                        <fragment content="만들어보세요">
+                            <attributes>
+                                <font key="NSFont" size="17" name=".AppleSDGothicNeoI-Regular"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                            </attributes>
+                        </fragment>
+                    </attributedString>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sy0-eC-kPw">
+                    <rect key="frame" x="186.33333333333334" y="362.33333333333331" width="41.666666666666657" height="20.333333333333314"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" red="0.13333333333333333" green="0.13333333333333333" blue="0.13333333333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="juL-d3-SoO" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="17" id="3QG-2X-v00"/>
+                <constraint firstItem="nng-iz-hRv" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="9pE-KZ-ZDR"/>
+                <constraint firstItem="Sy0-eC-kPw" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Peu-n7-zrI"/>
+                <constraint firstItem="Sy0-eC-kPw" firstAttribute="top" secondItem="nng-iz-hRv" secondAttribute="bottom" constant="8" id="SMZ-Zk-o2V"/>
+                <constraint firstItem="Ms7-8g-MRU" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="50" id="WHW-mV-Lxp"/>
+                <constraint firstItem="nng-iz-hRv" firstAttribute="top" secondItem="Ms7-8g-MRU" secondAttribute="bottom" constant="20" id="d3g-vg-d5f"/>
                 <constraint firstAttribute="trailing" secondItem="juL-d3-SoO" secondAttribute="trailing" constant="17" id="dU2-RE-hy2"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Ms7-8g-MRU" secondAttribute="trailing" constant="50" id="lAa-QY-qPF"/>
+                <constraint firstItem="Ms7-8g-MRU" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="60" id="nq0-dP-cHo"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="juL-d3-SoO" secondAttribute="bottom" constant="127" id="wvT-Qi-xhs"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
                 <outlet property="createRoomBtn" destination="juL-d3-SoO" id="qaM-bO-HLp"/>
+                <outlet property="logoImg" destination="Ms7-8g-MRU" id="Qs4-pg-ffO"/>
+                <outlet property="subTitle" destination="Sy0-eC-kPw" id="V9L-3I-eZF"/>
+                <outlet property="title" destination="nng-iz-hRv" id="NLr-EM-Q7R"/>
             </connections>
             <point key="canvasLocation" x="139" y="108"/>
         </view>

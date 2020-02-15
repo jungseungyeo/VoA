@@ -8,9 +8,19 @@
 
 import UIKit
 
+import RxSwift
+import RxCocoa
+
+extension Reactive where Base: LeftMenuNewRoomCell {
+    var newRoomCellTapped: Observable<Void> {
+        return  base.newRoomCellTapped.rx.tap.asObservable()
+    }
+}
 class LeftMenuNewRoomCell: BaseCollectionViewCell {
     
     static let registerID: String = "\(LeftMenuNewRoomCell.self)"
+    
+    public var bag = DisposeBag()
     
     lazy var thumbnailImg: UIImageView = {
         let iv = UIImageView(image: UIImage(named: "icNewgroup"))
@@ -18,7 +28,6 @@ class LeftMenuNewRoomCell: BaseCollectionViewCell {
         iv.backgroundColor = .black
         iv.clipsToBounds = true
         iv.layer.cornerRadius = Const.thumbnailSize.height / 2
-        iv.backgroundColor = .red
         return iv
     }()
     
@@ -26,6 +35,11 @@ class LeftMenuNewRoomCell: BaseCollectionViewCell {
         let label = UILabel(frame: .zero)
         label.attributedText = Const.roomTitle
         return label
+    }()
+    
+    lazy var newRoomCellTapped: UIButton = {
+        let btn = UIButton(type: .system)
+        return btn
     }()
     
     private struct Const {
@@ -37,12 +51,37 @@ class LeftMenuNewRoomCell: BaseCollectionViewCell {
         static let rightSize: CGSize = .init(width: 5, height: 11)
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        bag = DisposeBag()
+    }
+    
     override func setup() {
         super.setup()
+        
+        addSubviews(thumbnailImg,
+                    roomTitle,
+                    newRoomCellTapped)
         
     }
     
     override func setupUI() {
         super.setupUI()
+        
+        thumbnailImg.snp.remakeConstraints { make in
+            make.centerY.equalToSuperview()
+            make.left.equalToSuperview().offset(16)
+            make.size.equalTo(Const.thumbnailSize)
+        }
+        
+        roomTitle.snp.remakeConstraints { make in
+            make.centerY.equalToSuperview()
+            make.left.equalTo(thumbnailImg.snp.right).offset(8)
+            make.right.equalToSuperview()
+        }
+        
+        newRoomCellTapped.snp.remakeConstraints { make in
+            make.top.left.right.bottom.equalToSuperview()
+        }
     }
 }

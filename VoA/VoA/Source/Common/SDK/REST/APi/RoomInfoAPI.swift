@@ -11,6 +11,7 @@ import Alamofire
 
 enum RoomInfoAPI {
     case getIDs(Int?)
+    case makeRoom(Int?, String?)
     case getRoomInfo(Int)
     case goHomeTime(Int, Int, Int)
     case completeHome(Int, Int)
@@ -19,9 +20,17 @@ enum RoomInfoAPI {
 extension RoomInfoAPI: Networkerable {
     var route: (method: HTTPMethod, url: URL) {
         switch self {
-        case .getIDs:
+        case .getIDs(let userID):
             return (.get, VoAService.shared.apiURL
-                .appendingPathComponent(""))
+                .appendingPathComponent("api")
+                .appendingPathComponent("room")
+                .appendingPathComponent("get")
+                .appendingPathComponent("\(userID ?? -1)"))
+        case .makeRoom:
+            return (.post, VoAService.shared.apiURL
+                .appendingPathComponent("api")
+                .appendingPathComponent("room")
+                .appendingPathComponent("new"))
         case .getRoomInfo:
             return (.get, VoAService.shared.apiURL
                 .appendingPathComponent(""))
@@ -37,8 +46,11 @@ extension RoomInfoAPI: Networkerable {
     var params: Parameters? {
         var params = Parameters()
         switch self {
-        case .getIDs(let userID):
-            params["userID"] = userID
+        case .getIDs:
+            return nil
+        case .makeRoom(let userID, let roomName):
+            params["userId"] = userID ?? -1
+            params["roomName"] = roomName ?? ""
         case .getRoomInfo(let roomID):
             params["roomID"] = roomID
         case .goHomeTime(let userID, let roomID, let limitTime):

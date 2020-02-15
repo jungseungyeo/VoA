@@ -39,6 +39,11 @@ class HomeViewModel: NSObject, ReactiveViewModelable {
         public let request = PublishRelay<Void>()
         public let requestRoomInfo = PublishRelay<Int?>()
         
+        //Left Menu
+        public let roomCellTapped = PublishRelay<Int>()
+        public let newCellTapped = PublishRelay<Int>()
+        
+        
         // Mystatus
         public let myGoHomeBtnTapped = PublishRelay<Void>()
         public let updateGoHomeTimeBtnTapped = PublishRelay<Void>()
@@ -51,6 +56,9 @@ class HomeViewModel: NSObject, ReactiveViewModelable {
         public let networkState = PublishRelay<HomeNetworkState>()
         
         public let changedView = BehaviorRelay<HomeViewSatus>(value: .noneStartRoomView)
+        
+        // leftMenu
+        public let dismissLeftMenu = PublishRelay<Int?>()
         
         // Mystatus
         //        public let goHomeAlertShow: Observable<Void>
@@ -129,20 +137,21 @@ class HomeViewModel: NSObject, ReactiveViewModelable {
                     self.output.changedView.accept(.startingRoomView)
                 }
             case .failure(let error):
-                let model = self.demoRoomInfo()
-                self.roomInfoModel = model
-                self.sortRoomInfo()
-                self.myInfo = self.getMyInfo()
-                
-                if (self.roomInfoModel?.participants?.count ?? 1) <= 1 {
-                    // 귀가 방을 시작 할 수 없는 상태
-                    self.output.networkState.accept(.complete)
-                    self.output.changedView.accept(.noneStartRoomView)
-                } else {
-                    // 귀가 방을 시작하는 상태
-                    self.output.networkState.accept(.complete)
-                    self.output.changedView.accept(.startingRoomView)
-                }
+                self.output.networkState.accept(.error(error))
+//                let model = self.demoRoomInfo()
+//                self.roomInfoModel = model
+//                self.sortRoomInfo()
+//                self.myInfo = self.getMyInfo()
+//
+//                if (self.roomInfoModel?.participants?.count ?? 1) <= 1 {
+//                    // 귀가 방을 시작 할 수 없는 상태
+//                    self.output.networkState.accept(.complete)
+//                    self.output.changedView.accept(.noneStartRoomView)
+//                } else {
+//                    // 귀가 방을 시작하는 상태
+//                    self.output.networkState.accept(.complete)
+//                    self.output.changedView.accept(.startingRoomView)
+//                }
             }
         }).disposed(by: bag)
         
@@ -169,24 +178,26 @@ class HomeViewModel: NSObject, ReactiveViewModelable {
                     // 귀가방 없는 상태
                     self.viewState = .noneRoomView
                     self.output.networkState.accept(.complete)
-                    return
-                }
-                
-                self.input.requestRoomInfo.accept(self.currentRoomID)
-            case .failure(let error):
-                let roomDataModels = self.demoRoomIDs()
-                self.roomDataModels = roomDataModels
-                self.sortRoomIDs()
-                self.settingReuqestRoomtID()
-                
-                guard (roomDataModels?.count ?? 0) != 0 else {
-                    // 귀가방 없는 상태
-                    self.output.networkState.accept(.complete)
                     self.output.changedView.accept(.noneRoomView)
                     return
                 }
                 
                 self.input.requestRoomInfo.accept(self.currentRoomID)
+            case .failure(let error):
+                self.output.networkState.accept(.error(error))
+//                let roomDataModels = self.demoRoomIDs()
+//                self.roomDataModels = roomDataModels
+//                self.sortRoomIDs()
+//                self.settingReuqestRoomtID()
+//
+//                guard (roomDataModels?.count ?? 0) != 0 else {
+//                    // 귀가방 없는 상태
+//                    self.output.networkState.accept(.complete)
+//                    self.output.changedView.accept(.noneRoomView)
+//                    return
+//                }
+//
+//                self.input.requestRoomInfo.accept(self.currentRoomID)
             }
             
         }).disposed(by: bag)
@@ -305,6 +316,20 @@ class HomeViewModel: NSObject, ReactiveViewModelable {
                 self.output.goHomeAlertShow.accept(())
             }).disposed(by: bag)
         
+        
+        input.roomCellTapped
+            .subscribe(onNext: { (index) in
+//                guard let self = self else { return }
+                guard let model = self.listRoomDataModels?[safe: index] else { return }
+                guard let selectedID = model.roomID else { return }
+                
+                if selectedID == self.currentRoomID {
+                    self.output.dismissLeftMenu.accept(selectedID)
+                } else {
+                    self.output.dismissLeftMenu.accept(nil)
+                }
+                
+            }).disposed(by: bag)
     }
 }
 
@@ -347,9 +372,7 @@ private extension HomeViewModel {
     func settingReuqestRoomtID() {
         guard let roomID = roomDataModels?.last?.roomID else { return }
         currentRoomID = roomID
-        listRoomDataModels = roomDataModels?.filter({ (roomData) -> Bool in
-            return (roomData.roomID ?? 0) != roomID
-        })
+        listRoomDataModels = roomDataModels
     }
     
     func demoRoomIDs() -> [RoomIDModel]? {
@@ -417,6 +440,21 @@ extension HomeViewModel {
     func isMemberMessage(index: Int) -> Bool {
         guard let model = normalParticipants?[safe: index] else { return false }
         return model.isMessage
+    }
+    
+    func userGaugebar(index: Int) -> GaugebarState {
+        guard let model = normalParticipants?[safe: index] else { return .none }
+        
+        guard let time = model.elapsedTime else { return .none }
+        guard let totalTime = model.totalTime else { return .none }
+        
+        let times = Int((Double(time) / Double(totalTime)) * 100)
+        
+        guard let state = GaugebarState(rawValue: times) else {
+            return .warning
+        }
+        
+        return state
     }
     
     // endMemeber

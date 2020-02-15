@@ -20,7 +20,7 @@ enum LeftMenuScetionType: Int, CaseIterable {
         switch self {
         case .room:
             return CGSize(width: UIScreen.main.bounds.width,
-            height: 47)
+                          height: 47)
         default: return .zero
         }
     }
@@ -103,8 +103,17 @@ class LeftMenuViewController: BaseViewController {
                     self.leftMenuView.collectionView.reloadData()
                 }
             }).disposed(by: bag)
+        
+        viewModel.output.dismissLeftMenu
+            .subscribe(onNext: { [weak self] (roomID) in
+                guard let self = self else { return }
+                self.sideMenuController?.hideLeftViewAnimated()
+                guard let roomID = roomID else { return }
+                self.viewModel.input.requestRoomInfo.accept(roomID)
+                
+            }).disposed(by: bag)
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -140,7 +149,8 @@ extension LeftMenuViewController: UICollectionViewDataSource {
         guard let section = LeftMenuScetionType(rawValue: section) else { return 0 }
         switch section {
         case .room:
-            return (viewModel.listRoomDataModels?.count ?? 0) + 1
+            guard let model = viewModel.listRoomDataModels else { return 0 }
+            return model.count + 1
         case .etc:
             return 0
         }
@@ -158,7 +168,7 @@ extension LeftMenuViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind,
                                                                            withReuseIdentifier: LeftMenuHeaderView.registerID, for: indexPath) as? LeftMenuHeaderView else {
-                                                                             return UICollectionReusableView()
+                                                                            return UICollectionReusableView()
         }
         return header
     }
@@ -170,16 +180,28 @@ extension LeftMenuViewController: UICollectionViewDataSource {
         }
         switch section {
         case .room:
-            if (viewModel.listRoomDataModels?.count ?? 0) == indexPath.row {
+            if let model = viewModel.listRoomDataModels, model.count == indexPath.row {
                 guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: LeftMenuNewRoomCell.registerID, for: indexPath) as? LeftMenuNewRoomCell else {
                     return UICollectionViewCell()
                 }
+                cell.rx.newRoomCellTapped
+                    .map { _ -> Int in
+                        return indexPath.row
+                }.bind(to: viewModel.input.newCellTapped)
+                    .disposed(by: cell.bag)
+                
                 return cell
             } else {
                 guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: LeftMenuRoomCell.registerID, for: indexPath) as? LeftMenuRoomCell else {
                     return UICollectionViewCell()
                 }
                 cell.bind(titleString: viewModel.listRoomDataModels?[safe: indexPath.row]?.roomTitle)
+                
+                cell.rx.leftRoomTapped
+                    .map { _ -> Int in
+                        return indexPath.row
+                }.bind(to: viewModel.input.roomCellTapped)
+                    .disposed(by: cell.bag)
                 
                 return cell
             }

@@ -8,6 +8,7 @@
 
 import RxSwift
 import RxCocoa
+import SwiftyJSON
 
 class CreateRoomViewModel: NSObject, ReactiveViewModelable {
     
@@ -24,6 +25,9 @@ class CreateRoomViewModel: NSObject, ReactiveViewModelable {
         public let isValidCreateRoomTitle = BehaviorRelay<Bool>(value: false)
         public let limitRoomTitleAlert = PublishRelay<String>()
         public let moveMemberInvitte = PublishRelay<MemberInviteViewController>()
+        
+        public let errorMessage = PublishRelay<Error?>()
+        public let completeRoom = PublishRelay<Int?>()
     }
     
     public lazy var input: InputType = Input()
@@ -82,13 +86,42 @@ class CreateRoomViewModel: NSObject, ReactiveViewModelable {
         }).disposed(by: bag)
         
         input.confirmBtnTapped
-            .subscribe(onNext: { [weak self] (roomTitle) in
-                guard let self = self else { return }
-                guard let roomTitle = roomTitle else { return }
-                let memberViewModel = MemberInviteViewModel(title: roomTitle)
-                let memberInviteViewController = MemberInviteViewController.instance(viewModel: memberViewModel)
-                self.output.moveMemberInvitte.accept(memberInviteViewController)
+            .flatMap { (roomTItle) -> Observable<APIResult> in
+                HomeNetworker.makeRoom(roomTitle: roomTItle).asObservable()
+        }.subscribe(onNext: { [weak self] (result) in
+            guard let self = self else { return }
+            switch result {
+            case .success(let json):
+                let roomID = self.settingRoomID(json: json)
+                self.output.completeRoom.accept(roomID)
+            case .failure(let error):
+                self.output.errorMessage.accept(error)
+            }
+            
             }).disposed(by: bag)
+        
+        
+//            .subscribe(onNext: { [weak self] (roomTitle) in
+//                guard let self = self else { return }
+//                guard let roomTitle = roomTitle else { return }
+//                let memberViewModel = MemberInviteViewModel(title: roomTitle)
+//                let memberInviteViewController = MemberInviteViewController.instance(viewModel: memberViewModel)
+//                self.output.moveMemberInvitte.accept(memberInviteViewController)
+//            }).disposed(by: bag)
     }
     
+}
+
+private extension CreateRoomViewModel {
+    func settingUserInfo(json: JSON) -> UserResponseModel? {
+        guard let dict = json.dictionaryObject else { return nil }
+        let model = UserResponseModel(JSON: dict)
+        return model
+    }
+    
+    func settingRoomID(json: JSON) -> Int? {
+        guard let dict = json.dictionaryObject else { return nil }
+        let responseModel = RoomInfoRespnseModel(JSON: dict)
+        return responseModel?.data?.roomID
+    }
 }

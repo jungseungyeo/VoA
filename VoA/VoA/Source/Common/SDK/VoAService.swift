@@ -19,19 +19,27 @@ class VoAService: NSObject {
         return headers
     }
     
-    public var restHeader: HTTPHeaders {
+    public var restHeader: HTTPHeaders = {
         var headers = HTTPHeaders()
         headers["Content-Type"] = "application/json"
         headers["Authorization"] = "Bearer "
         headers["Platform"] = "iOS"
-        headers["Version"] = "\(appShortVersion ?? "")"
         return headers
+    }()
+    
+    func addAccessToken(token: String?) {
+        var headers = HTTPHeaders()
+        headers["Content-Type"] = "application/json"
+        headers["Authorization"] = "\(token ?? "")"
+        headers["Platform"] = "iOS"
+        headers["Version"] = "\(appShortVersion ?? "")"
+        restHeader = headers
     }
     
     //http://localhost:4000
     ///api/user/login
     public var apiURL: URL {
-        return URL(string: "https://15.165.171.251")!
+        return URL(string: "http://15.165.171.251")!
     }
 
     public static let shared = VoAService()

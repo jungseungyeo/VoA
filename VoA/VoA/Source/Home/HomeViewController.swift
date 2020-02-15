@@ -103,7 +103,9 @@ class HomeViewController: BaseViewController {
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { [weak self] (_) in
                 guard let self = self else { return }
-                self.navigationController?.pushViewController(CreateRoomViewController.instance(),
+                let vc = CreateRoomViewController.instance()
+                vc.delegate = self
+                self.navigationController?.pushViewController(vc,
                                                               animated: true)
             }).disposed(by: bag)
         
@@ -140,6 +142,7 @@ class HomeViewController: BaseViewController {
             }).disposed(by: bag)
         
         rxMyHeaderBind()
+        leftMenuBind()
         
         viewModel.input.request.accept(())
     }
@@ -165,6 +168,10 @@ class HomeViewController: BaseViewController {
                     }).show(self)
                 
             }).disposed(by: bag)
+    }
+    
+    private func leftMenuBind() {
+        
     }
     
     private func configueStartingRoomView() {
@@ -422,12 +429,13 @@ private extension HomeViewController {
                 return UICollectionViewCell()
             }
             
-            cell.bind(name: viewModel.getMemberName(index: indexPath.item),
+            cell.bind(name: viewModel.getMemberName(index: indexPath.row),
                       profileURLstring: viewModel.getMemberProfiletUrlString(index: indexPath.row),
-                      remindTime: viewModel.getMemberRemindTime(index: indexPath.item),
-                      goHomeTime: viewModel.getMemberGoHomeTime(index: indexPath.item),
-                      isMessage: viewModel.isMemberMessage(index: indexPath.item),
-                      userStatus: viewModel.getMemberStatus(index: indexPath.item))
+                      remindTime: viewModel.getMemberRemindTime(index: indexPath.row),
+                      goHomeTime: viewModel.getMemberGoHomeTime(index: indexPath.row),
+                      isMessage: viewModel.isMemberMessage(index: indexPath.row),
+                      userStatus: viewModel.getMemberStatus(index: indexPath.row),
+                      state: viewModel.userGaugebar(index: indexPath.row))
             
             return cell
         case .endMemberStatus:
@@ -435,7 +443,7 @@ private extension HomeViewController {
                 return UICollectionViewCell()
             }
             
-            cell.bind(name: viewModel.getEndMemberName(index: indexPath.item),
+            cell.bind(name: viewModel.getEndMemberName(index: indexPath.row),
                       profileURLstring: viewModel.getEndMemberProfiletUrlString(index: indexPath.item),
                       remindTime: viewModel.getEndMemberRemindTime(index: indexPath.row),
                       goHomeTime: viewModel.getMemberGoHomeTime(index: indexPath.row),
@@ -446,4 +454,10 @@ private extension HomeViewController {
         }
     }
     
+}
+
+extension HomeViewController: CreateRoomViewControllerdelegate {
+    func complete(roomID: Int?) {
+        viewModel.input.request.accept(())
+    }
 }

@@ -16,6 +16,11 @@ class HomeNetworker: NSObject {
         return Networker.request(api: api)
     }
     
+    static func makeRoom(roomTitle: String?) -> Single<APIResult> {
+        let api = RoomInfoAPI.makeRoom(UserViewModel.shared.userModel?.userID, roomTitle)
+        return Networker.request(api: api)
+    }
+    
     static func getRommInfo(roomID: Int) -> Single<APIResult> {
         let api = RoomInfoAPI.getRoomInfo(roomID)
         return Networker.request(api: api)

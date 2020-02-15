@@ -14,6 +14,10 @@ protocol NoneRoomViewable: class {
 
 class NoneRoomView: BaseView {
     
+    @IBOutlet weak var logoImg: UIImageView!
+    @IBOutlet weak var title: UILabel!
+    @IBOutlet weak var subTitle: UILabel!
+    
     @IBOutlet weak var createRoomBtn: UIButton!
     
     weak var delegate: NoneRoomViewable?
@@ -31,12 +35,24 @@ class NoneRoomView: BaseView {
         
         static let leftGradient: UIColor = VoAColor.AppleLoginAlert.leftGradient
         static let rightGradient: UIColor = VoAColor.AppleLoginAlert.rightGradient
+        
+        static let titleString: NSAttributedString = .init(string: "귀가방을 만들어보세요",
+                                                           font: .systemFont(ofSize: 18,
+                                                                             weight: .bold),
+                                                           color: VoAColor.Style.white)
+        static let subTitleString: NSAttributedString = .init(string: "귀가방을 만들어서 친구들을 초대해보세요.\n친구들의 귀갓길 이젠 걱정하지 마세요",
+                                                           font: .systemFont(ofSize: 14,
+                                                                             weight: .regular),
+                                                           color: .init(r: 155, g: 159, b: 188))
     }
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
         setupCreateRoomBtn()
+        
+        title.attributedText = Const.titleString
+        subTitle.attributedText = Const.subTitleString
     }
     
     private func setupCreateRoomBtn() {

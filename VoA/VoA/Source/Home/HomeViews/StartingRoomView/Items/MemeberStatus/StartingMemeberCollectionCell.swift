@@ -8,6 +8,32 @@
 
 import UIKit
 
+enum GaugebarState: Int {
+    case none = 0
+    case one = 25
+    case two = 50
+    case three = 70
+    case four = 100
+    case warning = 101
+    
+    var image: UIImage? {
+        switch self {
+        case .none:
+            return nil
+        case .one:
+            return UIImage(named: "invalidName")
+        case .two:
+            return UIImage(named: "two")
+        case .three:
+            return UIImage(named: "three")
+        case .four:
+            return UIImage(named: "four")
+        case .warning:
+            return UIImage(named: "warning")
+        }
+    }
+}
+
 class StartingMemeberCollectionCell: BaseCollectionViewCell {
     
     static let registerID: String = "\(StartingMemeberCollectionCell.self)"
@@ -52,6 +78,30 @@ class StartingMemeberCollectionCell: BaseCollectionViewCell {
         return btn
     }()
     
+    lazy var fromtBackgaugebar: UIImageView = {
+        let iv = UIImageView(image: UIImage(named: "copy3"))
+        iv.contentMode = .scaleAspectFill
+        return iv
+    }()
+    
+    lazy var endBackgaugebar: UIImageView = {
+        let iv = UIImageView(image: UIImage(named: "copy1"))
+        iv.contentMode = .scaleAspectFill
+        return iv
+    }()
+    
+    lazy var middleBackgaugebar: UIImageView = {
+        let iv = UIImageView(image: UIImage(named: "copy2"))
+        iv.contentMode = .scaleAspectFill
+        return iv
+    }()
+    
+    lazy var gaugebar: UIImageView = {
+        let iv = UIImageView(image: UIImage(named: ""))
+        iv.contentMode = .scaleAspectFill
+        return iv
+    }()
+    
     private struct Const {
         static let profiletSize: CGSize = .init(width: 40, height: 40)
         static let nameTitle: NSAttributedString = .init(string: "123",
@@ -80,7 +130,11 @@ class StartingMemeberCollectionCell: BaseCollectionViewCell {
                                   nameLabel,
                                   remindTimeLabel,
                                   memberStatusLabel,
-                                  sendMessageBtn)
+                                  sendMessageBtn,
+                                  fromtBackgaugebar,
+                                  endBackgaugebar,
+                                  middleBackgaugebar,
+                                  gaugebar)
     }
     
     override func setupUI() {
@@ -118,10 +172,37 @@ class StartingMemeberCollectionCell: BaseCollectionViewCell {
             make.right.equalToSuperview().offset(-16)
             make.size.equalTo(Const.sendMessageSize)
         }
+        
+        fromtBackgaugebar.snp.remakeConstraints { make in
+            make.left.equalToSuperview().offset(16)
+            make.size.equalTo(CGSize.init(width: 16, height: 16))
+            make.bottom.equalToSuperview().offset(-16)
+        }
+        
+        endBackgaugebar.snp.remakeConstraints { make in
+            make.right.equalToSuperview().offset(-16)
+            make.size.equalTo(CGSize.init(width: 16, height: 16))
+            make.bottom.equalToSuperview().offset(-16)
+        }
+        
+        middleBackgaugebar.snp.remakeConstraints { make in
+            make.height.equalTo(16)
+            make.left.equalTo(fromtBackgaugebar.snp.right)
+            make.right.equalTo(endBackgaugebar.snp.left)
+            make.centerY.equalTo(fromtBackgaugebar.snp.centerY)
+        }
+        
+        gaugebar.snp.remakeConstraints { make in
+            make.left.equalTo(fromtBackgaugebar.snp.left)
+            make.right.equalTo(endBackgaugebar.snp.right)
+            make.height.equalTo(16)
+            make.centerY.equalTo(fromtBackgaugebar.snp.centerY)
+        }
     }
     
-    func bind(name: String?, profileURLstring: String?, remindTime: Int, goHomeTime: Int, isMessage: Bool, userStatus: UserStatus) {
+    func bind(name: String?, profileURLstring: String?, remindTime: Int, goHomeTime: Int, isMessage: Bool, userStatus: UserStatus, state: GaugebarState = .none) {
         nameLabel.text = name
+        gaugebar.image = state.image
         
         if let profileUrl = URL(string: profileURLstring ?? "") {
             profileImg.kf.setImage(with: profileUrl)

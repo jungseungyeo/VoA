@@ -11,6 +11,10 @@ import UIKit
 import RxSwift
 import RxCocoa
 
+protocol CreateRoomViewControllerdelegate: class {
+    func complete(roomID: Int?)
+}
+
 class CreateRoomViewController: BaseViewController {
     
     private lazy var createRoomView: CreateRoomView = {
@@ -35,7 +39,7 @@ class CreateRoomViewController: BaseViewController {
     }()
     
     private lazy var nextBtn: UIBarButtonItem = {
-        let btn = UIBarButtonItem(title: "다음",
+        let btn = UIBarButtonItem(title: "완료",
                                   style: .done,
                                   target: self,
                                   action: #selector(nextTapped(sender:)))
@@ -49,6 +53,8 @@ class CreateRoomViewController: BaseViewController {
         static let navigationTitleString: String = "귀가방 이름"
         static let navigationTitleFont: UIFont = .systemFont(ofSize: 16, weight: .bold)
     }
+    
+    weak var delegate: CreateRoomViewControllerdelegate?
     
     override func setup() {
         super.setup()
@@ -105,6 +111,13 @@ class CreateRoomViewController: BaseViewController {
             .subscribe(onNext: { [weak self] (vc) in
                 guard let self = self else { return }
                 self.navigationController?.pushViewController(vc, animated: true)
+            }).disposed(by: bag)
+        
+        viewModel.output.completeRoom
+            .subscribe(onNext: { [weak self] (roomID) in
+                guard let self = self else { return }
+                self.navigationController?.popViewController(animated: true)
+                self.delegate?.complete(roomID: roomID)
             }).disposed(by: bag)
     }
     

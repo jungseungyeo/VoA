@@ -8,11 +8,22 @@
 
 import UIKit
 
+import RxSwift
+import RxCocoa
+
+extension Reactive where Base: LeftMenuRoomCell {
+    var leftRoomTapped: Observable<Void> {
+        return base.roomCellTapped.rx.tap.asObservable()
+    }
+}
+
 class LeftMenuRoomCell: BaseCollectionViewCell {
     
     static let registerID: String = "\(LeftMenuRoomCell.self)"
     
-    lazy var thumbnailImg: UIImageView = {
+    public var bag = DisposeBag()
+    
+    private lazy var thumbnailImg: UIImageView = {
         let iv = UIImageView(image: UIImage(named: ""))
         iv.contentMode = .scaleAspectFill
         iv.backgroundColor = .black
@@ -22,17 +33,21 @@ class LeftMenuRoomCell: BaseCollectionViewCell {
         return iv
     }()
     
-    lazy var roomTitle: UILabel = {
+    private lazy var roomTitle: UILabel = {
         let label = UILabel(frame: .zero)
         label.attributedText = Const.roomTitle
         return label
     }()
     
-    lazy var rightImg: UIImageView = {
-        let iv = UIImageView(image: UIImage(named: ""))
+    private lazy var rightImg: UIImageView = {
+        let iv = UIImageView(image: UIImage(named: "icArrow"))
         iv.contentMode = .scaleAspectFill
-        iv.backgroundColor = UIColor(r: 142, g: 146, b: 174)
         return iv
+    }()
+    
+    lazy var roomCellTapped: UIButton = {
+        let btn = UIButton(type: .system)
+        return btn
     }()
     
     private struct Const {
@@ -41,7 +56,12 @@ class LeftMenuRoomCell: BaseCollectionViewCell {
                                                          font: .systemFont(ofSize: 16,
                                                                            weight: .bold),
                                                          color: .white)
-        static let rightSize: CGSize = .init(width: 5, height: 11)
+        static let rightSize: CGSize = .init(width: 30, height: 30)
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        bag = DisposeBag()
     }
     
     override func setup() {
@@ -49,7 +69,8 @@ class LeftMenuRoomCell: BaseCollectionViewCell {
         
         addSubviews(thumbnailImg,
                     roomTitle,
-                    rightImg)
+                    rightImg,
+                    roomCellTapped)
     }
     
     override func setupUI() {
@@ -68,9 +89,13 @@ class LeftMenuRoomCell: BaseCollectionViewCell {
         }
         
         rightImg.snp.remakeConstraints { make in
-            make.centerX.equalToSuperview()
-            make.right.equalToSuperview().offset(25)
+            make.centerY.equalToSuperview()
+            make.right.equalToSuperview().offset(-16)
             make.size.equalTo(Const.rightSize)
+        }
+        
+        roomCellTapped.snp.remakeConstraints { make in
+            make.top.left.right.bottom.equalToSuperview()
         }
     }
     
