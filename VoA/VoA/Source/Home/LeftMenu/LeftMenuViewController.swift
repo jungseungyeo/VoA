@@ -10,6 +10,7 @@ import UIKit
 
 import RxSwift
 import RxCocoa
+import SwiftlyIndicator
 
 enum LeftMenuScetionType: Int, CaseIterable {
     case room = 0
@@ -23,6 +24,15 @@ enum LeftMenuScetionType: Int, CaseIterable {
         default: return .zero
         }
     }
+    
+    var itemSize: CGSize {
+        switch self {
+        case .room:
+            return CGSize(width: 280, height: 79)
+        case .etc:
+            return CGSize(width: 280, height: 60)
+        }
+    }
 }
 
 class LeftMenuViewController: BaseViewController {
@@ -33,13 +43,19 @@ class LeftMenuViewController: BaseViewController {
         leftMenuView.collectionView.register(LeftMenuHeaderView.self,
                                              forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
                                              withReuseIdentifier: LeftMenuHeaderView.registerID)
+        
         leftMenuView.collectionView.register(LeftMenuRoomCell.self,
                                              forCellWithReuseIdentifier: LeftMenuRoomCell.registerID)
+        leftMenuView.collectionView.register(LeftMenuNewRoomCell.self,
+                                             forCellWithReuseIdentifier: LeftMenuNewRoomCell.registerID)
+        
         
         leftMenuView.collectionView.delegate = self
         leftMenuView.collectionView.dataSource = self
         return leftMenuView
     }()
+    
+    private lazy var indicator: SwiftlyIndicator = SwiftlyIndicator(leftMenuView)
     
     private let viewModel: HomeViewModel
     private let bag = DisposeBag()
@@ -75,6 +91,18 @@ class LeftMenuViewController: BaseViewController {
                 guard let self = self else { return }
                 self.sideMenuController?.hideLeftViewAnimated()
             }).disposed(by: bag)
+        
+        viewModel.output.networkState
+            .subscribe(onNext: { [weak self] (state) in
+                guard let self = self else { return }
+                switch state {
+                case .request: break
+                case .complete:
+                    self.leftMenuView.collectionView.reloadData()
+                case .error:
+                    self.leftMenuView.collectionView.reloadData()
+                }
+            }).disposed(by: bag)
     }
 
     override func viewDidLoad() {
@@ -108,7 +136,23 @@ extension LeftMenuViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 0
+        
+        guard let section = LeftMenuScetionType(rawValue: section) else { return 0 }
+        switch section {
+        case .room:
+            return (viewModel.listRoomDataModels?.count ?? 0) + 1
+        case .etc:
+            return 0
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        guard let section = LeftMenuScetionType(rawValue: indexPath.section) else {
+            return .zero
+        }
+        
+        return section.itemSize
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
@@ -120,7 +164,31 @@ extension LeftMenuViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        return UICollectionViewCell()
+        
+        guard let section = LeftMenuScetionType(rawValue: indexPath.section) else {
+            return UICollectionViewCell()
+        }
+        switch section {
+        case .room:
+            if (viewModel.listRoomDataModels?.count ?? 0) == indexPath.row {
+                guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: LeftMenuNewRoomCell.registerID, for: indexPath) as? LeftMenuNewRoomCell else {
+                    return UICollectionViewCell()
+                }
+                return cell
+            } else {
+                guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: LeftMenuRoomCell.registerID, for: indexPath) as? LeftMenuRoomCell else {
+                    return UICollectionViewCell()
+                }
+                cell.bind(titleString: viewModel.listRoomDataModels?[safe: indexPath.row]?.roomTitle)
+                
+                return cell
+            }
+        case .etc:
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: LeftMenuNewRoomCell.registerID, for: indexPath) as? LeftMenuNewRoomCell else {
+                return UICollectionViewCell()
+            }
+            return cell
+        }
     }
     
     

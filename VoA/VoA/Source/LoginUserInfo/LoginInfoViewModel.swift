@@ -106,18 +106,20 @@ class LoginInfoViewModel: ReactiveViewModelable {
                                               profileURL: self.kakaoInfoPresnetModel.profileURL,
                                               kakaoAccountToken: self.kakaoInfoPresnetModel.kakaoAccountToken)
                 return LoginNetworker.sigin(model: model).asObservable()
-        }.flatMap(weak: self) { (wself, result) -> Observable<APIResult> in
-            switch result {
-            case .success(let json):
-                let responseModel = wself.settingUserInfo(json: json)
-                self.userModel = responseModel?.data
-                return LoginNetworker.sendFcm(userID: responseModel?.data?.userID,
-                                              fcmToken: SwiftlyUserDefault.fcmToken).asObservable()
-            case .failure(let error):
-                return Observable.just(APIResult.failure(error))
-            }
-            
-        }.subscribe(onNext: { [weak self] (result) in
+        }
+//        .flatMap(weak: self) { (wself, result) -> Observable<APIResult> in
+//            switch result {
+//            case .success(let json):
+//                let responseModel = wself.settingUserInfo(json: json)
+//                self.userModel = responseModel?.data
+//                return LoginNetworker.sendFcm(userID: responseModel?.data?.userID,
+//                                              fcmToken: SwiftlyUserDefault.fcmToken).asObservable()
+//            case .failure(let error):
+//                return Observable.just(APIResult.failure(error))
+//            }
+//            
+//        }
+        .subscribe(onNext: { [weak self] (result) in
             guard let self = self else { return }
             
             switch result {
