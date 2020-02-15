@@ -11,9 +11,35 @@ import UIKit
 import RxSwift
 import RxCocoa
 
+enum LeftMenuScetionType: Int, CaseIterable {
+    case room = 0
+    case etc = 1
+    
+    var sectionHeigth: CGSize {
+        switch self {
+        case .room:
+            return CGSize(width: UIScreen.main.bounds.width,
+            height: 47)
+        default: return .zero
+        }
+    }
+}
+
 class LeftMenuViewController: BaseViewController {
     
-    lazy var leftMenuView: LeftMenuView = LeftMenuView(frame: view.bounds)
+    lazy var leftMenuView: LeftMenuView = {
+        let leftMenuView = LeftMenuView(frame: view.bounds)
+        
+        leftMenuView.collectionView.register(LeftMenuHeaderView.self,
+                                             forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
+                                             withReuseIdentifier: LeftMenuHeaderView.registerID)
+        leftMenuView.collectionView.register(LeftMenuRoomCell.self,
+                                             forCellWithReuseIdentifier: LeftMenuRoomCell.registerID)
+        
+        leftMenuView.collectionView.delegate = self
+        leftMenuView.collectionView.dataSource = self
+        return leftMenuView
+    }()
     
     private let viewModel: HomeViewModel
     private let bag = DisposeBag()
@@ -65,3 +91,38 @@ class LeftMenuViewController: BaseViewController {
         print("leftMenu viewDidAppear")
     }
 }
+
+extension LeftMenuViewController: UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        guard let section = LeftMenuScetionType(rawValue: section) else { return .zero }
+        
+        return section.sectionHeigth
+    }
+}
+
+extension LeftMenuViewController: UICollectionViewDataSource {
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return LeftMenuScetionType.allCases.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind,
+                                                                           withReuseIdentifier: LeftMenuHeaderView.registerID, for: indexPath) as? LeftMenuHeaderView else {
+                                                                             return UICollectionReusableView()
+        }
+        return header
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        return UICollectionViewCell()
+    }
+    
+    
+}
+

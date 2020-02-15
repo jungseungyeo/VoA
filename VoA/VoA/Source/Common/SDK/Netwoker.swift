@@ -24,12 +24,12 @@ public enum APIResult {
 
 public final class Networker: NSObject {
 
-    static func request(api: Networkerable, _ parameterEncoding: ParameterEncoding? = nil) -> Single<JSON> {
+    static func request(api: Networkerable, _ parameterEncoding: ParameterEncoding? = nil) -> Single<APIResult> {
         return sendRequest(api: api, parameterEncoding: parameterEncoding)
     }
 
-    private static func sendRequest(api: Networkerable, parameterEncoding: ParameterEncoding?) -> Single<JSON> {
-        let request = Single<JSON>.create { (single) -> Disposable in
+    private static func sendRequest(api: Networkerable, parameterEncoding: ParameterEncoding?) -> Single<APIResult> {
+        let request = Single<APIResult>.create { (single) -> Disposable in
             sendRequestDefault(url: api.route.url.absoluteString,
                                method: api.route.method,
                                params: api.params,
@@ -44,12 +44,12 @@ public final class Networker: NSObject {
                                     #if DEBUG
                                         print("JSON : { \(json) }")
                                     #endif
-                                    single(.success(json))
+                                    single(.success(APIResult.success(json)))
                                 case .failure(let error):
                                     #if DEBUG
                                         print("ERROR: { \(error.localizedDescription) }")
                                     #endif
-                                    single(.error(error))
+                                    single(.success(APIResult.failure(error)))
                                 }
             })
             return Disposables.create()

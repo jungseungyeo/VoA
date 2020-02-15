@@ -74,27 +74,33 @@ class SplashViewModel: NSObject, ReactiveViewModelable {
             .disposed(by: bag)
         
         input.authoLoginRequest
-            .flatMap { _ -> Single<JSON> in
+            .flatMap { _ -> Single<APIResult> in
                 let kakaoModel = KakaoPresentModel(nickName: SwiftlyUserDefault.nickName,
                                                    profileURL: URL(string: SwiftlyUserDefault.profile ?? ""),
                                                    kakaoAccountToken: SwiftlyUserDefault.kakaoToken)
                 return LoginNetworker.sigin(model: kakaoModel)
-        }.flatMap(weak: self) { (wself, json) -> Observable<JSON> in
-            let responseModel = wself.settingUserInfo(json: json)
-            self.userModel = responseModel?.data
-            return LoginNetworker.sendFcm(userID: responseModel?.data?.userID,
-                                          fcmToken: SwiftlyUserDefault.fcmToken).asObservable()
-        }.subscribe(onNext: {  [weak self] (json) in
+        }.flatMap(weak: self) { (wself, result) -> Observable<APIResult> in
+            switch result {
+            case .success(let json):
+                let responseModel = wself.settingUserInfo(json: json)
+                self.userModel = responseModel?.data
+                return LoginNetworker.sendFcm(userID: responseModel?.data?.userID,
+                                              fcmToken: SwiftlyUserDefault.fcmToken).asObservable()
+            case .failure(let error):
+                return Observable.just(APIResult.failure(error))
+            }
+        }.subscribe(onNext: {  [weak self] (result) in
             guard let self = self else { return }
-            UserViewModel.shared.userModel = self.userModel
-            let viewModel = HomeViewModel()
-            let homeNavigationController = HomeNavigationViewController(rootViewController: HomeViewController.instance(homeViewModel: viewModel))
-            let navi = LGSideMenuController(rootViewController: homeNavigationController, leftViewController: LeftMenuViewController.instance(homeViewModel: viewModel), rightViewController: nil)
-            navi.panGesture.isEnabled = false
-            navi.leftViewWidth = 280
-            self.output.autoLoingState.accept(.complete(navi))
-            }, onError: { [weak self] (error) in
-                guard let self = self else { return }
+            switch result {
+            case .success(let json):
+                UserViewModel.shared.userModel = self.userModel
+                let viewModel = HomeViewModel()
+                let homeNavigationController = HomeNavigationViewController(rootViewController: HomeViewController.instance(homeViewModel: viewModel))
+                let navi = LGSideMenuController(rootViewController: homeNavigationController, leftViewController: LeftMenuViewController.instance(homeViewModel: viewModel), rightViewController: nil)
+                navi.panGesture.isEnabled = false
+                navi.leftViewWidth = 280
+                self.output.autoLoingState.accept(.complete(navi))
+            case .failure(let error):
                 guard let json = VoAUtil.loadJSON("LoginResponseJson") as? [String: Any] else { return }
                 let responseModel = UserResponseModel(JSON: json)
                 UserViewModel.shared.userModel = responseModel?.data
@@ -105,11 +111,11 @@ class SplashViewModel: NSObject, ReactiveViewModelable {
                 navi.panGesture.isEnabled = false
                 navi.leftViewWidth = 280
                 self.output.autoLoingState.accept(.complete(navi))
-                //                self.output.autoLoingState.accept(.error(error))
+            }
         }).disposed(by: bag)
         
     }
-
+    
 }
 
 private extension SplashViewModel {

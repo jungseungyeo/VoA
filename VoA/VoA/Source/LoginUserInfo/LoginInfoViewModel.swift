@@ -101,32 +101,39 @@ class LoginInfoViewModel: ReactiveViewModelable {
             .disposed(by: bag)
         
         input.confirmTapped
-            .flatMap(weak: self) { (wself, customNickName) -> Observable<JSON> in
+            .flatMap(weak: self) { (wself, customNickName) -> Observable<APIResult> in
                 let model = KakaoPresentModel(nickName: customNickName,
                                               profileURL: self.kakaoInfoPresnetModel.profileURL,
                                               kakaoAccountToken: self.kakaoInfoPresnetModel.kakaoAccountToken)
                 return LoginNetworker.sigin(model: model).asObservable()
-        }.flatMap(weak: self) { (wself, json) -> Observable<JSON> in
-            let responseModel = wself.settingUserInfo(json: json)
-            self.userModel = responseModel?.data
-            return LoginNetworker.sendFcm(userID: responseModel?.data?.userID,
-                                          fcmToken: SwiftlyUserDefault.fcmToken).asObservable()
-        }.subscribe(onNext: { [weak self] (json) in
-            guard let self = self else { return }
-            UserViewModel.shared.userModel = self.userModel
-            SwiftlyUserDefault.nickName = self.userModel?.userName
-            SwiftlyUserDefault.profile = self.userModel?.profileURL
-            SwiftlyUserDefault.kakaoToken = self.kakaoInfoPresnetModel.kakaoAccountToken
+        }.flatMap(weak: self) { (wself, result) -> Observable<APIResult> in
+            switch result {
+            case .success(let json):
+                let responseModel = wself.settingUserInfo(json: json)
+                self.userModel = responseModel?.data
+                return LoginNetworker.sendFcm(userID: responseModel?.data?.userID,
+                                              fcmToken: SwiftlyUserDefault.fcmToken).asObservable()
+            case .failure(let error):
+                return Observable.just(APIResult.failure(error))
+            }
             
-            let viewModel = HomeViewModel()
-            let homeNavigationController = HomeNavigationViewController(rootViewController: HomeViewController.instance(homeViewModel: viewModel))
-            let navi = LGSideMenuController(rootViewController: homeNavigationController, leftViewController: LeftMenuViewController.instance(homeViewModel: viewModel), rightViewController: nil)
-            navi.panGesture.isEnabled = false
-            navi.leftViewWidth = 280
-            self.output.state.accept(.complete(navi))
-            }, onError: { [weak self] (error) in
-                guard let self = self else { return }
+        }.subscribe(onNext: { [weak self] (result) in
+            guard let self = self else { return }
+            
+            switch result {
+            case .success(let json):
+                UserViewModel.shared.userModel = self.userModel
+                SwiftlyUserDefault.nickName = self.userModel?.userName
+                SwiftlyUserDefault.profile = self.userModel?.profileURL
+                SwiftlyUserDefault.kakaoToken = self.kakaoInfoPresnetModel.kakaoAccountToken
                 
+                let viewModel = HomeViewModel()
+                let homeNavigationController = HomeNavigationViewController(rootViewController: HomeViewController.instance(homeViewModel: viewModel))
+                let navi = LGSideMenuController(rootViewController: homeNavigationController, leftViewController: LeftMenuViewController.instance(homeViewModel: viewModel), rightViewController: nil)
+                navi.panGesture.isEnabled = false
+                navi.leftViewWidth = 280
+                self.output.state.accept(.complete(navi))
+            case .failure(let error):
                 guard let json = VoAUtil.loadJSON("LoginResponseJson") as? [String: Any] else { return }
                 let responseModel = UserResponseModel(JSON: json)
                 UserViewModel.shared.userModel = responseModel?.data
@@ -140,8 +147,7 @@ class LoginInfoViewModel: ReactiveViewModelable {
                 navi.panGesture.isEnabled = false
                 navi.leftViewWidth = 280
                 self.output.state.accept(.complete(navi))
-                
-//                self.output.state.accept(.error(error))
+            }
         }).disposed(by: bag)
     }
 }

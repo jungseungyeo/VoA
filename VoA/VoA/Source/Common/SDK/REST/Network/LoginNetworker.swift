@@ -11,12 +11,12 @@ import RxSwift
 import SwiftyJSON
 
 class LoginNetworker: NSObject {
-    static func sigin(model: KakaoPresentModel) -> Single<JSON> {
+    static func sigin(model: KakaoPresentModel) -> Single<APIResult> {
         let api = LoginAPI.sigin(model)
         return Networker.request(api: api)
     }
     
-    static func sendFcm(userID: Int?, fcmToken: String?) -> Single<JSON> {
+    static func sendFcm(userID: Int?, fcmToken: String?) -> Single<APIResult> {
         let api = LoginAPI.fcm(userID, fcmToken)
         return Networker.request(api: api)
     }
